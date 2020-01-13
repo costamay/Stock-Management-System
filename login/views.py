@@ -44,3 +44,7 @@ def shome(request):
     template = "storemanager.html"
     return render(render,template)
 
+def achome(request):
+    template = "accountant.html"
+    return render(render,template)
+
