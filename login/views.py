@@ -27,4 +27,16 @@ def login(request):
             return redirect('home')
     return render(request,'home.html')
 
-# Create your views here.
+@login_required(login_url='/accounts/login')
+def home(request):
+    grp = request.user.groups.filter(user=request.user)[0]
+    if grp.name == "store_manager":
+        return redirect(reverse(shome))
+    elif grp.name == "accountant":
+        return redirect(reverse(achome))
+    elif grp.name == 'admin':
+        return redirect(reverse(ahome))
+    context = {}
+    template = "home.html"
+    return render(request,template)
+
