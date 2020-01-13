@@ -26,7 +26,7 @@ def login(request):
         else:
             return redirect('home')
     return render(request,'home.html')
-
+            
 @login_required(login_url='/accounts/login')
 def home(request):
     grp = request.user.groups.filter(user=request.user)[0]
