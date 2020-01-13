@@ -1,6 +1,7 @@
 from django.db import models
 from products.models import *
 
+
 class Client(models.Model):
     c_name = models.CharField(max_length=100)
     c_phone = models.IntegerField()
