@@ -31,3 +31,24 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+class User(AbstractBaseUser,PermissionsMixin):
+    email = models.EmailField(max_length=255,unique=True)
+    name = models.CharField(max_length=255, null=True,blank=True) 
+    is_staff = models.BooleanField(default=False)  
+    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    last_login = models.DateTimeField(null=True,blank=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
+
+    USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = UserManager()
+
+    def get_absolute_url(self):
+        return "/users/%i/" % (self.pk)
+    def get_email(self):
+        return self.email
+    def get_short_name(self):
+        return self.name
