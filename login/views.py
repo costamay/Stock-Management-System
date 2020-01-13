@@ -48,3 +48,8 @@ def achome(request):
     template = "accountant.html"
     return render(render,template)
 
+def ahome(request):
+    template = "admin.html"
+    return render(render,template)
+
+
