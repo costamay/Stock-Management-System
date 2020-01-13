@@ -52,3 +52,16 @@ class User(AbstractBaseUser,PermissionsMixin):
         return self.email
     def get_short_name(self):
         return self.name
+
+class user_type(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    is_accountant = models.BooleanField(default= False)
+    is_manager = models.BooleanField(default= False)
+
+    def __str__(self):
+        if self.is_accountant ==True:
+            return User.get_email(self.user) + " - is_accountant "
+        else:
+            return User.get_email(self.user) + " - is_manager"
+        
+
