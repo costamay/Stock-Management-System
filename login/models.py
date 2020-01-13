@@ -64,4 +64,3 @@ class user_type(models.Model):
         else:
             return User.get_email(self.user) + " - is_manager"
         
-
