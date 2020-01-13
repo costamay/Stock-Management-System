@@ -40,3 +40,7 @@ def home(request):
     template = "home.html"
     return render(request,template)
 
+def shome(request):
+    template = "storemanager.html"
+    return render(render,template)
+
