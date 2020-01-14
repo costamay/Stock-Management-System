@@ -15,10 +15,12 @@ class Supplier(models.Model):
         self.delete()
 
 
+
     @classmethod
     def update_supplier(cls, id, new_name):
         cls.objects.filter(pk=id).update(s_name=new_name)
         new_name_object = cls.objects.get(s_name=new_name)
+
         new_name = new_name_object.name
         return new_name
 
