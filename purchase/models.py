@@ -3,7 +3,9 @@ from supplier.models import *
 from materials.models import Material
 
 
+
 class Purchase(models.Model):
+
 
     pu_date = models.DateTimeField(auto_now_add=True)
     qyt = models.FloatField()
@@ -21,4 +23,6 @@ class Purchase(models.Model):
         return f'{self.pu_name}'
 
     class Meta:
+
         ordering = ['-pu_date']
+
