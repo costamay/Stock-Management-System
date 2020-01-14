@@ -24,5 +24,4 @@ class Client(models.Model):
         return f'{self.c_name}'
 
     class Meta:
-      client-model
       ordering = ['-date']
