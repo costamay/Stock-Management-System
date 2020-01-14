@@ -39,3 +39,12 @@ def update_orders(request):
     else:
         form= UpdateOrderForm()
     return render(request,'update_order.html', {'form':form})
+
+def delete_orders(request, pk):
+    template = 'order.html'
+    Order.objects.filter(id=pk).delete()
+    orders = Order.objects.all()
+    context = {
+        'orders': orders,
+    }
+    return render(request, template, context)

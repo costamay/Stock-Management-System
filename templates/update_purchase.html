@@ -1,0 +1,6 @@
+<h1 class="text-center">Update purchase</h1>
+<form method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+</form>
