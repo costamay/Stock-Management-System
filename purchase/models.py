@@ -5,8 +5,6 @@ from materials.models import Material
 
 
 class Purchase(models.Model):
-
-
     pu_date = models.DateTimeField(auto_now_add=True)
     qyt = models.FloatField()
     price = models.FloatField()
