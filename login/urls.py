@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^store/',views.shome,name='shome'),
     url(r'^accounting/',views.shome,name='achome'),
     url(r'^administrator/',views.shome,name='shome'),
+    
 
    
 ]
