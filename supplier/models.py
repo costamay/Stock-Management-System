@@ -2,6 +2,7 @@ from django.db import models
 from materials.models import *
 
 
+
 class Supplier(models.Model):
     s_name = models.CharField(max_length=100)
     s_phone = models.CharField(max_length=14)

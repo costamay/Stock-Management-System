@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 
 from .models import *
 from .forms import *
@@ -12,6 +12,7 @@ def add_item(request, cls):
     if request.method == "POST":
         form = cls(request.POST)
 
+
         if form.is_valid():
             form.save()
             return redirect('all_suppliers')
@@ -19,6 +20,7 @@ def add_item(request, cls):
     else:
         form = cls()
         return render(request, 'add_new.html', {'form' : form})
+
 
 
 def add_supplier(request):
@@ -42,14 +44,10 @@ def edit_supplier(request, pk):
 
 def delete_supplier(request, pk):
 
-    template = 'suplliers.html'
+    template = 'suppliers.html'
     Supplier.objects.filter(id=pk).delete()
+    suppliers = Supplier.objects.all()
+    
+    return render(request, template, locals())
 
-    items = Supplier.objects.all()
-
-    context = {
-        'items': items,
-    }
-
-    return render(request, template, context)
 
