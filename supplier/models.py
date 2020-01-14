@@ -13,6 +13,9 @@ class Supplier(models.Model):
     def delete_supplier(self):
         self.delete()
     
+    def update_supplier(self):
+        self.update()
+    
     @classmethod   
     def update_supplier(cls,id,new_name):
         cls.objects.filter(pk = id).update(s_name=new_name)
