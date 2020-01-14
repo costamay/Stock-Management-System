@@ -15,7 +15,7 @@ def add_item(request, cls):
             return redirect('all_suppliers')
     else:
         form = cls()
-        return render(request, 'add_new.html', {'form' : form})
+        return render(request, 'add_new.html', locals())
 
 def add_supplier(request):
     return add_item(request, SupplierForm)
@@ -35,10 +35,8 @@ def edit_supplier(request, pk):
     return edit_item(request, pk, Supplier, SupplierForm)
 
 def delete_supplier(request, pk):
-    template = 'suplliers.html'
+    template = 'suppliers.html'
     Supplier.objects.filter(id=pk).delete()
     suppliers = Supplier.objects.all()
-    context = {
-        'items': items,
-    }
-    return render(request, template, context)
+    
+    return render(request, template, locals())
