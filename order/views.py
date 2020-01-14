@@ -7,6 +7,7 @@ from .forms import OrderForm, UpdateOrderForm
 
 def orders(request):
     orders = Order.objects.all()
+    
 
     return render(request, 'orders.html',{'orders':orders})
 
@@ -48,3 +49,14 @@ def delete_orders(request, pk):
         'orders': orders,
     }
     return render(request, template, context)
+
+def search_orders(request):
+    if 'site' in request.GET and request.GET['site']:
+        search_term = request.GET.get('site')
+        orders = Order.objects.filter(title__icontains = search_term)
+        message = f'{search_term}'
+        return render(request, 'search_orders.html', {'orders': orders, 'message': message})
+        
+    return render(request, 'search_orders.html')
+
+    
