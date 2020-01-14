@@ -24,4 +24,3 @@ class Material(models.Model):
 
     class Meta:
         ordering = ['date']
-

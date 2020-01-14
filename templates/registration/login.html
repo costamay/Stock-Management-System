@@ -1,0 +1,51 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+ 
+
+
+<div class="fil">
+    <div class="row">
+      <!-- Empty div -->
+      <!-- <div class="col-md-4"></div> -->
+      <div class="col-md-4">
+        <!-- {% if form.errors %}
+          <p> Password or Username is incorrect </p>
+        {% endif %} -->
+        <div class="panel panel-default">
+  
+          <div class="panel-heading">
+            <h3 class="text-center"><img src="{% static '/images/ta-removebg-preview.png' %}" alt=""></h3>
+          </div>
+          <div class="panel-body">
+  
+            <form  action="/accounts/login/" method="post">
+              {% csrf_token %}
+              {% bootstrap_form form%}
+  
+              <div class="form-group">
+                
+                <input type="submit" class="btn btn-pink btn-sm" value="Login">
+              </div>
+  
+              <input type="hidden" name="next" value="{{next}}">
+  
+            </form>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+      <!-- image div -->
+      <div class="col-md-8">
+       <div>
+
+        <img src="{% static '/images/spoonspice.jpg' %}" alt="" class="spoon">
+       </div>
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}
