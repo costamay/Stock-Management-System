@@ -28,4 +28,7 @@ urlpatterns = [
     url(r'',include('materials.urls')),
     url(r'',include('sales.urls')),
     url(r'',include('order.urls')),
+
+    # login
+    # url(r'',include('login.urls')),
 ]

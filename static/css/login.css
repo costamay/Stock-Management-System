@@ -1,0 +1,21 @@
+img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+body,html{
+  overflow-y: hidden;
+  height:100%;
+}
+
+.fil{
+  height: 100%;
+}
+.spoon{
+  height: 100vh;
+  /* background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
