@@ -38,19 +38,19 @@ def home(request):
     elif grp.name == 'admin':
         return redirect(reverse(ahome))
     context = {}
-    template = "home.html"
+    template = "dashboards/home.html"
     return render(request,template)
 
 def shome(request):
-    template = "storemanager.html"
-    return render(render,template)
+    template = "dashboards/dashboard_stock.html"
+    return render(request,template)
 
 def achome(request):
-    template = "accountant.html"
-    return render(render,template)
+    template = "dashboards/dashboard_accountant.html"
+    return render(request,template)
 
 def ahome(request):
-    template = "admin.html"
-    return render(render,template)
+    template = "dashboards/dashboard_admin.html"
+    return render(request,template)
 
 
