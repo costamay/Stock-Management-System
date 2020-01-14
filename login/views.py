@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
+
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
