@@ -15,6 +15,9 @@ class Order(models.Model):
 
     def delete_order(self):
         self.delete()
+    
+    def update_order(self):
+        self.update()
 
     def __str__(self):
         return f'{self.order_no}'
