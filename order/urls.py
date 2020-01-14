@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
    url('^orders/$', views.orders),
    url('^create/$', views.create_orders),
+   url('^update/$',views.update_orders),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

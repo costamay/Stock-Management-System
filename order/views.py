@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth.decorators import login_required
 from .models import Order
-from .forms import OrderForm
+from .forms import OrderForm, UpdateOrderForm
 
 
 def orders(request):
@@ -25,3 +25,17 @@ def create_orders(request):
         form = OrderForm()
 
     return render(request, 'create_order.html', {'form': form})
+
+def update_orders(request):
+    if request.method == 'POST' :
+        form = UpdateOrderForm(request.POST,request.FILES)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
+
+        return redirect('orders')
+
+    else:
+        form= UpdateOrderForm()
+    return render(request,'update_order.html', {'form':form})
