@@ -10,13 +10,12 @@ CATEGORY = (
 )
 
 class Product(models.Model):
-    p_name = models.CharField(max_length=100)
-    p_image = models.ImageField(upload_to='images/')
-    size = models.CharField(max_length=50)
-    qyt = models.PositiveIntegerField()
-    price = models.FloatField()
-
-    category = models.CharField(max_length=50,choices=CATEGORY)
+    product_name = models.CharField(max_length=100)
+    product_image = models.ImageField(upload_to='images/')
+    product_size = models.CharField(max_length=50)
+    product_qyt = models.PositiveIntegerField()
+    product_price = models.FloatField()
+    product_category = models.CharField(max_length=50,choices=CATEGORY)
     date = models.DateTimeField(auto_now_add=True)
 
     def save_product(self):
@@ -33,7 +32,7 @@ class Product(models.Model):
         return new_name
 
     def __str__(self):
-        return f'{self.p_name}'
+        return f'{self.product_name}'
 
     class Meta:
 
