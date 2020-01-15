@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'',include('order.urls')),
 
     # login
-    # url(r'',include('login.urls')),
+    url(r'',include('login.urls')),
 ]
