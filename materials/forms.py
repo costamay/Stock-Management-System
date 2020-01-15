@@ -1,2 +1,7 @@
 from django import forms
-from materials.models import *
+from .models import *
+
+class MaterialForm(forms.ModelForm):
+    class Meta:
+        model = Material
+        exclude = ['date']
