@@ -1,26 +1,10 @@
-<!-- <h1>
-  great
-
-</h1> -->
 {%extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-
-    <title>Document</title>
-</head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>DASHBOARD</strong></a>
+        <a class="navbar-brand" href="#"><strong>Clients</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,8 +17,9 @@
                 <li class="nav-item" style="float:right">
                     <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
                 </li>
+
                 <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-out"></i></a>
+                    <a class="nav-link" href="#"><i class="fa fa-sign-out">Logout</i></a>
                     
                 </li>
             </ul>
@@ -46,14 +31,14 @@
         <p class="taste_afrique">TASTE AFRIQUE</p>
         <div style="text-align: center;">
             <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">{{ user }}</p>
+            <p style="color: #ffffff;">NAME</p>
         </div>
         <button class="dropdown-btn">Product
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="cat">Categories</a>
-            <a href="#">Add Product</a>
+            <a href="#">Categories</a>
+            
             <a href="#">Manage Product</a>
         </div>
 
@@ -61,7 +46,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Client</a>
+            
             <a href="#">Manage Client</a>
         </div>
 
@@ -69,7 +54,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Supplier</a>
+            
             <a href="#">Manage Supplier</a>
         </div>
 
@@ -77,7 +62,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Order</a>
+            
             <a href="#">Manage Order</a>
         </div>
 
@@ -90,52 +75,78 @@
         </div>
     </div>
 
-    <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
-
-    <div id="myMain" class="main">
-        <div class="part5">
-            <div class="row justify-content-md-center no-gutters">
-                <div class="col-sm-auto size" id="col-1">
-                    <img src="{% static '/images/PRODUCT.jpg'%}" alt="work4" id="img_1" class="img-thumbnail">
-                    <div class="project" id="project_1">
-                        <div class="text">PRODUCT</div>
-                    </div>
-                </div>
-                <div class="col-sm-auto size" id="col-2">
-                    <img src="{% static '/images/CLIENTS.jpg'%}" alt="work3" id="img_2" class="img-thumbnail">
-                    <div class="project" id="project_2">
-                        <div class="text">CLIENTS</div>
-                    </div>
-                </div>
-                <div class="col-sm-auto size" id="col-3">
-                    <img src="{% static '/images/SUPPLIERS.jpg'%}" alt="work2" id="img_3" class="img-thumbnail">
-                    <div class="project" id="project_3">
-                        <div class="text">SUPPLIERS</div>
-                    </div>
-                </div>
+    <div class="container">
+        <h2 id="guru"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+            Add Client
+          </button></h2>
+        <!-- Button to Open the Modal -->
+        
+      
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body">
+                Modal body..
+              </div>
+              
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+              </div>
+              
             </div>
-            <div class="row justify-content-md-center no-gutters">
-                <div class="col-sm-auto size" id="col-4">
-                    <img src="{% static '/images/ORDERS.png'%}" alt="work1" id="img_4" class="img-thumbnail">
-                    <div class="project" id="project_4">
-                        <div class="text">ORDERS</div>
-                    </div>
-                </div>
-                <div class="col-sm-auto size" id="col-5">
-                    <img src="{% static '/images/PURCHASE.png'%}" alt="work5" id="img_5" class="img-thumbnail">
-                    <div class="project" id="project_5">
-                        <div class="text">PURCHASE</div>
-                    </div>
-                </div>
-                <div class="col-sm-auto size" id="col-6">
-                    <img src="{% static '/images/work4.jpg'%}" alt="work6" id="img_6" class="img-thumbnail">
-                    <div class="project" id="project_6">
-                        <div class="text">PROJECT 6</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
+        
+      </div>
+
+      <!-- CATEGORIES TABLE -->
+
+      <div class="container">
+        <h2  style="text-align:center;">Manage Clients</h2>
+        <div class="row">
+          <!-- empty div -->
+          <div class="col-md-2"></div>
+          
+          <div class="col-md-10">
+        <table  class="table table-bordered table-sm"  style="text-align:center;">
+          <thead class="table-dark" >
+            <tr>
+              <th>Entry No.</th>
+              <th>Client name</th>
+              <th>Contact</th>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-hover" >
+            <tr class="table-primary">
+              <td>1</td>
+              <td>East Matt</td>
+              <td>073884493</td>
+              <td>12/02/2019</td>
+              <td>SP</td>
+              <td> <button class="btn btn-primary"><i class="fa fa-pencil"></i> </button> <span> <button class="btn btn-danger"><i class="fa fa-trash" ></i></button></span> </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      </div>
+      </div>
+      
+
+<!-- javascript tag -->
 
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
@@ -156,8 +167,7 @@
     </script>
 
 
-   
-
+    
 </body>
 
 </html>
