@@ -9,9 +9,9 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 
 # test for categories
 
-def supplier(request):
+# def supplier(request):
 
-    return render(request, 'supplier/manage_supplier.html',locals())
+#     return render(request, 'supplier/manage_supplier.html',locals())
 
 
 def login(request):
