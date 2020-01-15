@@ -6,7 +6,13 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.http import Http404
+
+# test for categoriesgitch
+
+# def supplier(request):
+
+#     return render(request, 'supplier/manage_supplier.html',locals())
+
 
 def login(request):
     if request.method == "POST":
