@@ -29,25 +29,6 @@ def create_orders(request):
 
     return render(request, 'Order/add_order.html', {'form': form})
 
-# def update_orders(request,id=0):
-#     if request.method == 'GET' :
-#         if id == 0:
-#             form = UpdateOrderForm()
-#         else:
-#             order = Order.objects.get(id=id)
-#             form = UpdateOrderForm(request.POST,request.FILES,instance=order)
-#             print(form)
-#             if form.is_valid():
-#                 form.save()
-                
-            
-
-#                 return redirect('orders')
-
-#     else:
-#         form= UpdateOrderForm()
-#     return render(request,'Order/manage_order.html', {'form':form})
-
 def edit_item(request, pk, model, cls):
     item = get_object_or_404(model, pk=pk)
 

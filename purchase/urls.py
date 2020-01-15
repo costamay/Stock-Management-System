@@ -5,9 +5,10 @@ from . import views
 
 
 urlpatterns = [
-   url('^purchases/$', views.purchases),
-   url('^create_purchases/$', views.create_purchases),
-   url('^update_purchases/$', views.update_purchases),
+   url('^purchases/$', views.purchases,name='purchases'),
+   url('^create_purchases/$', views.create_purchases, name='create_purchases'),
+   # url('^update_purchases/$', views.update_purchases, name=),
+   url(r'update_purchases/(?P<pk>\d+)$',views.update_purchases, name='update_purchases'),
    url(r'delete_purchases/(?P<pk>\d+)$',views.delete_purchases),
 ]
 if settings.DEBUG:
