@@ -4,7 +4,7 @@
 {% block content %}
 <body>
     <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>Products</strong></a>
+        <a class="navbar-brand" href="#"><strong>Suppliers</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,8 @@
         </button>
         <div class="dropdown-container">
             <a href="{% url 'product' %}"><i class="fa fa-list-alt">Categories</i></a>
-            <a href="#"><i class="fa fa-plus"></i> Add Product</a>
-            <a href="#"><i class="fa fa-tasks"></i> Manage</a>
+            <a href="#">Add Product</a>
+            <a href="#">Manage Product</a>
         </div>
 
         <button class="dropdown-btn">Client
@@ -107,10 +107,10 @@
         
       </div>
 
-      <!-- Products TABLE -->
+      <!-- CATEGORIES TABLE -->
 
       <div class="container">
-        <h2  style="text-align:center;">All Products</h2>
+        <h2  style="text-align:center;">All Suppliers</h2>
         <div class="row">
           <!-- empty div -->
           <div class="col-md-2"></div>
@@ -121,33 +121,19 @@
             <tr>
               <th>Entry No.</th>
               <th>Name</th>
-              <th>Size</th>
-              <th>Qty</th>
-              <th>Category</th>
-              <th>Price</th>
+              <th>Contact</th>
               <th>Date</th>
+              <th>Materials</th>
               
               
           </thead>
           <tbody class="table-hover" >
             <tr class="table-primary">
               <td>1</td>
-              <td>Laptop</td>
-              <td>70kg</td>
-              <td>4</td>
-              <td>Sc</td>
-              <td>Ksh 200/-</td>
+              <td>Farm</td>
+              <td>0747382873</td>
               <td>12/02/2019</td>
-
-              
-              <!-- <td> 
-
-
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i>
-                  </button>
-                  <span> <button class="btn btn-danger"><i class="fa fa-trash" ></i></button></span>
-                
-                 </td> -->
+              <td>Onions</td>
                  
             </tr>
             
