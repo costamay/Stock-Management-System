@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
-# test for categories
+# test for categoriesgitch
 
 # def supplier(request):
 
