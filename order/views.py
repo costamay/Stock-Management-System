@@ -9,15 +9,17 @@ def orders(request):
     orders = Order.objects.all()
     
 
-    return render(request, 'orders.html',{'orders':orders})
+    return render(request, 'Order/orders.html',{'orders':orders})
 
 
 def create_orders(request):
     if request.method == 'POST' :
         form = OrderForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             order = form.save(commit=False)
             order.user = request.user
+            # order.delivery=1
             order.save()
 
         return redirect('orders')
@@ -25,7 +27,7 @@ def create_orders(request):
     else:
         form = OrderForm()
 
-    return render(request, 'create_order.html', {'form': form})
+    return render(request, 'Order/add_order.html', {'form': form})
 
 def update_orders(request):
     if request.method == 'POST' :

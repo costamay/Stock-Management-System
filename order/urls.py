@@ -4,8 +4,8 @@ from django.conf.urls.static import  static
 from . import views
 
 urlpatterns = [
-   url('^orders/$', views.orders),
-   url('^create/$', views.create_orders),
+   url('^orders/$', views.orders, name='orders'),
+   url('^create_orders/$', views.create_orders, name='create_orders'),
    url('^update/$',views.update_orders),
    url(r'delete_orders/(?P<pk>\d+)$',views.delete_orders, name='delete_orders'),
    url('^search_orders/$',views.search_orders),
