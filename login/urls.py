@@ -8,9 +8,8 @@ from . import views
 urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^store/',views.shome,name='shome'),
-    url(r'^accounting/',views.shome,name='achome'),
-    url(r'^administrator/',views.shome,name='shome'),
-    # url(r'^manage_clients/',views.supplier, name='cat'),
+    url(r'^accounting/',views.achome,name='achome'),
+    url(r'^administrator/',views.ahome,name='shome'),
     
 
    
