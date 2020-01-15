@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from .models import Order
@@ -29,36 +29,47 @@ def create_orders(request):
 
     return render(request, 'Order/add_order.html', {'form': form})
 
-def update_orders(request):
-    if request.method == 'POST' :
-        form = UpdateOrderForm(request.POST,request.FILES)
+# def update_orders(request,id=0):
+#     if request.method == 'GET' :
+#         if id == 0:
+#             form = UpdateOrderForm()
+#         else:
+#             order = Order.objects.get(id=id)
+#             form = UpdateOrderForm(request.POST,request.FILES,instance=order)
+#             print(form)
+#             if form.is_valid():
+#                 form.save()
+                
+            
+
+#                 return redirect('orders')
+
+#     else:
+#         form= UpdateOrderForm()
+#     return render(request,'Order/manage_order.html', {'form':form})
+
+def edit_item(request, pk, model, cls):
+    item = get_object_or_404(model, pk=pk)
+
+    if request.method == "POST":
+        form = cls(request.POST, instance=item)
         if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user
-            order.save()
-
-        return redirect('orders')
-
+            form.save()
+            return redirect('orders')
     else:
-        form= UpdateOrderForm()
-    return render(request,'update_order.html', {'form':form})
+        form = cls(instance=item)
+
+        return render(request, 'Order/manage_order.html', {'form': form})
+
+def update_orders(request, pk):
+    return edit_item(request, pk, Order, UpdateOrderForm)
+
 
 def delete_orders(request, pk):
-    template = 'order.html'
-    Order.objects.filter(id=pk).delete()
-    orders = Order.objects.all()
-    context = {
-        'orders': orders,
-    }
-    return render(request, template, context)
 
-def search_orders(request):
-    if 'site' in request.GET and request.GET['site']:
-        search_term = request.GET.get('site')
-        orders = Order.objects.filter(title__icontains = search_term)
-        message = f'{search_term}'
-        return render(request, 'search_orders.html', {'orders': orders, 'message': message})
-        
-    return render(request, 'search_orders.html')
+    template = 'orders.html'
+    order = Order.objects.filter(id=pk)
+    order.delete()
+    return redirect('order/orders')
 
     

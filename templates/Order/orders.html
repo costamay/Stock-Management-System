@@ -33,13 +33,13 @@
                                 <td>{{order.number}}</td>
                             
                                 <td>
-                                    <a href="" class="btn text-secondary px-0">
+                                    <a href="{% url 'update_orders' order.pk %}"" class="btn text-secondary px-0">
                                         <i class="far fa-edit fa-lg"></i>
                                     </a>
                                     <form action="" method="post" class="d-inline">
                                         {% csrf_token %}
                                         <button type="submit" class="btn">
-                                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                            <i class="far fa-trash-alt fa-lg text-danger float-right" href="{% url 'delete_orders' order.pk %}"></i>
                                         </button>
                                     </form>
                                 </td>
