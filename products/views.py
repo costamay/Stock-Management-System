@@ -11,10 +11,13 @@ def product_list(request):
 
 def product_list(request):
     products =  Product.objects.all()
+    total_product = Product.objects.all().count()
     context ={
-        "products":products
+        "products":products,
+        "total_product":total_product
     }
-    return render(request,"products/product_list.html",context)
+    return render(request,"products/product_list.html",locals())
+
 
         
 def product_form(request,id=0):
