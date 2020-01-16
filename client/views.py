@@ -1,34 +1,34 @@
 from django.shortcuts import render
+from client.models import Client
+from client.forms import ClientForm
 
-# Create your views here.
-def client(request):
-    form = ProductForm(request.POST)
-    if request.method == "POST":
-        form = ProductForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                return redirect('/product-page')
-            except:
-                pass
+def client_list(request):
+    client =  Client.objects.all()
+    context ={
+        "clients":clients
+    }
+    return render(request,"clients/client_list.html",context)
+
+        
+def client_form(request,id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = ClientForm()
         else:
-            form = ProductForm()
-    return render(request,'index.html',{'form':form})
-
-
-def edit_client(request):
-    product = Product.objects.get(id=id)
-    return render(request,'product-edit.html',{'product':product})
-
-def update_client(request):
-    product = Product.objects.get(id=id)
-    form = ProductForm(request.POST,instance = product)
-    if form.is_valid():
-        form.save()
-        return redirect('/product-page')
-    return render(request,'product-edit.html',{'product':product})
+            client = Client.objects.get(pk=id) 
+            form = ClientForm(instance=product)
+        return render(request,"clients/client_form.html",{'form':form})
+    else:
+        if id == 0:
+            form = ClientForm(request.POST,request.FILES)
+        else:
+            client = Product.objects.get(pk=id)
+            form = ClientForm(request.POST,instance=client) 
+        if form.is_valid():
+            form.save()
+        return redirect('/clients/list')
 
 def delete_client(request,id):
-    product = Product.objects.get(id=id)
-    product.delete()
-    return render("/product-page")
+    client = Client.objects.get(pk=id)
+    client.delete()
+    return redirect('/clients/list')

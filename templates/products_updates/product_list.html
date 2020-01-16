@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Product</h1>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Product Size</td>
+                            <td>Product Quantity</td>
+                            <td>Product Category</td>
+                            <td>Product Image</td>
+                            <td>Product Price</td>
+                            <td>
+                                <a href="{% url 'add_product' %}" class="btn btn-outline-success">
+                                    <i class="fas fa-plus"></i> Add New
+                                </a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{product.product_name}}</td>
+                                <td>{{product.product_size}}</td>
+                                <td>{{product.product_qyt}}</td>
+                                <td>{{product.product_image}}</td>
+                                <td>{{product.product_category}}</td>
+                                <td>{{product.product_price}}</td>
+                                <td>
+                                    <a href="{% url 'update_product' product.id %}" class="btn text-secondary px-0">
+                                        <i class="far fa-edit fa-lg"></i>
+                                    </a>
+                                    <form action="{% url 'delete_product' product.id %}" method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn">
+                                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
