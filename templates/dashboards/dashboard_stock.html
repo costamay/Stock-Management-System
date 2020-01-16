@@ -52,7 +52,7 @@
         </button>
         <div class="dropdown-container">
            
-            <a href="">Add Product</a>
+            <a href="{% url 'add_product' %}">Add Product</a>
             <a href="">Manage Product</a>
         </div>
 
@@ -91,45 +91,98 @@
 
     <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
 
-    <div id="myMain" class="main">
-
-     
-    
-       
+    <div class="container" style="width: 750px;">
+        <div class="col-md-12 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Product</h1>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Product Size</td>
+                            <td>Product Quantity</td>
+                            <td>Product Category</td>
+                            <td>Product Image</td>
+                            <td>Product Price</td>
+                            <td>
+                                <a href="{% url 'add_product' %}" class="btn btn-outline-success">
+                                    <i class="fas fa-plus"></i> Add New
+                                </a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="ajax">
+                          
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
     </div>
 
     <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
 
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
+        $(document).ready(function () {
+            (function () {
+                console.log(Math.PI);
+            })();
+            (function () {
+                $.ajax({
+                    type: "get",
+                    url: "{% url 'product_list' %}",
+                    contentType: 'application/json',
+                    success: function (data) {
+                         for (i=0;i<Object.keys(data).length ;i++){
+                            console.log(data[i]);
 
-     
-    </script>
+                            $('#ajax').append(
+                                "<tr>"+
+                                    "<td>"+data[i].fields.product_name+"</td>"+
+                                    "<td>"+data[i].fields.product_size+"</td>"+
+                                    "<td>"+data[i].fields.product_qyt+"</td>"+
+                                    "<td>"+data[i].fields.product_image+"</td>"+
+                                    "<td>"+data[i].fields.product_category+"</td>"+
+                                    "<td>"+data[i].fields.product_price+"</td>"+
+                                    
+                               "</tr>"+
+                              " <td>"+
+                                `<a href="//localhost:8000/products/${data[i].pk}" <i class='far fa-edit fa-lg'> </i> </a>`+
+                               ` <form action="" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn">
+                                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                    </button>
+                                </form>`+
+                            "</td>"
 
+                            )
+                        }
+                       
+                    },
+                    error: function () {
+                        alert("error");
 
-    <!-- <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("myMain").style.marginLeft = "250px";
-        }
+                    }
+                })
+                })();
+            })
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+    
+            for (i = 0; i < dropdown.length; i++) {
+                dropdown[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var dropdownContent = this.nextElementSibling;
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        dropdownContent.style.display = "block";
+                    }
+                });
+            }     
+        </script>
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("myMain").style.marginLeft = "0px";
-        }
-    </script> -->
 
 </body>
 
