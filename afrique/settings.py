@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'materials',
     'sales',
     'bootstrap4',
+
     'crispy_forms',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -96,6 +98,7 @@ DATABASES = {
         'NAME': 'inventory',
         'USER': 'laurent',
         'PASSWORD': 'stock1234',
+
     }
 }
 
