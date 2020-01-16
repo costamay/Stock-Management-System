@@ -4,6 +4,10 @@ from django.conf.urls.static import  static
 from . import views
 
 urlpatterns = [
+    url(r'^clients/$', views.client_form,name="add_client"), 
+    url(r'^client/(?P<id>\d+)/$', views.client_form,name="update_client"),
+    url(r'^client/delete/(?P<id>\d+)/$', views.delete_client,name="delete_client"),
+    url(r'^client/list/$',views.client_list,name="client_list"),
 
 ]
 if settings.DEBUG:
