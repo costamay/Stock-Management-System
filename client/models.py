@@ -2,8 +2,8 @@ from django.db import models
 from products.models import *
 
 class Client(models.Model):
-    c_name = models.CharField(max_length=100)
-    c_phone = models.IntegerField()
+    client_name = models.CharField(max_length=100)
+    client_phone = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
@@ -21,7 +21,7 @@ class Client(models.Model):
         return new_name
 
     def __str__(self):
-        return f'{self.c_name}'
+        return f'{self.client_name}'
 
     class Meta:
       ordering = ['-date']

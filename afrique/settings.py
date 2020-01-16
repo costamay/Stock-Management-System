@@ -49,8 +49,12 @@ INSTALLED_APPS = [
     'materials',
     'sales',
     'bootstrap4',
-    'crispy_forms'
+
+    'crispy_forms',
+
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,9 +95,11 @@ WSGI_APPLICATION = 'afrique.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory',
-        'USER': 'tyra',
-        'PASSWORD': 'password',
+
+        'NAME': 'testt',
+        'USER': 'byrone',
+        'PASSWORD': 'Albert254',
+
     }
 }
 

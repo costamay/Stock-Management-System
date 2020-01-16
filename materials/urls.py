@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import  static
-from . import views
+from .views import *
 
 urlpatterns = [
   # url(r'^material/$', all_suppliers, name='all_suppliers'),

@@ -1,8 +1,11 @@
 from django import forms
 from client.models import *
 
-class ClientForm(models.Model):
+class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = "__all__"
+        fields = (
+             'client_name','client_phone','product' 
+        )
         
+
