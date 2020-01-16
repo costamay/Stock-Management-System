@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from .models import Purchase
@@ -7,7 +7,7 @@ from .forms import PurchaseForm, UpdatePurchaseForm
 def purchases(request):
     purchases = Purchase.objects.all()
 
-    return render(request, 'purchases.html',{'purchases':purchases})
+    return render(request, 'purchase/purchases.html',{'purchases':purchases})
 
 def create_purchases(request):
     if request.method == 'POST' :
@@ -24,25 +24,34 @@ def create_purchases(request):
 
     return render(request, 'create_purchase.html', {'form': form})
 
-def update_purchases(request):
-    if request.method == 'POST' :
-        form = UpdatePurchaseForm(request.POST,request.FILES)
+
+
+def edit_item(request, pk, model, cls):
+    item = get_object_or_404(model, pk=pk)
+
+    if request.method == "POST":
+        form = cls(request.POST, instance=item)
         if form.is_valid():
-            purchase = form.save(commit=False)
-            purchase.user = request.user
-            purchase.save()
-
-        return redirect('purchases')
-
+            form.save()
+            return redirect('purchases')
     else:
-        form= UpdatePurchaseForm()
-    return render(request,'update_purchase.html', {'form':form})
+        form = cls(instance=item)
+
+        return render(request, 'purchase/manage_purchase.html', {'form': form})
+
+def update_purchases(request, pk):
+    return edit_item(request, pk, Purchase, UpdatePurchaseForm)
+
 
 def delete_purchases(request, pk):
-    template = 'purchases.html'
-    Purchase.objects.filter(id=pk).delete()
-    purchases = Purchase.objects.all()
-    context = {
-        'purchases': purchases,
-    }
-    return render(request, template, context)
+    purchase = Purchase.objects.get(id=pk)
+    purchase.delete()
+    return redirect('purchases')
+
+    # def delete_orders(request, pk):
+    # order = Order.objects.get(id=pk)
+    # order.delete()
+    # return redirect('order/orders')
+  
+
+

@@ -1,11 +1,19 @@
-{% extends "dashboards/base.html" %}
-{% load crispy_forms_tags %}
-{% load bootstrap4 %}
-{% load static %}
-{% block content %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8+">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+
+    <title>Document</title>
+</head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>Suppliers</strong></a>
+        <a class="navbar-brand" href="#"><strong>DASHBOARD</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,11 +26,6 @@
                 <li class="nav-item" style="float:right">
                     <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
                 </li>
-
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-out">Logout</i></a>
-                    
-                </li>
             </ul>
         </div>
     </nav>
@@ -32,13 +35,13 @@
         <p class="taste_afrique">TASTE AFRIQUE</p>
         <div style="text-align: center;">
             <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">NAME</p>
+            <p style="color: #ffffff;">{{ user }}</p>
         </div>
         <button class="dropdown-btn">Product
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-           
+            <a href="cat">Categories</a>
             <a href="#">Add Product</a>
             <a href="#">Manage Product</a>
         </div>
@@ -55,8 +58,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'all_suppliers' %}"><i class="fa fa-eye ">View Suppliers</i> </a>
-            <a href="{% url 'add_supplier' %}"><i class="fa fa-tasks">Manage Supplier</i> </a>
+            <a href="#">Add Supplier</a>
+            <a href="#">Manage Supplier</a>
         </div>
 
         <button class="dropdown-btn">Order
@@ -76,37 +79,11 @@
         </div>
     </div>
 
-    <div class="container">
-        <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
-            {% csrf_token %}
-            {{form.product_name | as_crispy_field }}
-            {{form.product_image | as_crispy_field  }}
-            {{form.product_size | as_crispy_field  }}
-            {{form.product_qyt | as_crispy_field }}
-            
-            <div class="row">
-                <div class="col-md-4">
-                    {{form.product_price | as_crispy_field}}
-                </div>
-                <div class="col-md-8">
-                    {{form.product_category  | as_crispy_field }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
-                        Submit</button>
-                </div>
-                <div class="col-md-4">
-                    <a href="{% url 'product_list' %}" class="btn btn-secondary btn-block btn-lg">
-                        <i class="fas fa-stream"></i> Back to list
-                    </a>
-                </div>
-            </div>
-        </form>
+    <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
 
-      </div>
-
+    <div id="myMain" class="main">
+    
+    </div>
 
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
@@ -127,8 +104,18 @@
     </script>
 
 
-    
+    <!-- <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("myMain").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("myMain").style.marginLeft = "0px";
+        }
+    </script> -->
+
 </body>
 
-
-{% endblock %}
+</html>

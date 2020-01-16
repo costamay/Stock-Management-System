@@ -18,7 +18,7 @@ class Purchase(models.Model):
         self.delete()
 
     def __str__(self):
-        return f'{self.pu_name}'
+        return f'{self.material}'
 
     class Meta:
 
