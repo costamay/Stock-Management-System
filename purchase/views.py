@@ -44,10 +44,14 @@ def update_purchases(request, pk):
 
 
 def delete_purchases(request, pk):
-    template = 'purchases.html'
-    Purchase.objects.filter(id=pk).delete()
-    purchases = Purchase.objects.all()
-    context = {
-        'purchases': purchases,
-    }
-    return render(request, template, context)
+    purchase = Purchase.objects.get(id=pk)
+    purchase.delete()
+    return redirect('purchases')
+
+    # def delete_orders(request, pk):
+    # order = Order.objects.get(id=pk)
+    # order.delete()
+    # return redirect('order/orders')
+  
+
+

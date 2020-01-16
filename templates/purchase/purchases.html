@@ -36,12 +36,12 @@
                                     <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
                                         <i class="far fa-edit fa-lg"></i>
                                     </a>
-                                    <form action="" method="post" class="d-inline">
+                                    
                                         {% csrf_token %}
-                                        <button type="submit" class="btn">
+                                        <a  href="{% url 'delete_purchases' purchase.pk %}">
                                             <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                                        </button>
-                                    </form>
+                                        </a>
+                                   
                                 </td>
                             </tr>
                         {% endfor %}
