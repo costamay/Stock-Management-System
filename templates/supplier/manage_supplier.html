@@ -19,7 +19,7 @@
                 </li>
 
                 <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-out">Logout</i></a>
+                    <a class="nav-link" href="/logout"><i class="fa fa-sign-out">Logout</i></a>
                     
                 </li>
             </ul>
@@ -54,8 +54,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'all_suppliers' %}"><i class="fa fa-eye ">View Suppliers</i> </a>
-            <a href="{% url 'add_supplier' %}"><i class="fa fa-tasks">Manage Supplier</i> </a>
+            <a href="{% url 'add_supplier' %}">Add Supplier</a>
+            <a href="{% url 'all_suppliers' %}">Manage Supplier</a>
         </div>
 
         <button class="dropdown-btn">Order
