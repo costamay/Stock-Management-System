@@ -1,8 +1,8 @@
 from django.db import models
 
 class Material(models.Model):
-    m_name = models.CharField(max_length=100)
-    qyt = models.FloatField()
+    material_name = models.CharField(max_length=100)
+    quantity = models.FloatField()
     price = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
 

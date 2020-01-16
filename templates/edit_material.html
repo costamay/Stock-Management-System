@@ -1,0 +1,19 @@
+
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container" style="margin-top:8rem;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form action="{% url 'edit_material' pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% bootstrap_form form %}
+                <input type="submit" class="btn btn-primary btn-sm" value="POST">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
