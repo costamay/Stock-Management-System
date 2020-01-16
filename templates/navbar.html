@@ -1,16 +1,9 @@
-<!-- <h1>
-  great
-
-</h1> -->
-{%extends "base.html"%}
-{% load bootstrap4 %}
-{% load static %}
-{% block content %}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8+">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
@@ -33,9 +26,6 @@
                 <li class="nav-item" style="float:right">
                     <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
                 </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="/logout/">Logout<i class="fas fa-bell"></i></a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -51,9 +41,9 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-           
-            <a href="">Add Product</a>
-            <a href="">Manage Product</a>
+            <a href="cat">Categories</a>
+            <a href="#">Add Product</a>
+            <a href="#">Manage Product</a>
         </div>
 
         <button class="dropdown-btn">Client
@@ -68,16 +58,16 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'add_supplier' %}">Add Supplier</a>
-            <a href="{% url 'all_suppliers' %}">Manage Supplier</a>
+            <a href="#">Add Supplier</a>
+            <a href="#">Manage Supplier</a>
         </div>
 
         <button class="dropdown-btn">Order
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'create_orders' %}">Add Order</a>
-            <a href="">Manage Order</a>
+            <a href="#">Add Order</a>
+            <a href="#">Manage Order</a>
         </div>
 
         <button class="dropdown-btn">Purchase
@@ -92,10 +82,7 @@
     <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
 
     <div id="myMain" class="main">
-
-     
     
-       
     </div>
 
     <script>
@@ -114,8 +101,6 @@
                 }
             });
         }
-
-     
     </script>
 
 
@@ -134,5 +119,3 @@
 </body>
 
 </html>
-
-{% endblock %}

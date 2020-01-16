@@ -4,8 +4,7 @@ from django.conf.urls.static import  static
 
 from . views import *
 
-urlpatterns = [
-  
+urlpatterns = [  
    url(r'^supplier/$', all_suppliers, name='all_suppliers'),
    url(r'^supplier/add_supplier/$',add_supplier, name='add_supplier'),
    url(r'^supplier/delete_supplier/(?P<pk>\d+)$',delete_supplier, name='delete_supplier'),
