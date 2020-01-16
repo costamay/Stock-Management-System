@@ -7,7 +7,7 @@ from .forms import PurchaseForm, UpdatePurchaseForm
 def purchases(request):
     purchases = Purchase.objects.all()
 
-    return render(request, 'purchase/purchases.html',{'purchases':purchases})
+    return render(request, 'purchase/manage_purchase.html',{'purchases':purchases})
 
 def create_purchases(request):
     if request.method == 'POST' :
@@ -22,7 +22,7 @@ def create_purchases(request):
     else:
         form = PurchaseForm()
 
-    return render(request, 'create_purchase.html', {'form': form})
+    return render(request, 'purchase/add_purchase.html', {'form': form})
 
 
 

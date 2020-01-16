@@ -1,82 +1,12 @@
-{% extends "dashboards/base.html" %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>Suppliers</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
-                </li>
+   
 
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-out">Logout</i></a>
-                    
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-        <p class="taste_afrique">TASTE AFRIQUE</p>
-        <div style="text-align: center;">
-            <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">NAME</p>
-        </div>
-        <button class="dropdown-btn">Product
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-           
-            <a href="#">Add Product</a>
-            <a href="#">Manage Product</a>
-        </div>
-
-        <button class="dropdown-btn">Client
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Client</a>
-            <a href="#">Manage Client</a>
-        </div>
-
-        <button class="dropdown-btn">Supplier
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'all_suppliers' %}"><i class="fa fa-eye ">View Suppliers</i> </a>
-            <a href="{% url 'add_supplier' %}"><i class="fa fa-tasks">Manage Supplier</i> </a>
-        </div>
-
-        <button class="dropdown-btn">Order
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Order</a>
-            <a href="#">Manage Order</a>
-        </div>
-
-        <button class="dropdown-btn">Purchase
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Purchase</a>
-            <a href="#">Manage Purchase</a>
-        </div>
-    </div>
-
-    <div class="container">
+    <div class="container" style="margin-left: 250px;">
         <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.product_name | as_crispy_field }}
@@ -107,24 +37,6 @@
 
       </div>
 
-
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
 
 
     

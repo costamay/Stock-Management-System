@@ -1,25 +1,54 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
+
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
 {% block content %}
-<form action="" enctype="multipart/form-data" method="POST" autocomplete="off">
-    {% csrf_token %}
-    {{form.supplier | as_crispy_field }}
-    {{form.material | as_crispy_field  }}
-    {{form.qyt | as_crispy_field  }}
-    {{form.price | as_crispy_field }}
-  
-     
-    <div class="row">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
-                Submit</button>
-        </div>
-        <div class="col-md-4">
-            <a href="" class="btn btn-secondary btn-block btn-lg">
-                <i class="fas fa-stream"></i> Back to list
-            </a>
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Purchases</h1>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>purchase Name</td>
+                            <td>purchase Size</td>
+                            <td>purchase Quantity</td>
+                            <td>purchase Category</td>
+                            <td>purchase Image</td>
+                            <td>purchase Price</td>
+                            <td>
+                                <a href="{%  url 'create_purchases'%}" class="btn btn-outline-success">
+                                    <i class="fas fa-plus"></i> Add New
+                                </a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for purchase in purchases %}
+                            <tr>
+                                <td>{{purchase.client}}</td>
+                                <td>{{purchase.product}}</td>
+                                <td>{{purchase.qyt}}</td>
+                                <td>{{purchase.number}}</td>
+                            
+                                <td>
+                                    <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
+                                        <i class="far fa-edit fa-lg"></i>
+                                    </a>
+                                    
+                                        {% csrf_token %}
+                                        <a  href="{% url 'delete_purchases' purchase.pk %}">
+                                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                        </a>
+                                   
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </div>
         </div>
     </div>
-</form>
-
 {% endblock %}

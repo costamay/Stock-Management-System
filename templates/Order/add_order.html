@@ -1,7 +1,10 @@
-
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% load static %}
 {% block content %}
+
+<div class="container" style="margin-left: 250px;">
 <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
     {% csrf_token %}
     {{form.client | as_crispy_field }}
@@ -28,5 +31,6 @@
         </div>
     </div>
 </form>
+</div>
 
 {% endblock %}
