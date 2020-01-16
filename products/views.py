@@ -13,7 +13,7 @@ def product_list(request):
 def product_form(request,id=0):
     if request.method == "GET":
         if id == 0:
-            form = form = ProductForm()
+            form = ProductForm()
         else:
             product = Product.objects.get(pk=id) 
             form = ProductForm(instance=product)

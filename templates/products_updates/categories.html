@@ -20,7 +20,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>DASHBOARD</strong></a>
+        <a class="navbar-brand" href="#"><strong>Categories</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,9 +33,6 @@
                 <li class="nav-item" style="float:right">
                     <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
                 </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="/logout/">Logout<i class="fas fa-bell"></i></a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -45,15 +42,15 @@
         <p class="taste_afrique">TASTE AFRIQUE</p>
         <div style="text-align: center;">
             <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">{{ user }}</p>
+            <p style="color: #ffffff;">NAME</p>
         </div>
         <button class="dropdown-btn">Product
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-           
-            <a href="{% url 'add_product' %}">Add Product</a>
-            <a href="{% url 'product_list' %}">Manage Product</a>
+            <a href="#">Categories</a>
+            <a href="#">Add Product</a>
+            <a href="#">Manage Product</a>
         </div>
 
         <button class="dropdown-btn">Client
@@ -90,13 +87,51 @@
     </div>
 
     <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
-
+<!-- 
     <div id="myMain" class="main">
-
-     
-    
-       
-    </div>
+        <div class="part5">
+            <div class="row justify-content-md-center no-gutters">
+                <div class="col-sm-auto size" id="col-1">
+                    <img src="{% static '/images/PRODUCT.jpg'%}" alt="work4" id="img_1" class="img-thumbnail">
+                    <div class="project" id="project_1">
+                        <div class="text">PRODUCT</div>
+                    </div>
+                </div>
+                <div class="col-sm-auto size" id="col-2">
+                    <img src="{% static '/images/CLIENTS.jpg'%}" alt="work3" id="img_2" class="img-thumbnail">
+                    <div class="project" id="project_2">
+                        <div class="text">CLIENTS</div>
+                    </div>
+                </div>
+                <div class="col-sm-auto size" id="col-3">
+                    <img src="{% static '/images/SUPPLIERS.jpg'%}" alt="work2" id="img_3" class="img-thumbnail">
+                    <div class="project" id="project_3">
+                        <div class="text">SUPPLIERS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center no-gutters">
+                <div class="col-sm-auto size" id="col-4">
+                    <img src="{% static '/images/ORDERS.png'%}" alt="work1" id="img_4" class="img-thumbnail">
+                    <div class="project" id="project_4">
+                        <div class="text">ORDERS</div>
+                    </div>
+                </div>
+                <div class="col-sm-auto size" id="col-5">
+                    <img src="{% static '/images/PURCHASE.png'%}" alt="work5" id="img_5" class="img-thumbnail">
+                    <div class="project" id="project_5">
+                        <div class="text">PURCHASE</div>
+                    </div>
+                </div>
+                <div class="col-sm-auto size" id="col-6">
+                    <img src="{% static '/images/work4.jpg'%}" alt="work6" id="img_6" class="img-thumbnail">
+                    <div class="project" id="project_6">
+                        <div class="text">PROJECT 6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
@@ -114,23 +149,10 @@
                 }
             });
         }
-
-     
     </script>
 
 
-    <!-- <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("myMain").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("myMain").style.marginLeft = "0px";
-        }
-    </script> -->
-
+    
 </body>
 
 </html>
