@@ -32,20 +32,26 @@ def login(request):
                 return redirect('ahome')
         else:
             return redirect('home')
-    return render(request,'home.html')
             
 @login_required(login_url='/accounts/login')
 def home(request):
     grp = request.user.groups.filter(user=request.user)[0]
+    print(request.user.groups)
+    print(request.user)
     if grp.name == "store_manager":
         return redirect(reverse(shome))
     elif grp.name == "accountant":
         return redirect(reverse(achome))
-    elif grp.name == 'admin':
+    elif grp.name == "admin":
         return redirect(reverse(ahome))
+    else:
+        raise Http404()
     context = {}
     template = "dashboards/home.html"
-    return render(request,template)
+    return render(request,template,context)
+
+    
+
 
 def shome(request):
     template = "dashboards/dashboard_stock.html"

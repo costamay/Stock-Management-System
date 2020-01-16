@@ -4,6 +4,7 @@ from django.conf.urls.static import  static
 from products.views import *
 from . import views
 
+
 urlpatterns = [
     
     url(r'^products/$', views.product_form,name="add_product"), 
