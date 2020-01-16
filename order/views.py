@@ -9,7 +9,7 @@ def orders(request):
     orders = Order.objects.all()
     
 
-    return render(request, 'Order/orders.html',{'orders':orders})
+    return render(request, 'Order/manage_orders.html',{'orders':orders})
 
 
 def create_orders(request):

@@ -5,9 +5,9 @@ from . import views
 
 urlpatterns = [
     url(r'^clients/$', views.client_form,name="add_client"), 
-    url(r'^client/(?P<id>\d+)/$', views.client_form,name="update_client"),
-    url(r'^client/delete/(?P<id>\d+)/$', views.delete_client,name="delete_client"),
-    url(r'^client/list/$',views.client_list,name="client_list"),
+    url(r'^clients/(?P<id>\d+)/$', views.client_form,name="update_client"),
+    url(r'^clients/delete/(?P<id>\d+)/$', views.delete_client,name="delete_client"),
+    url(r'^clients/list/$',views.client_list,name="client_list"),
 
 ]
 if settings.DEBUG:
