@@ -5,8 +5,10 @@ from .forms import *
 
 def all_suppliers(request):
     suppliers = Supplier.objects.all()
-   
-    return render(request, 'supplier/suppliers.html', locals())
+
+    total_suppliers = Supplier.objects.all().count()
+    return render(request, 'supplier/manage_supplier.html', locals())
+
 
 def add_item(request, cls):
     if request.method == "POST":
@@ -19,7 +21,9 @@ def add_item(request, cls):
 
     else:
         form = cls()
-        return render(request, 'supplier/manage_supplier.html', {'form' : form})
+
+        return render(request, 'add_new_supplier.html', locals())
+
 
 
 
@@ -37,14 +41,14 @@ def edit_item(request, pk, model, cls):
     else:
         form = cls(instance=item)
 
-        return render(request, 'edit_item.html', {'form': form})
+        return render(request, 'edit_supplier.html', locals())
 
 def edit_supplier(request, pk):
     return edit_item(request, pk, Supplier, SupplierForm)
 
 def delete_supplier(request, pk):
 
-    template = 'suppliers.html'
+    template = 'supplier/manage_supplier.html'
     Supplier.objects.filter(id=pk).delete()
     suppliers = Supplier.objects.all()
     
