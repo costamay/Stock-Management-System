@@ -48,8 +48,9 @@ def update_orders(request, pk):
 
 def delete_orders(request, pk):
 
-    template = 'orders.html'
-    order = Order.objects.filter(id=pk)
+    # template = 'orders.html'
+    import pdb; pdb.set_trace()
+    order = Order.objects.get(id=pk)
     order.delete()
     return redirect('order/orders')
 

@@ -24,19 +24,7 @@ def create_purchases(request):
 
     return render(request, 'create_purchase.html', {'form': form})
 
-# def update_purchases(request):
-#     if request.method == 'POST' :
-#         form = UpdatePurchaseForm(request.POST,request.FILES)
-#         if form.is_valid():
-#             purchase = form.save(commit=False)
-#             purchase.user = request.user
-#             purchase.save()
 
-#         return redirect('purchases')
-
-#     else:
-#         form= UpdatePurchaseForm()
-#     return render(request,'update_purchase.html', {'form':form})
 
 def edit_item(request, pk, model, cls):
     item = get_object_or_404(model, pk=pk)
