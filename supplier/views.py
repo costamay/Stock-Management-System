@@ -9,6 +9,7 @@ def all_suppliers(request):
     return render(request, 'supplier/manage_supplier.html', locals())
 
 def add_item(request, cls):
+        
     if request.method == "POST":
         form = cls(request.POST)
 
