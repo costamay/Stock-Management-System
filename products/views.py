@@ -4,10 +4,14 @@ import json
 from django.core import serializers
 
 def product_list(request):
-    # products =  Product.objects.all()
-    products = serializers.serialize('json', Product.objects.all())
-    # json_data=json.dumps(industry)
-    return HttpResponse(products,content_type='application/json')    
+    products =  Product.objects.all()
+    total_product = Product.objects.all().count()
+    context ={
+        "products":products,
+        "total_product":total_product
+    }
+    return render(request,"products/product_list.html",locals())
+
 
 def product_form(request,id=0):
     if request.method == "GET":
