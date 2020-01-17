@@ -20,7 +20,7 @@ class Material(models.Model):
         return new_name
 
     def __str__(self):
-        return f'{self.m_name}'
+        return f'{self.material_name}'
 
     class Meta:
         ordering = ['date']
