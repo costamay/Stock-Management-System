@@ -95,16 +95,10 @@ WSGI_APPLICATION = 'afrique.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-<<<<<<< HEAD
 
         'NAME': 'testt',
         'USER': 'moringa',
         'PASSWORD': 'stock254',
-=======
-        'NAME': 'inventory',
-        'USER': 'laurent',
-        'PASSWORD': 'stock1234',
->>>>>>> fec50de640b996f4c9aabd875c39cd04f5d1950c
 
     }
 }
