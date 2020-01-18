@@ -1,17 +1,5 @@
 {%load static%}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8+">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-
-    <title>Document</title>
-</head>
-
-<body>
     <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
         <a class="navbar-brand" href="#"><strong>DASHBOARD</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -25,6 +13,10 @@
                 </li>
                 <li class="nav-item" style="float:right">
                     <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
+                </li>
+                <li class="nav-item" style="float:right">
+                    <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i></a>
+                    
                 </li>
             </ul>
         </div>
@@ -41,80 +33,61 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="cat">Categories</a>
-            <a href="#">Add Product</a>
-            <a href="#">Manage Product</a>
+            <a href="{% url 'add_product' %}">Add Product</a>
+            <a href="{% url 'product_list' %}">Manage Product</a>
         </div>
 
         <button class="dropdown-btn">Client
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Client</a>
-            <a href="#">Manage Client</a>
+            <a href="{% url 'add_client'%}">Add Client</a>
+            <a href="{% url 'client_list'%}">Manage Client</a>
         </div>
 
         <button class="dropdown-btn">Supplier
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Supplier</a>
-            <a href="#">Manage Supplier</a>
+            <a href="{%  url 'add_supplier'%}">Add Supplier</a>
+            <a href="{%  url 'all_suppliers'%}">Manage Supplier</a>
         </div>
 
         <button class="dropdown-btn">Order
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Order</a>
-            <a href="#">Manage Order</a>
+            <a href="{%  url 'create_orders'%}">Add Order</a>
+            <a href="{%  url 'orders'%}">Manage Order</a>
         </div>
 
         <button class="dropdown-btn">Purchase
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Add Purchase</a>
-            <a href="#">Manage Purchase</a>
+            <a href="{%  url 'create_purchases'%}">Add Purchase</a>
+            <a href="{%  url 'purchases'%}">Manage Purchase</a>
+        </div>
+        <button class="dropdown-btn">Materials
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{%  url 'add_material'%}">Add Materials</a>
+            <a href="{%  url 'all_materials'%}">Manage Materials</a>
         </div>
     </div>
 
-    <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+
 
     <div id="myMain" class="main">
     
     </div>
 
     <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
+        
     </script>
 
 
-    <!-- <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("myMain").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("myMain").style.marginLeft = "0px";
-        }
-    </script> -->
 
 </body>
 

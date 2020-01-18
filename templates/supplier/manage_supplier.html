@@ -2,185 +2,59 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>Suppliers</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
-                </li>
 
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="/logout"><i class="fa fa-sign-out">Logout</i></a>
-                    
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-        <p class="taste_afrique">TASTE AFRIQUE</p>
-        <div style="text-align: center;">
-            <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">NAME</p>
-        </div>
-        <button class="dropdown-btn">Product
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'product' %}"><i class="fa fa-list-alt">Categories</i></a>
-            <a href="#">Add Product</a>
-            <a href="#">Manage Product</a>
-        </div>
-
-        <button class="dropdown-btn">Client
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Client</a>
-            <a href="#">Manage Client</a>
-        </div>
-
-        <button class="dropdown-btn">Supplier
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-
-            <a href="{% url 'all_suppliers' %}"><i class="fa fa-eye ">View Suppliers</i> </a>
-            <a href="{% url 'add_supplier' %}"><i class="fa fa-tasks">Manage Supplier</i> </a>
-
-        </div>
-
-        <button class="dropdown-btn">Order
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Order</a>
-            <a href="#">Manage Order</a>
-        </div>
-
-        <button class="dropdown-btn">Purchase
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Purchase</a>
-            <a href="#">Manage Purchase</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <a href="{% url 'add_supplier' %}"><h2 id="guru"><button type="button" class="btn btn-success">
-            Add Supplier
-          </button></h2></a>
-        <!-- Button to Open the Modal -->
-        
-      
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Add Supplier</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              
-              <!-- Modal body -->
-              <div class="modal-body">
-                 
-              </div>
-              
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        
-      </div>
-
-      <!-- CATEGORIES TABLE -->
-
-      <div class="container">
-        <h2  style="text-align:center;">Manage Suppliers</h2>
-        <div class="row">
-          <!-- empty div -->
-          <div class="col-md-2"></div>
+<div class="container">
+  <div class="col-md-10 offset-md-1 mt-5">
+      <div class="jumbotron">
+          <h1 class="display-4">Suppliers</h1>
+          <hr class="my-4">
           {% if suppliers %}
-          <div class="col-md-10">
-            <h1 class="text-center "><span class="text-danger">Total Suppliers</span>: {{total_suppliers}}</h1>
-        <table  class="table table-bordered table-sm"  style="text-align:center;">
-          <thead class="table-dark" >
-            <tr>
-              <th>Entry No.</th>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Date</th>
-              <th>Materials</th>
-              <th>Action</th>
-              
-          </thead>
-          <tbody class="table-hover" >
-            {% for supplier in suppliers %}
-            <tr class="table-primary">
-              <td>{{supplier.id}}</td>
-              <td>{{supplier.supplier_name}}</td>
-              <td>{{supplier.supplier_contact}}</td>
-              <td>{{supplier.date}}</td>
-              <td>{{supplier.materials}}</td>
-              <td> 
-                  <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                  </button>
-                  <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i></span>
-                
-                 </td>
-                 
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
+
+          <h1 class="text-center "><span class="text-danger">Total Suppliers</span>: {{total_suppliers}}</h1>
+          <table class="table table-borderless">
+              <thead class="border-bottom font-weight-bold">
+                  <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Materials</th>
+                    <th>Action</th>
+                      
+                      <td>
+                          <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
+                              <i class="fas fa-plus"></i> Add New
+                          </a>
+                      </td>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for supplier in suppliers %}
+                      <tr>
+                        <td>{{supplier.id}}</td>
+                        <td>{{supplier.supplier_name}}</td>
+                        <td>{{supplier.supplier_contact}}</td>
+                        <td>{{supplier.date}}</td>
+                        <td>{{supplier.materials}}</td>
+                        <td> 
+                            <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i></span>
+                          
+                           </td>
+                          
+                         
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          {% else %}
         <div class="text-center">No suppliers available</div>
         {% endif %}
-      </div>
-      </div>
-      </div>
       
+      </div>
+  </div>
+</div>
 
-
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
-
-
-    
-</body>
 
 
 {% endblock %}

@@ -1,7 +1,10 @@
-
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% load static %}
 {% block content %}
+
+<div class="container" style="margin-left: 250px;">
 <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
     {% csrf_token %}
     {{form.client | as_crispy_field }}
@@ -18,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+            <button type="submit" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-database"></i>
                 Submit</button>
         </div>
         <div class="col-md-4">
@@ -28,5 +31,6 @@
         </div>
     </div>
 </form>
+</div>
 
 {% endblock %}

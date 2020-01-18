@@ -1,47 +1,47 @@
-
-{%extends "base.html"%}
+{% extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
+
     <div class="container">
         <div class="col-md-10 offset-md-1 mt-5">
             <div class="jumbotron">
-                <h1 class="display-4">Purchases</h1>
+                <h1 class="display-4">Materials</h1>
                 <hr class="my-4">
                 <table class="table table-borderless">
                     <thead class="border-bottom font-weight-bold">
                         <tr>
-                            <td>purchase Name</td>
-                            <td>purchase Size</td>
-                            <td>purchase Quantity</td>
-                            <td>purchase Category</td>
-                            <td>purchase Image</td>
-                            <td>purchase Price</td>
+                            <td>Name</td>
+                            <td> Quantity</td>
+                            <td> Price</td>
+                            <td>Date</td>
+                            <td>Action</td>
+                            
                             <td>
-                                <a href="" class="btn btn-outline-success">
+                                <a href="{% url 'add_material' %}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
                             </td>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for purchase in purchases %}
+                      {% for material in materials%}
                             <tr>
-                                <td>{{purchase.client}}</td>
-                                <td>{{purchase.product}}</td>
-                                <td>{{purchase.qyt}}</td>
-                                <td>{{purchase.number}}</td>
-                            
+                                <td>{{material.material_name}}</td>
+                                <td>{{material.quantity}}</td>
+                                <td>{{material.price}}</td>
+                                <td>{{material.date}}</td>
+                                
                                 <td>
-                                    <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
+                                    <a href="{% url 'edit_material' material.id %}" class="btn text-secondary px-0">
                                         <i class="far fa-edit fa-lg"></i>
                                     </a>
-                                    
+                                    <form action="{% url 'delete_material' material.id %}" method="post" class="d-inline">
                                         {% csrf_token %}
-                                        <a  href="{% url 'delete_purchases' purchase.pk %}">
+                                        <button type="submit" class="btn">
                                             <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                                        </a>
-                                   
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -51,4 +51,8 @@
             </div>
         </div>
     </div>
+
+
 {% endblock %}
+
+
