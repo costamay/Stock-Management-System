@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse
-from products.forms import *
+from users.forms import *
 
 def product_list(request):
     products =  Product.objects.all()
