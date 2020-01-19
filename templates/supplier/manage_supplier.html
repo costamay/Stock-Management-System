@@ -3,87 +3,57 @@
 {% load static %}
 {% block content %}
 
-    <div class="container">
-        <a href="{% url 'add_supplier' %}"><h2 id="guru"><button type="button" class="btn btn-success">
-            Add Supplier
-          </button></h2></a>
-        <!-- Button to Open the Modal -->
-        
-      
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Add Supplier</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              
-              <!-- Modal body -->
-              <div class="modal-body">
-                 
-              </div>
-              
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        
-      </div>
-
-      <!-- CATEGORIES TABLE -->
-
-      <div class="container">
-        <h2  style="text-align:center;">Manage Suppliers</h2>
-        <div class="row">
-          <!-- empty div -->
-          <div class="col-md-2"></div>
+<div class="container">
+  <div class="col-md-10 offset-md-1 mt-5">
+      <div class="jumbotron">
+          <h1 class="display-4">Suppliers</h1>
+          <hr class="my-4">
           {% if suppliers %}
-          <div class="col-md-10">
-            <h1 class="text-center "><span class="text-danger">Total Suppliers</span>: {{total_suppliers}}</h1>
-        <table  class="table table-bordered table-sm"  style="text-align:center;">
-          <thead class="table-dark" >
-            <tr>
-              <th>Entry No.</th>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Date</th>
-              <th>Materials</th>
-              <th>Action</th>
-              
-          </thead>
-          <tbody class="table-hover" >
-            {% for supplier in suppliers %}
-            <tr class="table-primary">
-              <td>{{supplier.id}}</td>
-              <td>{{supplier.supplier_name}}</td>
-              <td>{{supplier.supplier_contact}}</td>
-              <td>{{supplier.date}}</td>
-              <td>{{supplier.materials}}</td>
-              <td> 
-                  <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                  </button>
-                  <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i></span>
-                
-                 </td>
-                 
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
+
+          <h1 class="text-center "><span class="text-danger">Total Suppliers</span>: {{total_suppliers}}</h1>
+          <table class="table table-borderless">
+              <thead class="border-bottom font-weight-bold">
+                  <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Materials</th>
+                    <th>Action</th>
+                      
+                      <td>
+                          <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
+                              <i class="fas fa-plus"></i> Add New
+                          </a>
+                      </td>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for supplier in suppliers %}
+                      <tr>
+                        <td>{{supplier.id}}</td>
+                        <td>{{supplier.supplier_name}}</td>
+                        <td>{{supplier.supplier_contact}}</td>
+                        <td>{{supplier.date}}</td>
+                        <td>{{supplier.materials}}</td>
+                        <td> 
+                            <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i></span>
+                          
+                           </td>
+                          
+                         
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          {% else %}
         <div class="text-center">No suppliers available</div>
         {% endif %}
-      </div>
-      </div>
-      </div>
       
+      </div>
+  </div>
+</div>
 
 
 
