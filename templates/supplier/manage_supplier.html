@@ -36,9 +36,10 @@
                         <td>{{supplier.date}}</td>
                         <td>{{supplier.materials}}</td>
                         <td> 
-                            <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                            <a href="{% url 'edit_supplier' supplier.pk %}"><button type="button" class="btn "><i class="fa fa-pencil">edit</i></a>
                             </button>
-                            <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i></span>
+                            <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn btn-danger"><i class="fa fa-trash" ></i>delete</span>
+                          </button>
                           
                            </td>
                           
