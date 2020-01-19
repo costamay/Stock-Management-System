@@ -1,15 +1,19 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
+
 from .models import *
 from .forms import *
 
 def all_suppliers(request):
     suppliers = Supplier.objects.all()
-   
-    return render(request, 'suppliers.html', locals())
+
+    total_suppliers = Supplier.objects.all().count()
+    return render(request, 'supplier/manage_supplier.html', locals())
+
 
 def add_item(request, cls):
     if request.method == "POST":
         form = cls(request.POST)
+
 
         if form.is_valid():
             form.save()
@@ -17,7 +21,10 @@ def add_item(request, cls):
 
     else:
         form = cls()
-        return render(request, 'add_new.html', {'form' : form})
+
+        return render(request, 'add_new_supplier.html', locals())
+
+
 
 
 def add_supplier(request):
@@ -34,21 +41,17 @@ def edit_item(request, pk, model, cls):
     else:
         form = cls(instance=item)
 
-        return render(request, 'edit_item.html', {'form': form})
+        return render(request, 'edit_supplier.html', locals())
 
 def edit_supplier(request, pk):
     return edit_item(request, pk, Supplier, SupplierForm)
 
 def delete_supplier(request, pk):
 
-    template = 'suplliers.html'
+    template = 'supplier/manage_supplier.html'
     Supplier.objects.filter(id=pk).delete()
+    suppliers = Supplier.objects.all()
+    
+    return render(request, template, locals())
 
-    items = Supplier.objects.all()
-
-    context = {
-        'items': items,
-    }
-
-    return render(request, template, context)
 

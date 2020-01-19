@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.http import Http404
 
 def login(request):
     if request.method == "POST":
@@ -25,31 +26,37 @@ def login(request):
                 return redirect('ahome')
         else:
             return redirect('home')
-    return render(request,'home.html')
             
 @login_required(login_url='/accounts/login')
 def home(request):
     grp = request.user.groups.filter(user=request.user)[0]
+    print(request.user.groups)
+    print(request.user)
     if grp.name == "store_manager":
         return redirect(reverse(shome))
     elif grp.name == "accountant":
         return redirect(reverse(achome))
-    elif grp.name == 'admin':
+    elif grp.name == "admin":
         return redirect(reverse(ahome))
+    else:
+        raise Http404()
     context = {}
-    template = "home.html"
-    return render(request,template)
+    template = "dashboards/home.html"
+    return render(request,template,context)
+
+    
+
 
 def shome(request):
-    template = "storemanager.html"
-    return render(render,template)
+    template = "dashboards/dashboard_stock.html"
+    return render(request,template)
 
 def achome(request):
-    template = "accountant.html"
-    return render(render,template)
+    template = "dashboards/dashboard_accountant.html"
+    return render(request,template)
 
 def ahome(request):
-    template = "admin.html"
-    return render(render,template)
+    template = "dashboards/dashboard_admin.html"
+    return render(request,template)
 
 

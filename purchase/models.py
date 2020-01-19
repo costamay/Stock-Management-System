@@ -2,6 +2,8 @@ from django.db import models
 from supplier.models import *
 from materials.models import Material
 
+
+
 class Purchase(models.Model):
  
     pu_date = models.DateTimeField(auto_now_add=True)
@@ -17,7 +19,9 @@ class Purchase(models.Model):
         self.delete()
 
     def __str__(self):
-        return f'{self.pu_name}'
+        return f'{self.material}'
 
     class Meta:
+
         ordering = ['-pu_date']
+
