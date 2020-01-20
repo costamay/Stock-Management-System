@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
-
+import datetime as dt
 from .models import *
 from .forms import *
 
@@ -56,3 +56,12 @@ def delete_supplier(request, pk):
     return render(request, template, locals())
 
 
+def purchase_report(request):
+    purchases = Supplier.objects.all()
+    
+    return render(request, 'reports/purchase_report.html', locals())
+
+def todays_purchase(request):
+        date = dt.date.Today()
+        purchases = Supplier.todays_purchase()
+        return render(request, 'reports/todays_report.html', locals())

@@ -1,0 +1,39 @@
+
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Sales Report</h1>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>Sales Date</td>
+                            <td>Product Name</td>
+                            <td>Client Name</td>
+                            <td>Product Category</td>
+                            <td>Total Amount</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sales %}
+                            <tr>
+                                <td>{{sale.date}}</td>
+                                <td>{{sale.product.product_name}}</td>
+                                <td>{{sale.product.product_category}}</td>
+                                <td></td>
+                            
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+{% endblock %}
