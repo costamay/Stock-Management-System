@@ -1,5 +1,6 @@
 from django.db import models
 from materials.models import *
+import datetime as dt
 
 
 
@@ -25,8 +26,15 @@ class Supplier(models.Model):
         new_name = new_name_object.name
         return new_name
 
+    @classmethod
+    def todays_purchase(cls):
+        today = dt.date.today()
+        purchase = cls.objects.filter(date__date = today)
+        return purchase
+
+
     def __str__(self):
-        return f'{self.supplier_name }'
+        return f'{self.supplier_name}'
 
     class Meta:
         ordering = ['-date']

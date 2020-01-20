@@ -2,7 +2,7 @@ from django.db import models
 
 class Material(models.Model):
     material_name = models.CharField(max_length=100)
-    quantity = models.FloatField()
+    quantity = models.CharField(max_length=10)
     price = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
 
