@@ -102,6 +102,28 @@ padding: 0px 10px;
   }
 }
 
+.margin_left {
+  margin-left: 250px;
+}
+
+@media screen and (max-width: 780px) {
+  .sidenav {
+      width: 45px;
+      
+  }
+
+  .main {
+    margin-left: 45px;
+  }
+
+  .margin_left {
+    margin-left: 45px;
+  }
+
+}
+
+
+
 
 #guru{
   text-align: center;
@@ -111,3 +133,4 @@ padding: 0px 10px;
 /* .jumbotron{
   text-align:center;
 } */
+
