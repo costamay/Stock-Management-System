@@ -16,14 +16,14 @@
                             <td> Price</td>
                             <td>Date</td>
                             <td>Action</td>
-                            
+                         
                             <td>
                                 <a href="{% url 'add_material' %}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
                             </td>
                         </tr>
-                    </thead>
+                    </thead>    
                     <tbody>
                       {% for material in materials%}
                             <tr>
@@ -31,6 +31,7 @@
                                 <td>{{material.quantity}}</td>
                                 <td>{{material.price}}</td>
                                 <td>{{material.date}}</td>
+                              
                                 
                                 <td>
                                     <a href="{% url 'edit_material' material.id %}" class="btn text-secondary px-0">

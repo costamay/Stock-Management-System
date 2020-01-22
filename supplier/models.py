@@ -10,6 +10,10 @@ class Supplier(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     materials = models.ForeignKey(Material, on_delete=models.CASCADE)
 
+    def get_total(self):
+        result = self.materials.price * self.materials.quantity
+        return result
+
     def save_supplier(self):
         self.save()
 
@@ -20,8 +24,8 @@ class Supplier(models.Model):
 
     @classmethod
     def update_supplier(cls, id, new_name):
-        cls.objects.filter(pk=id).update(s_name=new_name)
-        new_name_object = cls.objects.get(s_name=new_name)
+        cls.objects.filter(pk=id).update(supplier_name=new_name)
+        new_name_object = cls.objects.get(supplier_name=new_name)
 
         new_name = new_name_object.name
         return new_name

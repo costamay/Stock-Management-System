@@ -9,27 +9,19 @@
     <div class="container" style="margin-left: 250px;">
         <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
-            {{form.material_name | as_crispy_field }}
+            {{form.client | as_crispy_field }}
+            {{form.product | as_crispy_field  }}
             {{form.quantity | as_crispy_field  }}
-            {{form.price | as_crispy_field  }}
-         
             
             
-            <div class="row">
-                <div class="col-md-4">
-                    
-                </div>
-                <div class="col-md-8">
-                    
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-md-8">
                     <button type="submit" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-database"></i>
                         Submit</button>
                 </div>
                 <div class="col-md-4">
-                    <a href="{% url 'all_materials' %}" class="btn btn-secondary btn-block btn-lg">
+                    <a href="{% url 'sales' %}" class="btn btn-secondary btn-block btn-lg">
                         <i class="fas fa-stream"></i> Back to list
                     </a>
                 </div>
@@ -42,4 +34,6 @@
 
     
 </body>
+
+
 {% endblock %}

@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^store/',views.shome,name='shome'),
     url(r'^accounting/',views.achome,name='achome'),
-    url(r'^administrator/',views.ahome,name='shome'),
+    url(r'^administrator/$',views.ahome,name='shome'),
     
 
    
