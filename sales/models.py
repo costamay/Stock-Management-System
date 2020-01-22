@@ -25,6 +25,10 @@ class Sale(models.Model):
         sale = cls.objects.filter(date__date = today)
         return sale
 
+    @classmethod
+    def search_by_profile(cls,name):
+        profile = Profile.objects.filter(user__name__icontains = name)
+
     def __str__(self):
         return f'{self.client}'
 
