@@ -86,17 +86,17 @@
           <table class="table table-borderless">
               <thead class="border-bottom font-weight-bold">
                   <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Date</th>
-                    <th>Materials</th>
-                    <th>Action</th>
+                    <th class="font-weight-bold">Name</th>
+                    <th class="font-weight-bold">Contact</th>
+                    <th class="font-weight-bold">Date</th>
+                    <th class="font-weight-bold">Materials</th>
+                    <th class="font-weight-bold">Action</th>
                       
-                      <td>
+                      <th>
                           <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
                               <i class="fas fa-plus"></i> Add New
                           </a>
-                      </td>
+                      </th>
                   </tr>
               </thead>
               <tbody>
@@ -121,10 +121,7 @@
                   {% endfor %}
               </tbody>
           </table>
-          {% else %}
-        <div class="text-center">No suppliers available</div>
-        {% endif %}
-      
+        
       </div>
   </div>
 </div>

@@ -156,7 +156,7 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li> 
 
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
@@ -180,10 +180,11 @@
         </a>
         <div class="collapse" id="ui-basic5">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="#">Add Reports</a>
+            <li class="nav-item"><a href="{% url 'todays_purchase' %}">Todays Report</a>
             </li>
-            <li class="nav-item">
-              <a href="#">Manage Reports</a>
+            <li class="nav-item"><a href="{% url 'sales_report' %}">Sales Reports</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'purchase_report' %}">Purchase Reports</a>
             </li>
           </ul>
         </div>
@@ -220,23 +221,14 @@
       </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
-          <span class="menu-title">Accounts</span>
-          <i class="fa fa-users menu-icon"></i>
-        </a>
-        <div class="collapse" id="ui-basic8">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-              <a href="{% url 'add_user'%}">Add Users</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'users_list' %}">Manage Users</a>
-            </li>
-          </ul>
-        </div>
-      </li>
 
+
+    </ul>
+  </nav>
+  <!-- page-body-wrapper ends -->
+  <!-- </div> -->
+  <!-- container-scroller -->
+  <!-- plugins:js -->
 
 
 
