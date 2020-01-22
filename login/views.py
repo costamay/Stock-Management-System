@@ -7,6 +7,12 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from login.forms import UserForm
+from materials.models import *
+from sales.models import *
+from supplier.models import *
+from client.models import *
+from purchase.models import *
+from products.models import *
 
 # test for categoriesgitch
 
