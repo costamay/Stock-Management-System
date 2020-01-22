@@ -1,10 +1,12 @@
 from django.db import models
+# from supplier.models import *
 
 class Material(models.Model):
     material_name = models.CharField(max_length=100)
-    quantity = models.CharField(max_length=10)
-    price = models.FloatField()
+    quantity = models.PositiveIntegerField()
+    price = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now_add=True)
+    # supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
 
     def save_material(self):
         self.save()

@@ -7,14 +7,14 @@
         <div class="row">
                 <div class="col-md-10 offset-md-1 mt-5">
                         <div class="jumbotron">
-                            <h1 class="display-4">Todays Purchase Report</h1>
+                            <h1 class="">Todays Purchase Report</h1>
                             <hr class="my-4">
                             {% if purchases %}
                             <table class="table table-borderless">
                                 <thead class="border-bottom font-weight-bold">
                                     <tr>
                                         <td>Purchase Date</td>
-                                        <td>Purchase ID</td>
+                                        <td>Purchase No</td>
                                         <td>Supplier Name</td>
                                         <td>Total Amount</td>
                                         
@@ -23,18 +23,24 @@
                                 <tbody>
                                     {% for purchase in purchases %}
                                         <tr>
-                                            <td>{{purchase.date}}</td>
+                                            <td>{{purchase.date | date}}</td>
                                             <td>{{purchase.id}}</td>
                                             <td>{{purchase.supplier_name}}</td>
-                                            <td></td>
+                                            <td>{{purchase.get_total}}</td>
                                         
                                             
                                         </tr>
                                     {% endfor %}
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="font-weight:bold;">TOTAL</td>
+                                        <td>{{final_total_purchase}}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                             {% else %}
-                            <h1 class="text-center">There are no purchases today</h1>
+                            <h3 class="text-center">There are no purchases today</h3>
                             {% endif %}
                         
                         </div>
@@ -43,34 +49,42 @@
         <div class="row">
                 <div class="col-md-10 offset-md-1 mt-5">
                         <div class="jumbotron">
-                            <h1 class="display-4"> Todays Sales Report</h1>
+                            <h1 class=""> Todays Sales Report</h1>
                             <hr class="my-4">
-                            
+                            {% if sales %}
                             <table class="table table-borderless">
                                 <thead class="border-bottom font-weight-bold">
                                     <tr>
                                         <td>Sales Date</td>
-                                        <td>Product Name</td>
+                                        <td>Sell No</td>
+                                      
                                         <td>Client Name</td>
-                                        <td>Product Category</td>
-                                        <td>Total Amount</td>
+                                        <td>Amount</td>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for sale in sales %}
                                         <tr>
-                                            <td>{{sale.date}}</td>
-                                            <td>{{sale.product.product_name}}</td>
-                                            <td>{{sale.product.product_category}}</td>
-                                            <td></td>
+                                            <td>{{sale.date | date}}</td>
+                                            <td>{{sale.id}}</td>
+                                            <td>{{sale.client.client_name}}</td>
+                                            <td>{{sale.get_total}}</td>
                                         
                                             
                                         </tr>
                                     {% endfor %}
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="font-weight:bold;">TOTAL</td>
+                                        <td>{{final_total_sales}}</td>
+                                    </tr>
                                 </tbody>
                             </table>
-                        
+                            {% else %}
+                            <h3 class="text-center">There are no sales today</h3>
+                            {% endif %}
                         </div>
                     </div>
         </div>
