@@ -29,17 +29,20 @@
             <i class="fas fa-user-circle fa-7x"></i>
             <p style="color: #ffffff;">{{ user.user }}</p>
         </div>
-        <div class="dropdown-container">
-            <a href="">Add User</a>
-            <a href="">Manage User</a>
-        </div>
-
         <button class="dropdown-btn">Product
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
             <a href="{% url 'add_product' %}">Add Product</a>
             <a href="{% url 'product_list' %}">Manage Product</a>
+        </div>
+
+        <button class="dropdown-btn">Account
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'add_user'%}">Add User</a>
+            <a href="{% url 'users_list' %}">Manage User</a>
         </div>
 
         <button class="dropdown-btn">Client
