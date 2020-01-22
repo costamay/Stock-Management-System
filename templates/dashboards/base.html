@@ -31,7 +31,16 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="/static/js/dash.js"></script>
 
-
+  <script>
+        (function($) {
+          "use strict";
+          $(function() {
+            $('[data-toggle="offcanvas"]').on("click", function() {
+              $(".sidebar-offcanvas").toggleClass("active");
+            });
+          });
+        })(jQuery);
+      </script>
   
   </body>
   

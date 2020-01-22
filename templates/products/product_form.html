@@ -6,7 +6,7 @@
 <body>
    
 
-    <div class="container" style="margin-left: 250px;">
+    <div  style="margin-left: 250px;">
         <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.product_name | as_crispy_field }}
