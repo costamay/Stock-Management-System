@@ -2,53 +2,48 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<div class="margin_left">
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron" style="overflow-x:auto;">
-                <h1 class="display-4">Users</h1>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
-                        <tr>
-                            <td>Users Name</td>
-                            <td>Users email</td>
-                            <td>User Password</td>
-                            <td>Date Joined</td>
-                            <td>
-                                <a href="{% url 'add_user' %}" class="btn btn-outline-success">
-                                    <i class="fas fa-plus"></i> Add New
-                                </a>
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{user.name}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user.password}}</td>
-                            <td>{{user.date_joined}}</td>
-                            <td>
-                                <a href="{% url 'update_user' user.id %}" class="btn text-secondary px-0">
-                                    <i class="far fa-edit fa-lg"></i>
-                                </a>
-                                <form action="{% url 'delete_user' user.id %}" method="post" class="d-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn">
-                                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
 
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <hr class="my-4">
+<div class="table-responsive border rounded p-1">
+<table class="table">
+  <thead>
+    <tr>
+      <th class="font-weight-bold">Username</th>
+      <th class="font-weight-bold">User Email</th>
+      <th class="font-weight-bold">User Password</th>
+      <th class="font-weight-bold">Date Joined</th>
+      <th class="font-weight-bold">User Group</th>
+      <th>
+        <a href="{% url 'add_user' %}" class="btn btn-outline-success">
+            <i class="fas fa-plus"></i> Add New
+        </a>
+    </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password | truncatechars:9}}</td>
+        <td>{{user.date_joined}}</td>
+        <td>
+            <a href="{% url 'update_user' user.id %}" class="btn text-secondary px-0">
+                <i class="far fa-edit fa-lg"></i>
+            </a>
+            <form action="{% url 'delete_user' user.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                </button>
+            </form>
+        </td>
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 </div>
-
-
+</div>
 {% endblock %}
