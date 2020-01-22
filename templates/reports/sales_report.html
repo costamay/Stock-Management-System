@@ -1,0 +1,47 @@
+
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="">Sales Report</h1>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>Sales Date</td>
+                            <td>Product Name</td>
+                            <td>Client Name</td>
+                            <td>Product Category</td>
+                            <td>Amount(KSH)</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sales %}
+                            <tr>
+                                <td>{{sale.date | date}}</td>
+                                <td>{{sale.product.product_name}}</td>
+                                <td>{{sale.client.client_name}}</td>
+                                <td>{{sale.product.product_category}}</td>
+                                <td>{{sale.get_total}}</td>
+                            
+                                
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight:bold;">TOTAL</td>
+                            <td>{{final_total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+{% endblock %}

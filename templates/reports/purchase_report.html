@@ -1,0 +1,41 @@
+
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h3 class="">Purchase Report</h3>
+                <hr class="my-4">
+                <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                        <tr>
+                            <td>Purchase Date</td>
+                            <td>Purchase ID</td>
+                            <td>Supplier Name</td>
+                            <td>Total Amount(KSH)</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for purchase in purchases %}
+                            <tr>
+                                <td>{{purchase.date | date }}</td>
+                                <td>{{purchase.id}}</td>
+                                <td>{{purchase.supplier_name}}</td>
+                                <td>{{purchase.get_total}}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="" style="font-weight:bold;">TOTAL</td>
+                            <td>{{ final_total }}</td></tr>
+                    </tbody>
+                    
+            
+            </div>
+        </div>
+    </div>
+{% endblock %}

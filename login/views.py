@@ -7,7 +7,12 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.http import Http404
-
+from products.models import *
+from purchase.models import *
+from client.models import *
+from supplier.models import *
+from sales.models import *
+from materials.models import *
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -48,15 +53,34 @@ def home(request):
 
 
 def shome(request):
+    total_materials_stock = Material.objects.all().count()
+    total_sales_stock = Sale.objects.all().count()
+    total_supplier_stock = Supplier.objects.all().count
+    total_client_stock = Client.objects.all().count()
+    total_purchase_stock = Purchase.objects.all().count()
+    total_product_stock = Product.objects.all().count() 
     template = "dashboards/dashboard_stock.html"
-    return render(request,template)
+    return render(request,template, locals())
 
 def achome(request):
+    total_materials_acc = Material.objects.all().count()
+    total_sales_acc = Sale.objects.all().count()
+    total_client_acc = Client.objects.all().count()
+    total_purchase_acc = Purchase.objects.all().count()
+    total_product_acc = Product.objects.all().count() 
+    total_supplier_acc = Supplier.objects.all().count
     template = "dashboards/dashboard_accountant.html"
-    return render(request,template)
+    return render(request,template, locals())
 
 def ahome(request):
+    total_materials_admin = Material.objects.all().count()
+    total_sales_admin = Sale.objects.all().count()
+    total_supplier_admin = Supplier.objects.all().count
+    total_client_admin = Client.objects.all().count()
+    total_purchase_admin = Purchase.objects.all().count()
+    total_product_admin = Product.objects.all().count()    
+
     template = "dashboards/dashboard_admin.html"
-    return render(request,template)
+    return render(request,template,locals())
 
 

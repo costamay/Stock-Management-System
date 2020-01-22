@@ -37,13 +37,21 @@
             <a href="{% url 'product_list' %}">Manage Product</a>
         </div>
 
+        <button class="dropdown-btn">Sell
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'add_sell' %}">Add Sell</a>
+            <a href="{% url 'sales' %}">view Sales</a>
+        </div>
+
         <button class="dropdown-btn">Client
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
             <a href="{% url 'add_client'%}">Add Client</a>
             <a href="{% url 'client_list'%}">Manage Client</a>
-        </div>
+        </div>  
 
         <button class="dropdown-btn">Supplier
             <i class="fa fa-caret-down"></i>
@@ -61,13 +69,7 @@
             <a href="{%  url 'orders'%}">Manage Order</a>
         </div>
 
-        <button class="dropdown-btn">Purchase
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{%  url 'create_purchases'%}">Add Purchase</a>
-            <a href="{%  url 'purchases'%}">Manage Purchase</a>
-        </div>
+        
         <button class="dropdown-btn">Materials
             <i class="fa fa-caret-down"></i>
         </button>
@@ -75,6 +77,15 @@
             <a href="{%  url 'add_material'%}">Add Materials</a>
             <a href="{%  url 'all_materials'%}">Manage Materials</a>
         </div>
+        <button class="dropdown-btn">Reports
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{%  url 'purchase_report'%}">Purchase Report</a>
+                <a href="{%  url 'sales_report'%}">Sales Report(product wise)</a>
+                <!-- <a href="#">Sales Report(invoice wise)</a> -->
+                <a href="{%  url 'todays_purchase'%}">Todays Report</a>
+            </div>
     </div>
 
 
