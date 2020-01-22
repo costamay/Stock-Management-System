@@ -1,167 +1,41 @@
 {%load static%}
 
-<!-- <nav class="navbar navbar-expand-lg navbar-light main" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#"><strong>DASHBOARD</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
-                </li>
-                <li class="nav-item" style="float:right">
-                    <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i></a>
-                    
-                </li>
-            </ul>
-        </div>
-    </nav> -->
 
-<!-- <div id="mySidenav" class="sidenav"> -->
-<!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-<!-- <p class="taste_afrique">TASTE AFRIQUE</p>
-        <div style="text-align: center;">
-            <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">{{ user }}</p>
-        </div>
-        <button class="dropdown-btn">Product
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'add_product' %}">Add Product</a>
-            <a href="{% url 'product_list' %}">Manage Product</a>
-        </div>
-
-        <button class="dropdown-btn">Sell
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'add_sell' %}">Add Sell</a>
-            <a href="{% url 'sales' %}">view Sales</a>
-        </div>
-
-        <button class="dropdown-btn">Client
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'add_client'%}">Add Client</a>
-            <a href="{% url 'client_list'%}">Manage Client</a>
-        </div>  
-
-        <button class="dropdown-btn">Supplier
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{%  url 'add_supplier'%}">Add Supplier</a>
-            <a href="{%  url 'all_suppliers'%}">Manage Supplier</a>
-        </div>
-
-        <button class="dropdown-btn">Order
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{%  url 'create_orders'%}">Add Order</a>
-            <a href="{%  url 'orders'%}">Manage Order</a>
-        </div>
-
-        
-        <button class="dropdown-btn">Materials
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{%  url 'add_material'%}">Add Materials</a>
-            <a href="{%  url 'all_materials'%}">Manage Materials</a>
-        </div>
-        <button class="dropdown-btn">Reports
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="{%  url 'purchase_report'%}">Purchase Report</a>
-                <a href="{%  url 'sales_report'%}">Sales Report(product wise)</a>
-                <!-- <a href="#">Sales Report(invoice wise)</a> -->
-                <a href="{%  url 'todays_purchase'%}">Todays Report</a>
-            </div>
-    </div>
-
-
-
-    <div id="myMain" class="main">
-    
-    </div>
-
-    <script>
-        
-    </script>
-
-
-
-</body>
-
-</html> -->
-
-<!-- <div class="container-scroller"> -->
-<!-- partial:partials/_navbar.html -->
-<nav
-  class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex align-items-center">
     <a class="navbar-brand brand-logo" href="#">
       <h4 style="color:pink;">TASTE AFRIQUE</h4>
     </a>
-    <a class="navbar-brand brand-logo-mini" href="index.html"
-      ><img src="/static/images/ta-removebg-preview.png" alt="logo"
-    /></a>
+    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/static/images/ta-removebg-preview.png"
+        alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
     <h5 class="mb-0 font-weight-medium d-none d-lg-flex">
-     <i class="fa fa-dashboard" style="font-size:48px;color:pink">Dashboard</i>
+      <i class="fa fa-dashboard" style="font-size:48px;color:pink">Dashboard</i>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
       <form class="search-form d-none d-md-block" action="#">
         <i class="fa fa-search"></i>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search items"
-          name="items"
-        />
+        <input type="text" class="form-control" placeholder="Search items" name="items" />
       </form>
       <li class="nav-item dropdown">
-        <a
-          class="nav-link count-indicator message-dropdown"
-          id="messageDropdown"
-          href="#"
-          data-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
+          aria-expanded="false">
           <i class="fa fa-bell"></i>
           <span class="count">7</span>
         </a>
-        <div
-          class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-          aria-labelledby="messageDropdown"
-        >
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+          aria-labelledby="messageDropdown">
           <a class="dropdown-item py-3">
             <p class="mb-0 font-weight-medium float-left">
               You have 7 unread mails
             </p>
-            <span class="badge badge-pill badge-primary float-right"
-              >View all</span
-            >
+            <span class="badge badge-pill badge-primary float-right">View all</span>
           </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img
-                src="/static/images/faces/face10.jpg"
-                alt="image"
-                class="img-sm profile-pic"
-              />
+              <img src="/static/images/faces/face10.jpg" alt="image" class="img-sm profile-pic" />
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">
@@ -174,11 +48,7 @@
           </a>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img
-                src="/static/images/faces/face12.jpg"
-                alt="image"
-                class="img-sm profile-pic"
-              />
+              <img src="/static/images/faces/face12.jpg" alt="image" class="img-sm profile-pic" />
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">
@@ -191,11 +61,7 @@
           </a>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img
-                src="/static/images/faces/face1.jpg"
-                alt="image"
-                class="img-sm profile-pic"
-              />
+              <img src="/static/images/faces/face1.jpg" alt="image" class="img-sm profile-pic" />
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">
@@ -212,12 +78,9 @@
         <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i></a>
       </li>
     </ul>
-    <button
-      class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
-      type="button"
-      data-toggle="offcanvas"
-    >
-      <span ><i class="fas fa-bars"></i></span>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+      data-toggle="offcanvas">
+      <span><i class="fas fa-bars"></i></span>
     </button>
   </div>
 </nav>
@@ -229,11 +92,7 @@
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
           <div class="profile-image">
-            <img
-              class="img-xs rounded-circle"
-              src="/static/images/faces/face8.jpg"
-              alt="profile image"
-            />
+            <img class="img-xs rounded-circle" src="/static/images/faces/face8.jpg" alt="profile image" />
             <div class="dot-indicator bg-success"></div>
           </div>
           <div class="text-wrapper">
@@ -246,7 +105,7 @@
           </div>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span class="menu-title" style="font-size:24px; font-weight:bolder;">Dashboard</span>
@@ -255,13 +114,7 @@
       </li>
 
       <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="collapse"
-          href="#ui-basic"
-          aria-expanded="false"
-          aria-controls="ui-basic"
-        >
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Product</span>
           <i class="fa fa-list-alt menu-icon"></i>
         </a>
@@ -277,13 +130,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="collapse"
-          href="#ui-basic2"
-          aria-expanded="false"
-          aria-controls="ui-basic2"
-        >
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
           <span class="menu-title">Clients</span>
           <i class="fa fa-users menu-icon"></i>
         </a>
@@ -298,116 +145,87 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="collapse"
-          href="#ui-basic3"
-          aria-expanded="false"
-          aria-controls="ui-basic3"
-        >
+      <!-- <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
           <span class="menu-title">Orders</span>
-          <i class='fab fa-first-order menu-icon' ></i>
+          <i class='fab fa-first-order menu-icon'></i>
         </a>
         <div class="collapse" id="ui-basic3">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"><a href="{%  url 'create_orders'%}">Add Order</a>
-                </li>
+            </li>
             <li class="nav-item">
-                    <a href="{%  url 'orders'%}">Manage Order</a>
+              <a href="{%  url 'orders'%}">Manage Order</a>
+            </li>
+          </ul>
+        </div>
+      </li> -->
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+          <span class="menu-title">Sales</span>
+          <i class='fa fa-money menu-icon'></i>
+        </a>
+        <div class="collapse" id="ui-basic4">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{% url 'add_sell' %}">Make sale</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'sales' %}">Manage Sales</a>
             </li>
           </ul>
         </div>
       </li>
-
       <li class="nav-item">
-            <a
-              class="nav-link"
-              data-toggle="collapse"
-              href="#ui-basic4"
-              aria-expanded="false"
-              aria-controls="ui-basic4"
-            >
-              <span class="menu-title">Sales</span>
-              <i class='fa fa-money menu-icon' ></i>
-            </a>
-            <div class="collapse" id="ui-basic4">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a href="#">Make sale</a>
-                    </li>
-                <li class="nav-item">
-                        <a href="#">Manage Sales</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="collapse"
-          href="#ui-basic5"
-          aria-expanded="false"
-          aria-controls="ui-basic5"
-        >
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
           <span class="menu-title">Reports</span>
-          <i class='fab fa-first-order menu-icon' ></i>
+          <i class='fab fa-first-order menu-icon'></i>
         </a>
         <div class="collapse" id="ui-basic5">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="#">Add Reports</a>
-                </li>
-            <li class="nav-item">
-                    <a href="#">Manage Reports</a>
+            <li class="nav-item"><a href="{% url 'todays_purchase' %}">Todays Report</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'sales_report' %}">Sales Reports</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'purchase_report' %}">Purchase Reports</a>
             </li>
           </ul>
         </div>
       </li>
       <li class="nav-item">
-            <a
-              class="nav-link"
-              data-toggle="collapse"
-              href="#ui-basic6"
-              aria-expanded="false"
-              aria-controls="ui-basic6"
-            >
-              <span class="menu-title">Purchase</span>
-              <i class='fas fa-credit-card menu-icon' ></i>
-            </a>
-            <div class="collapse" id="ui-basic6">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a href="{%  url 'create_purchases'%}">Add Purchase</a>
-                    </li>
-                <li class="nav-item">
-                        <a href="{%  url 'purchases'%}">Manage Purchase</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-toggle="collapse"
-                  href="#ui-basic7"
-                  aria-expanded="false"
-                  aria-controls="ui-basic7"
-                >
-                  <span class="menu-title">Supplier</span>
-                  <i class='fas fa-truck menu-icon' ></i>
-                </a>
-                <div class="collapse" id="ui-basic7">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a href="{%  url 'add_supplier'%}">Add Supplier</a>
-                        </li>
-                    <li class="nav-item">
-                            <a href="{%  url 'all_suppliers'%}">Manage Supplier</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-      
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+          <span class="menu-title">Purchase</span>
+          <i class='fas fa-credit-card menu-icon'></i>
+        </a>
+        <div class="collapse" id="ui-basic6">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{%  url 'create_purchases'%}">Add Purchase</a>
+            </li>
+            <li class="nav-item">
+              <a href="{%  url 'purchases'%}">Manage Purchase</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+          <span class="menu-title">Supplier</span>
+          <i class='fas fa-truck menu-icon'></i>
+        </a>
+        <div class="collapse" id="ui-basic7">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{%  url 'add_supplier'%}">Add Supplier</a>
+            </li>
+            <li class="nav-item">
+              <a href="{%  url 'all_suppliers'%}">Manage Supplier</a>
+            </li>
+          </ul>
+        </div>
+      </li>
 
-    
-     
+
+
+
     </ul>
   </nav>
   <!-- page-body-wrapper ends -->
@@ -418,13 +236,12 @@
   <!-- End plugin js for this page -->
 
   <script>
-    (function($) {
+    (function ($) {
       "use strict";
-      $(function() {
-        $('[data-toggle="offcanvas"]').on("click", function() {
+      $(function () {
+        $('[data-toggle="offcanvas"]').on("click", function () {
           $(".sidebar-offcanvas").toggleClass("active");
         });
       });
     })(jQuery);
   </script>
-

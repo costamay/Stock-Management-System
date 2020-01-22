@@ -2,29 +2,24 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-
-<div class="container">
-  <div class="col-md-10 offset-md-1 mt-5">
-      <div class="jumbotron">
-          <h1 class="display-4">Suppliers</h1>
-          <hr class="my-4">
-          {% if suppliers %}
-
-          <h1 class="text-center "><span class="text-danger">Total Suppliers</span>: {{total_suppliers}}</h1>
-          <table class="table table-borderless">
-              <thead class="border-bottom font-weight-bold">
+<div class="container" style=" margin-top: 7%;">
+  <h1 class="">Manage Orders</h1>
+  <hr class="my-4">
+  <div class="table-responsive border rounded p-1">
+    <table class="table">
+      <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Date</th>
-                    <th>Materials</th>
-                    <th>Action</th>
+                    <th class="font-weight-bold">Name</th>
+                    <th class="font-weight-bold">Contact</th>
+                    <th class="font-weight-bold">Date</th>
+                    <th class="font-weight-bold">Materials</th>
+                    <th class="font-weight-bold">Action</th>
                       
-                      <td>
+                      <th>
                           <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
                               <i class="fas fa-plus"></i> Add New
                           </a>
-                      </td>
+                      </th>
                   </tr>
               </thead>
               <tbody>
@@ -51,10 +46,7 @@
                   {% endfor %}
               </tbody>
           </table>
-          {% else %}
-        <div class="text-center">No suppliers available</div>
-        {% endif %}
-      
+        
       </div>
   </div>
 </div>

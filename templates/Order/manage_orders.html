@@ -3,25 +3,24 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h1 class="display-4">Orders</h1>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
+<div class="container" style=" margin-top: 7%;">
+    <h1 class="">Manage Orders</h1>
+    <hr class="my-4">
+    <div class="table-responsive border rounded p-1">
+      <table class="table">
+        <thead>
                         <tr>
-                            <td>Orders Name</td>
-                            <td>Orders Size</td>
-                            <td>Orders Quantity</td>
-                            <td>Orders Category</td>
-                            <td>Orders Image</td>
-                            <td>Orders Price</td>
-                            <td>
+                            <th>Orders Name</th>
+                            <th>Orders Size</th>
+                            <th>Orders Quantity</th>
+                            <th>Orders Category</th>
+                            <th>Orders Image</th>
+                            <th>Orders Price</th>
+                            <th>
                                 <a href="{%  url 'create_orders'%}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>

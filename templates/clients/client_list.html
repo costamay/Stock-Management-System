@@ -2,23 +2,21 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-    <div class="container" style="margin-left: 250px;">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h1 class="display-4">Clients</h1>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
+    <div class="container"style=" margin-top: 7%;">
+        <h1 class="">Manage Clients</h1>
+        <div class="table-responsive border rounded p-1">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>Client Name</td>
-                            <td>Client Contact</td>
-                            <td>Product</td>
+                            <th class="font-weight-bold">Client Name</th>
+                            <th class="font-weight-bold">Client Contact</th>
+                            <th class="font-weight-bold">Product</th>
                            
-                            <td>
+                            <th>
                                 <a href="{% url 'add_client'%}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
