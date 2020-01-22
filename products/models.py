@@ -21,8 +21,7 @@ class Product(models.Model):
     def save_product(self):
         self.save()
 
-    def delete_product(self):
-        self.delete()
+  
     @classmethod
     def update_supplier(cls, id, new_name):
         cls.objects.filter(pk=id).update(p_name=new_name)

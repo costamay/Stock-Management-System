@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from client.models import Client
 from client.forms import ClientForm
 
 def client_list(request):
-    client =  Client.objects.all()
+    clients =  Client.objects.all()
     context ={
         "clients":clients
     }

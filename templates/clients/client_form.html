@@ -3,11 +3,8 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-
-<body>
-
-    <div style="margin-left: 250px;">
-        <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
+<div class="container">
+    <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.client_name | as_crispy_field }}
             {{form.client_phone | as_crispy_field  }}
@@ -23,11 +20,6 @@
                     </a>
                 </div>
             </form>
-
-        </div>
-    </div>
-
-</body>
-
-
+</div>
+        
 {% endblock %}

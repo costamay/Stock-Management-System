@@ -4,11 +4,9 @@
 {% load static %}
 {% block content %}
 
-<body>
-   
-
-    <div  style="margin-left: 250px;">
-        <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
+<div class="container">
+    <h3>Add New Product</h3>
+     <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.product_name | as_crispy_field }}
             {{form.product_image | as_crispy_field  }}
@@ -28,11 +26,6 @@
                     <button type="submit" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-database"></i>
                         Submit</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
-                            Submit</button>
-                    </div>
                     <div class="col-md-4">
                         <a href="{% url 'product_list' %}" class="btn btn-secondary btn-block btn-lg">
                             <i class="fas fa-stream"></i> Back to list
@@ -40,14 +33,11 @@
                     </div>
                 </div>
             </form>
-
-        </div>
-    </div>
-
+</div>
+       
 
 
 
-</body>
 
 
 {% endblock %}
