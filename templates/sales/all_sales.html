@@ -1,53 +1,48 @@
-
-
 {% extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h1 class="">Sales</h1>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
-                        <tr>
-                            <td>Sales Date</td>
-                            <td>Sell NO.</td>
-                            <td>Client Name</td>
-                            <td>Product Name</td>
-                            <td>Product price(KSH)</td>
-                            <td>Quantity</td>
-                            <td>Product Amount(KSH)</td>
-                            <td>
-                                <a href="{% url 'add_sell' %}" class="btn btn-outline-success">
-                                    <i class="fas fa-plus"></i> Add New
-                                </a>
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for sale in sales %}
-                            <tr>
-                                <td>{{sale.date | date}}</td>
-                                <td>{{sale.id}}</td>
-                                <td>{{sale.client.client_name}}</td>
-                                <td>{{sale.product.product_name}}</td>
-                                <td>{{sale.product.product_price}}</td>
-                                <td>{{sale.quantity}}</td>
-                                <td>{{sale.get_total}}</td>
-                              
-                               
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            
-            </div>
-        </div>
+<div class="container" style=" margin-top: 7%;">
+    <h1 class="">Manage Sales</h1>
+    <hr class="my-4">
+    <div class="table-responsive border rounded p-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sale Date</th>
+                    <th>Sale NO.</th>
+                    <th>Client Name</th>
+                    <th>Product Name</th>
+                    <th>Product price(KSH)</th>
+                    <th>Quantity</th>
+                    <th>Product Amount(KSH)</th>
+                    <th>
+                        <a href="{% url 'add_sell' %}" class="btn btn-outline-success">
+                            <i class="fas fa-plus"></i> Add New
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in sales %}
+                <tr>
+                    <td>{{sale.date | date}}</td>
+                    <td>{{sale.id}}</td>
+                    <td>{{sale.client.client_name}}</td>
+                    <td>{{sale.product.product_name}}</td>
+                    <td>{{sale.product.product_price}}</td>
+                    <td>{{sale.quantity}}</td>
+                    <td>{{sale.get_total}}</td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
+</div>
+</div>
 
 
 {% endblock %}
-
-

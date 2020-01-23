@@ -3,18 +3,17 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h3 class="">Purchase Report</h3>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
+<div class="container">
+    <hr class="my-4">
+    <h1 class="">Purchase Report</h1>
+    <div class="table-responsive border rounded p-1">
+      <table class="table">
+        <thead>
                         <tr>
-                            <td>Purchase Date</td>
-                            <td>Purchase ID</td>
-                            <td>Supplier Name</td>
-                            <td>Total Amount(KSH)</td>
+                            <th class="font-weight-bold">Purchase Date</th>
+                            <th class="font-weight-bold">Purchase ID</td>
+                            <th class="font-weight-bold">Supplier Name</th>
+                            <th class="font-weight-bold">Total Amount(KSH)</th>
                             
                         </tr>
                     </thead>

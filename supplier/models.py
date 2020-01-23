@@ -38,9 +38,7 @@ class Supplier(models.Model):
 
 
     def __str__(self):
-
         return f'{self.supplier_name}'
-
 
     class Meta:
         ordering = ['-date']

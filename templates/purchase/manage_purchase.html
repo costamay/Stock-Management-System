@@ -1,11 +1,11 @@
-
 {%extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
+<div class="margin_left">
     <div class="container">
         <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
+            <div class="jumbotron" style="overflow-x:auto;">
                 <h1 class="display-4">Purchases</h1>
                 <hr class="my-4">
                 <table class="table table-borderless">
@@ -26,29 +26,30 @@
                     </thead>
                     <tbody>
                         {% for purchase in purchases %}
-                            <tr>
-                                <td>{{purchase.client}}</td>
-                                <td>{{purchase.product}}</td>
-                                <td>{{purchase.qyt}}</td>
-                                <td>{{purchase.number}}</td>
-                            
-                                <td>
-                                    <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
-                                        <i class="far fa-edit fa-lg"></i>
-                                    </a>
-                                    
-                                        {% csrf_token %}
-                                        <a  href="{% url 'delete_purchases' purchase.pk %}">
-                                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                                        </a>
-                                   
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{purchase.client}}</td>
+                            <td>{{purchase.product}}</td>
+                            <td>{{purchase.qyt}}</td>
+                            <td>{{purchase.number}}</td>
+
+                            <td>
+                                <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
+                                    <i class="far fa-edit fa-lg"></i>
+                                </a>
+
+                                {% csrf_token %}
+                                <a href="{% url 'delete_purchases' purchase.pk %}">
+                                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                </a>
+
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-            
+
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

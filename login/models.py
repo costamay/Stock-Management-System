@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import Group
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password,is_staff,is_superuser,**extra_fields):
@@ -40,6 +41,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     last_login = models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    # group = models.ForeignKey("Group")
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = []

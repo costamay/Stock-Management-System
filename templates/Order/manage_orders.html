@@ -1,54 +1,55 @@
-
 {%extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
+<div class="margin_left">
     <div class="container">
         <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
+            <div class="jumbotron" style="overflow-x:auto;">
                 <h1 class="display-4">Orders</h1>
                 <hr class="my-4">
                 <table class="table table-borderless">
                     <thead class="border-bottom font-weight-bold">
                         <tr>
-                            <td>Orders Name</td>
-                            <td>Orders Size</td>
-                            <td>Orders Quantity</td>
-                            <td>Orders Category</td>
-                            <td>Orders Image</td>
-                            <td>Orders Price</td>
-                            <td>
+                            <th>Orders Name</th>
+                            <th>Orders Size</th>
+                            <th>Orders Quantity</th>
+                            <th>Orders Category</th>
+                            <th>Orders Image</th>
+                            <th>Orders Price</th>
+                            <th>
                                 <a href="{%  url 'create_orders'%}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for order in orders %}
-                            <tr>
-                                <td>{{order.client}}</td>
-                                <td>{{order.product}}</td>
-                                <td>{{order.qyt}}</td>
-                                <td>{{order.number}}</td>
-                            
-                                <td>
-                                    <a href="{% url 'update_orders' order.pk %}"class="btn text-secondary px-0">
-                                        <i class="far fa-edit fa-lg"></i>
-                                    </a>
-                                    <!-- <form action="" method="post" class="d-inline"> -->
-                                        {% csrf_token %}
-                                        <a href="{% url 'delete_orders' order.pk %}" class="btn">
-                                            <i class="far fa-trash-alt fa-lg text-danger float-right" ></i>
-                                        </a>
-                                    <!-- </form> -->
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{order.client}}</td>
+                            <td>{{order.product}}</td>
+                            <td>{{order.qyt}}</td>
+                            <td>{{order.number}}</td>
+
+                            <td>
+                                <a href="{% url 'update_orders' order.pk %}" class="btn text-secondary px-0">
+                                    <i class="far fa-edit fa-lg"></i>
+                                </a>
+                                <!-- <form action="" method="post" class="d-inline"> -->
+                                {% csrf_token %}
+                                <a href="{% url 'delete_orders' order.pk %}" class="btn">
+                                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                </a>
+                                <!-- </form> -->
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-            
+
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

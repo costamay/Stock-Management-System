@@ -6,13 +6,21 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.http import Http404
-from products.models import *
-from purchase.models import *
-from client.models import *
-from supplier.models import *
-from sales.models import *
+from login.forms import UserForm
 from materials.models import *
+from sales.models import *
+from supplier.models import *
+from client.models import *
+from purchase.models import *
+from products.models import *
+
+# test for categoriesgitch
+
+# def supplier(request):
+
+#     return render(request, 'supplier/manage_supplier.html',locals())
+
+
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -31,7 +39,7 @@ def login(request):
                 return redirect('ahome')
         else:
             return redirect('home')
-            
+
 @login_required(login_url='/accounts/login')
 def home(request):
     grp = request.user.groups.filter(user=request.user)[0]
@@ -73,6 +81,8 @@ def achome(request):
     return render(request,template, locals())
 
 def ahome(request):
+    products = Product.objects.all()[:5]
+    print(products,'wwwww')
     total_materials_admin = Material.objects.all().count()
     total_sales_admin = Sale.objects.all().count()
     total_supplier_admin = Supplier.objects.all().count
@@ -84,3 +94,35 @@ def ahome(request):
     return render(request,template,locals())
 
 
+def users_list(request):
+    users =  User.objects.all()
+    context ={
+        "users":users,
+    }
+    return render(request,"accounts/accounts_list.html",locals())
+
+
+
+def users_form(request,id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = UserForm()
+        else:
+            user = User.objects.get(pk,id) 
+            print(user,"fffffffffffff")
+            form = UserForm(instance=product)
+        return render(request,"accounts/accounts_form.html",{'form':form})
+    else:
+        if id == 0:
+            form = UserForm(request.POST,request.FILES)
+        else:
+            user = User.objects.get(pk=id)
+            form = UserForm(request.POST,instance=user) 
+        if form.is_valid():
+            form.save()
+        return redirect('/users')
+
+def delete_user(request,id):
+    user = User.objects.get(pk=id)
+    user.delete()
+    return redirect('/users/list')

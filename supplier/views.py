@@ -7,10 +7,8 @@ from sales.models import *
 
 def all_suppliers(request):
     suppliers = Supplier.objects.all()
-
     total_suppliers = Supplier.objects.all().count()
     return render(request, 'supplier/manage_supplier.html', locals())
-
 
 def add_item(request, cls):
         
@@ -24,9 +22,7 @@ def add_item(request, cls):
 
     else:
         form = cls()
-
         return render(request, 'add_new_supplier.html', locals())
-
 
 
 

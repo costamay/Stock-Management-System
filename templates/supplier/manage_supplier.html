@@ -2,7 +2,6 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-
 <div class="container">
   <div class="col-md-10 offset-md-1 mt-5">
       <div class="jumbotron">
@@ -14,17 +13,17 @@
           <table class="table table-borderless">
               <thead class="border-bottom font-weight-bold">
                   <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Date</th>
-                    <th>Materials</th>
-                    <th>Action</th>
+                    <th class="font-weight-bold">Name</th>
+                    <th class="font-weight-bold">Contact</th>
+                    <th class="font-weight-bold">Date</th>
+                    <th class="font-weight-bold">Materials</th>
+                    <th class="font-weight-bold">Action</th>
                       
-                      <td>
+                      <th>
                           <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
                               <i class="fas fa-plus"></i> Add New
                           </a>
-                      </td>
+                      </th>
                   </tr>
               </thead>
               <tbody>
@@ -36,13 +35,11 @@
                         <td>{{supplier.date}}</td>
                         <td>{{supplier.materials}}</td>
                         <td> 
-
                           <a href="{% url 'edit_supplier' supplier.pk %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>
                         </a>
                             </button>
                             <span> <a href="{% url 'delete_supplier' supplier.pk %}"> <button class="btn "><i class="far fa-trash-alt fa-lg text-danger float-right" ></i></span>
-
                           
                            </td>
                           
@@ -51,10 +48,7 @@
                   {% endfor %}
               </tbody>
           </table>
-          {% else %}
-        <div class="text-center">No suppliers available</div>
         {% endif %}
-      
       </div>
   </div>
 </div>

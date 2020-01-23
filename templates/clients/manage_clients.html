@@ -37,8 +37,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Categories</a>
-            
+            <a href="{% url 'product' %}"><i class="fa fa-list-alt">Categories</i></a>
+            <a href="#">Add Product</a>
             <a href="#">Manage Product</a>
         </div>
 
@@ -54,8 +54,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            
-            <a href="#">Manage Supplier</a>
+            <a href="{% url 'all_suppliers' %}"><i class="fa fa-eye ">View Suppliers</i> </a>
+            <a href="{% url 'add_supplier' %}"><i class="fa fa-tasks">Manage Supplier</i> </a>
         </div>
 
         <button class="dropdown-btn">Order
