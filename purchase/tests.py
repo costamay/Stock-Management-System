@@ -27,9 +27,8 @@ class PurchaseTestClass(TestCase):
     def tearDown(self):
         Purchase.objects.all().delete()
     # deleting method
-
     def test_delete_method(self):
         self.purchase1.save_purchase()
         self.purchase1.delete_purchase()
         purchase1 = Purchase.objects.all()
-        self.assertTrue(len(purchase1)== 0)
+        self.assertTrue(len(purchase1)== 0 )
