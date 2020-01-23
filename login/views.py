@@ -39,7 +39,7 @@ def login(request):
                 return redirect('ahome')
         else:
             return redirect('home')
-            
+
 @login_required(login_url='/accounts/login')
 def home(request):
     grp = request.user.groups.filter(user=request.user)[0]
@@ -81,6 +81,8 @@ def achome(request):
     return render(request,template, locals())
 
 def ahome(request):
+    products = Product.objects.all()[:5]
+    print(products,'wwwww')
     total_materials_admin = Material.objects.all().count()
     total_sales_admin = Sale.objects.all().count()
     total_supplier_admin = Supplier.objects.all().count

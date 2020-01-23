@@ -4,6 +4,7 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    <hr class="my-4">
     <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.client_name | as_crispy_field }}

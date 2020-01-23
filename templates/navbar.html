@@ -2,14 +2,14 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex align-items-center">
     <a class="navbar-brand brand-logo" href="#">
-      <h4 style="color:pink;">TASTE AFRIQUE</h4>
+      <h4 style="color:pink;">Campany logo</h4>
     </a>
     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/static/images/ta-removebg-preview.png"
         alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
     <h5 class="mb-0 font-weight-medium d-none d-lg-flex">
-      <i class="fa fa-dashboard" style="font-size:48px;color:pink">Dashboard</i>
+      <i class="fa fa-dashboard" style="font-size:48px;color:pink">Taste Afrique</i>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
       <form class="search-form d-none d-md-block" action="#">
@@ -29,46 +29,6 @@
               You have 7 unread mails
             </p>
             <span class="badge badge-pill badge-primary float-right">View all</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="/static/images/faces/face10.jpg" alt="image" class="img-sm profile-pic" />
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">
-                Marian Garner
-              </p>
-              <p class="font-weight-light small-text">
-                The meeting is cancelled
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="/static/images/faces/face12.jpg" alt="image" class="img-sm profile-pic" />
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">
-                David Grey
-              </p>
-              <p class="font-weight-light small-text">
-                The meeting is cancelled
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="/static/images/faces/face1.jpg" alt="image" class="img-sm profile-pic" />
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">
-                Travis Jenkins
-              </p>
-              <p class="font-weight-light small-text">
-                The meeting is cancelled
-              </p>
-            </div>
           </a>
         </div>
       </li>
@@ -104,7 +64,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="home.html">
+        <a class="nav-link" href="{% url 'shome'%}">
           <span class="menu-title" style="font-size:24px; font-weight:bolder;">Dashboard</span>
           <i class="fa fa-dashboard menu-icon" style="font-size:24px;"></i>
         </a>
@@ -144,15 +104,15 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-          <span class="menu-title">Orders</span>
+          <span class="menu-title">Accounts</span>
           <i class='fab fa-first-order menu-icon'></i>
         </a>
         <div class="collapse" id="ui-basic3">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{%  url 'create_orders'%}">Add Order</a>
+            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
             </li>
             <li class="nav-item">
-              <a href="{%  url 'orders'%}">Manage Order</a>
+              <a href="{%  url 'users_list'%}">Manage User</a>
             </li>
           </ul>
         </div>
@@ -165,10 +125,10 @@
         </a>
         <div class="collapse" id="ui-basic4">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="#">Make sale</a>
+            <li class="nav-item"><a href="{% url  'add_sell'  %}">Make sale</a>
             </li>
             <li class="nav-item">
-              <a href="#">Manage Sales</a>
+              <a href="{% url 'sales' %}">Manage Sales</a>
             </li>
           </ul>
         </div>
@@ -219,19 +179,6 @@
           </ul>
         </div>
       </li>
-
-
-
-
-    </ul>
-  </nav>
-  <!-- page-body-wrapper ends -->
-  <!-- </div> -->
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-
-
-
     </ul>
   </nav>
   <script>
