@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse,HttpResponseRedirect
-
+from django.contrib import messages
 from django.contrib.auth import login,authenticate
 from login.models import *
 from django.contrib.auth.decorators import login_required,user_passes_test
@@ -13,6 +13,7 @@ from supplier.models import *
 from client.models import *
 from purchase.models import *
 from products.models import *
+
 
 # test for categoriesgitch
 
@@ -46,10 +47,13 @@ def home(request):
     print(request.user.groups)
     print(request.user)
     if grp.name == "store_manager":
+        messages.success(request,'Welcome to the Store Manager section')
         return redirect(reverse(shome))
     elif grp.name == "accountant":
+        messages.success(request,'Welcome to the Account section')
         return redirect(reverse(achome))
     elif grp.name == "admin":
+        messages.success(request,'Welcome to the Administrator section')
         return redirect(reverse(ahome))
     else:
         raise Http404()
@@ -59,7 +63,7 @@ def home(request):
 
     
 
-
+@user_passes_test(lambda u:u.is_active and u.groups.filter(name='store_manager'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def shome(request):
     total_materials_stock = Material.objects.all().count()
     total_sales_stock = Sale.objects.all().count()
@@ -70,6 +74,8 @@ def shome(request):
     template = "dashboards/dashboard_stock.html"
     return render(request,template, locals())
 
+
+@user_passes_test(lambda u:u.is_active and u.groups.filter(name='accountant'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def achome(request):
     total_materials_acc = Material.objects.all().count()
     total_sales_acc = Sale.objects.all().count()
@@ -80,9 +86,10 @@ def achome(request):
     template = "dashboards/dashboard_accountant.html"
     return render(request,template, locals())
 
+
+@user_passes_test(lambda u:u.is_active and u.groups.filter(name='admin'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def ahome(request):
     products = Product.objects.all()[:5]
-    print(products,'wwwww')
     total_materials_admin = Material.objects.all().count()
     total_sales_admin = Sale.objects.all().count()
     total_supplier_admin = Supplier.objects.all().count
@@ -126,3 +133,33 @@ def delete_user(request,id):
     user = User.objects.get(pk=id)
     user.delete()
     return redirect('/users/list')
+
+
+def add_user(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+
+
+        enc_password = pbkdf2_sha256.encryp(password,rounds=12000,size=32)
+
+
+        User.objects.create(
+            name =name,
+            email =email,
+            password = enc_password
+        )
+        return HttpResponse('')
+
+
+# def add_user(request,**extra_fields):
+#     form = UserForm(request.POST)
+#     if request.method == "POST":
+#         form = UserForm(request.POST)
+#         if form.is_valid():
+#             new_user = User.objects.create_user(**form.cleaned_data,is_staff=is_staff,**extra_fields)
+#             return redirect('/users')
+#         else:
+#             form = UserForm()
+#     return render(request,"accounts/accounts_form.html",{'form':form})

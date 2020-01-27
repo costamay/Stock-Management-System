@@ -28,9 +28,27 @@ def product_form(request,id=0):
             form = ProductForm(request.POST,instance=product) 
         if form.is_valid():
             form.save()
-        return redirect('/store')
+        return redirect('/products/list')
 
 def delete_product(request,id):
     product = Product.objects.get(pk=id)
     product.delete()
     return redirect('/products/list')
+
+
+
+def search_product(request):
+    if 'search' in request.GET and request.GET['search']:
+        category = request.GET.get('search')
+        results = Product.search(category)
+        message = f"category"
+        context = {
+            results: results,
+            message: message
+        }
+        return render(request,'results.html',locals())
+    else:
+        message = "You have not madce any search"
+    return render(request,'results.html',{"message": message})
+
+

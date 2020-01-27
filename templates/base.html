@@ -55,53 +55,23 @@
 </head>
 
 <body>
-    {% include "navbar.html"%}
-    {% block content %}  {%endblock%}
+{% include "navbar.html" %} 
+x`{% block content %} 
 
 
-    {% block scripts %}
-
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-
-      <!-- code pen scripts -->
-<!-- 
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> -->
-
-  <!-- dashboard script -->
-  <script src="/static/js/dash.js"></script>
-  <script src="/static/js/chart.js"></script>
-  <script src="/static/js/chartist.js"></script>
-  <script src="/static/js/dashboard.js"></script>
-  <script src="/static/js/misc.js"></script>
-  <script src="/static/js/off-canvas.js"></script>
-  <script src="/static/js/select2.js"></script>
-  <script src="/static/js/typeahead.js"></script>
-
+{% endblock %}
+<script src="/static/js/dash.js"></script>
+<script src="/static/js/chart.js"></script>
+<script src="/static/js/chartist.js"></script>
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/misc.js"></script>
+<script src="/static/js/off-canvas.js"></script>
+<script src="/static/js/select2.js"></script>
+<script src="/static/js/typeahead.js"></script>
 <script src="/static/vendors/js/vendor.bundle.base.js"></script>
-  
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="/static/vendors/moment/moment.min.js"></script>
-  <script src="/static/vendors/daterangepicker/daterangepicker.js"></script>
-    
-    <script src="/static/vendors/chartist/chartist.min.js"></script>
-      {% bootstrap_javascript %}
-      <script>
-          (function($) {
-            "use strict";
-            $(function() {
-              $('[data-toggle="offcanvas"]').on("click", function() {
-                $(".sidebar-offcanvas").toggleClass("active");
-              });
-            });
-          })(jQuery);
-        </script>
-      
-    {% endblock %}
-
-
-  
+<script src="/static/vendors/moment/moment.min.js"></script>
+<script src="/static/vendors/daterangepicker/daterangepicker.js"></script>
+<script src="/static/vendors/chartist/chartist.min.js"></script>
   </body>
   
   </html>
