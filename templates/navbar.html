@@ -12,9 +12,9 @@
       <i class="fa fa-dashboard" style="font-size:48px;color:pink">Taste Afrique</i>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
-      <form class="search-form d-none d-md-block" action="#">
+      <form class="search-form d-none d-md-block" action="{% url 'search' %}">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search items" name="items" />
+        <input type="text" class="form-control" placeholder="Search" name="search" />
       </form>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
@@ -52,10 +52,12 @@
             <img class="img-xs rounded-circle" src="/static/images/faces/face8.jpg" alt="profile image" />
             <div class="dot-indicator bg-success"></div>
           </div>
+         
           <div class="text-wrapper">
             <p class="profile-name"></p>
-            <p class="designation">{{ user }}}</p>
+            <p class="designation">{{ user }}</p>
           </div>
+    
           <div class="icon-container">
             <i class="icon-bubbles"></i>
             <div class="dot-indicator bg-danger"></div>
@@ -76,6 +78,7 @@
           <i class="fa fa-list-alt menu-icon"></i>
         </a>
         <div class="collapse" id="ui-basic">
+        
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
               <a href="{% url 'add_product' %}">Add Product</a>
@@ -84,7 +87,7 @@
               <a href="{% url 'product_list' %}">Manage Product</a>
             </li>
           </ul>
-        </div>
+        </div> 
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
@@ -102,22 +105,6 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-          <span class="menu-title">Accounts</span>
-          <i class='fab fa-first-order menu-icon'></i>
-        </a>
-        <div class="collapse" id="ui-basic3">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
-            </li>
-            <li class="nav-item">
-              <a href="{%  url 'users_list'%}">Manage User</a>
-            </li>
-          </ul>
-        </div>
-      </li> 
-
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
           <span class="menu-title">Sales</span>
@@ -179,6 +166,23 @@
           </ul>
         </div>
       </li>
+      {% if  request.user.is_staff %}
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+          <span class="menu-title">Accounts</span>
+          <i class='fab fa-first-order menu-icon'></i>
+        </a>
+        <div class="collapse" id="ui-basic3">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
+            </li>
+            <li class="nav-item">
+              <a href="{%  url 'users_list'%}">Manage User</a>
+            </li>
+          </ul>
+        </div>
+      </li> 
+      {% endif %}
     </ul>
   </nav>
   <script>
