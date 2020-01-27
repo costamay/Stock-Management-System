@@ -102,7 +102,9 @@
           </ul>
         </div>
       </li>
+      {% if  request.user.user_type == is_staff %}
       <li class="nav-item">
+         
         <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
           <span class="menu-title">Accounts</span>
           <i class='fab fa-first-order menu-icon'></i>
@@ -117,6 +119,7 @@
           </ul>
         </div>
       </li> 
+      {% endif %}
 
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
