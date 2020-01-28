@@ -1,20 +1,22 @@
 {%load static%}
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex align-items-center">
-    <a class="navbar-brand brand-logo" href="#">
-      <h4 style="color:pink;">Campany logo</h4>
-    </a>
+    
+    <div class="text-center">
+    <img class="img-fluid" style="height: 90px; padding-left: 50px; margin-top: 30px;" src="/static/images/ta-removebg-preview.png" alt="">
+  </div> 
+    
     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/static/images/ta-removebg-preview.png"
         alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
     <h5 class="mb-0 font-weight-medium d-none d-lg-flex">
-      <i class="fa fa-dashboard" style="font-size:48px;color:pink">Taste Afrique</i>
+      <div style="font-size:48px;color:#e6187f">Taste Afrique</div>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
       <form class="search-form d-none d-md-block" action="{% url 'search' %}">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search" name="search" />
+        <input type="text" class="form-control" placeholder="Search" name="q" id="id_q">
       </form>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
@@ -75,7 +77,7 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Product</span>
-          <i class="fa fa-list-alt menu-icon"></i>
+          <i class="fas fa-boxes menu-icon"></i>
         </a>
         <div class="collapse" id="ui-basic">
         
@@ -105,7 +107,24 @@
           </ul>
         </div>
       </li>
-      
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+          <span class="menu-title">Accounts</span>
+          <i class="fas fa-user menu-icon"></i>
+        </a>
+        <div class="collapse" id="ui-basic3">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
+            </li>
+            <li class="nav-item">
+              <a href="{%  url 'users_list'%}">Manage User</a>
+            </li>
+          </ul>
+        </div>
+      </li> 
+
+
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
           <span class="menu-title">Sales</span>
@@ -113,7 +132,7 @@
         </a>
         <div class="collapse" id="ui-basic4">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{% url  'add_sell'  %}">Make sale</a>
+            <li class="nav-item"><a href="{% url  'add_sell' %}">Make sale</a>
             </li>
             <li class="nav-item">
               <a href="{% url 'sales' %}">Manage Sales</a>
@@ -155,7 +174,7 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
           <span class="menu-title">Supplier</span>
-          <i class='fas fa-truck menu-icon'></i>
+          <i class="fas fa-user-friends menu-icon"></i>
         </a>
         <div class="collapse" id="ui-basic7">
           <ul class="nav flex-column sub-menu">
@@ -167,26 +186,28 @@
           </ul>
         </div>
       </li>
-      
+
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-          <span class="menu-title">Accounts</span>
-          <i class='fab fa-first-order menu-icon'></i>
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
+          <span class="menu-title">Materials</span>
+          <i class='fas fa-truck menu-icon'></i>
         </a>
-        <div class="collapse" id="ui-basic3">
+        <div class="collapse" id="ui-basic8">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
+            <li class="nav-item"><a href="{%  url 'add_material'%}">Add Material</a>
             </li>
             <li class="nav-item">
-              <a href="{%  url 'users_list'%}">Manage User</a>
+              <a href="{%  url 'all_materials'%}">Manage Materials</a>
             </li>
           </ul>
         </div>
-      </li> 
-    
+      </li>
+
     </ul>
   </nav>
-  <script>
+  <script type="text/javascript">
+    document.getElementById("id_q").value = "{{ query }}"
+     
     (function ($) {
       "use strict";
       $(function () {
