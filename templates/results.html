@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            {% if results %}
-            <h5 class="text-center">Found {{ results|length }} product {{ results|pluralize }}</h5>
+            {% if products %}
+            <h5 class="text-center">Found {{ products|length }} product {{ products|pluralize }}</h5>
             {% else %}
             <h5 class="text-center"> Found 0 Products <strong>{{message}}</strong></h5>
 
@@ -16,8 +16,8 @@
             </a>
             {% endif %}
             <hr>
-            {% if results %}
-            {% for product in results %}
+            {% if products %}
+            {% for product in products %}
 
             <div class="container">
                 <hr class="my-4">

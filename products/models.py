@@ -19,6 +19,7 @@ SIZES = (
 )
 
 class Product(models.Model):
+   
     product_name = models.CharField(max_length=100)
     product_image = models.ImageField(upload_to='images/')
     product_size = models.CharField(max_length=50,choices=SIZES)
@@ -40,10 +41,10 @@ class Product(models.Model):
         return new_name
 
 
-    @classmethod
-    def search(cls,category):
-        return cls.objects.filter(Q(product_name__icontains='N') & Q(product_name__icontains='H') & Q(product_name__icontains='M') &
-        Q(product_name__icontains='S'))
+    # @classmethod
+    # def search(cls,category):
+    #     return cls.objects.filter(Q(product_name__contains='N') & Q(product_name__contains='H') & Q(product_name__contains='M') &
+    #     Q(product_name__contains='S'))
 
 
     def __str__(self):

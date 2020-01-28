@@ -1,111 +1,165 @@
-<!-- <h1>
-  great
-
 {%extends "dashboards/base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+{%load static%}
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row purchace-popup">
+              <div class="col-12 stretch-card grid-margin">
+                
+              </div>
+            </div>
+            <div class="row quick-action-toolbar">
+              <div class="col-md-12 grid-margin">
+                <div class="card">
+                  <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      
+                      <button type="button" class="btn px-0"> <i class="icon-user mr-2"></i> Add Client</button>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Add Sales</button>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Add Purchase</button>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i>Create Invoice</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <title>Document</title>
-</head>
+            <!-- Quick Action Toolbar Ends-->
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="d-sm-flex align-items-baseline report-summary-header">
+                          <h5 class="font-weight-semibold"> Summary</h5> <span class="ml-auto"></span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row report-inner-cards-wrapper">
+                      <div class=" col-md -6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                          <span class="report-title">PRODUCTS</span>
+                          <h4>{{total_product_admin}}</h4>
+                        </div>
+                        <div class="inner-card-icon bg-success">
+                          <i class="icon-rocket"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                          <span class="report-title">PURCHASE</span>
+                          <h4>{{total_purchase_admin}}</h4>
+                        </div>
+                        <div class="inner-card-icon  bg-success">
+                          <i class="icon-briefcase"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                          <span class="report-title">CLIENTS</span>
+                          <h4>{{total_client_admin}}</h4>
+                        </div>
+                        <div class="inner-card-icon  bg-success">
+                          <i class="icon-globe-alt"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                          <span class="report-title">SUPLIERS</span>
+                          <h4>{{total_supplier_admin}}</h4>
+                        </div>
+                        <div class="inner-card-icon  bg-success">
+                          <i class="icon-diamond"></i>
+                        </div>
+                      </div>
 
-<body>
-  
+                      <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                          <span class="report-title">SALES</span>
+                          <h4>{{total_sales_admin}}</h4>
+                        </div>
+                        <div class="inner-card-icon  bg-success">
+                          <i class="icon-diamond"></i>
+                        </div>
+                    
+                      </div>
+                    </div>
+                  </div>
 
-    <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-        <p class="taste_afrique">TASTE AFRIQUE</p>
-        <div style="text-align: center;">
-            <i class="fas fa-user-circle fa-7x"></i>
-            <p style="color: #ffffff;">{{ user }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-sm-flex align-items-center mb-4">
+                      <h4 class="card-title mb-sm-0">Products Inventory</h4>
+                      <a href="{% url 'product_list' %}" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                    </div>
+                    <div class="table-responsive border rounded p-1">
+                      <table class="table">
+                        <thead>
+                          
+                          <tr>
+                            <th class="font-weight-bold">Product Name</th>
+                            <th class="font-weight-bold">Product Amount</th>
+                            <th class="font-weight-bold">Product Quantity</th>
+                            <th class="font-weight-bold">Product Size</th>
+                            <th class="font-weight-bold">Produc Category</th>
+                          </tr>
+                         
+                        </thead>
+                        <tbody>
+                          {% for product in products %}
+                          <tr>
+                            <td>{{ product.product_name }}</td>
+                            <td>{{ product.product_price }}</td>
+                            <td>{{ product.product_qyt }}</td>
+                            <td>{{ product.product_size }}</td>
+                            <td>{{ product.product_category }}</td>
+                          
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                   
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="dropdown-btn">Product
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-           
-            <a href="">Add Product</a>
-            <a href="">Manage Product</a>
-        </div>
-
-        <button class="dropdown-btn">Client
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Client</a>
-            <a href="#">Manage Client</a>
-        </div>
-
-        <button class="dropdown-btn">Supplier
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'add_supplier' %}">Add Supplier</a>
-            <a href="{% url 'all_suppliers' %}">Manage Supplier</a>
-        </div>
-
-        <button class="dropdown-btn">Order
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'create_orders' %}">Add Order</a>
-            <a href="">Manage Order</a>
-        </div>
-
-        <button class="dropdown-btn">Purchase
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Add Purchase</a>
-            <a href="#">Manage Purchase</a>
-        </div>
+      </div>
     </div>
-
-    <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
-
-    <div id="myMain" class="main">
-
-     
-    
-       
-    </div>
-
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-
-     
-    </script>
+  </body>
+</html>
 
 
-    <!-- <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("myMain").style.marginLeft = "250px";
-        }
-
-
+<script>
+(function($) {
+  'use strict';
+  $(function() {
+    $('[data-toggle="offcanvas"]').on("click", function() {
+      $('.sidebar-offcanvas').toggleClass('active')
+    });
+  });
+})(jQuery);
+</script>
 
 
 {% endblock %}
