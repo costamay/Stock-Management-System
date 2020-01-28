@@ -16,8 +16,9 @@
                     <th>Product price(KSH)</th>
                     <th>Quantity</th>
                     <th>Product Amount(KSH)</th>
+                    <th>Remaining</th>
                     <th>
-                        <a href="{% url 'add_sell' %}" class="btn btn-outline-success">
+                        <a href="{% url 'add_sell'  %}" class="btn btn-outline-success">
                             <i class="fas fa-plus"></i> Add New
                         </a>
                     </th>
@@ -33,6 +34,7 @@
                     <td>{{sale.product.product_price}}</td>
                     <td>{{sale.quantity}}</td>
                     <td>{{sale.get_total}}</td>
+                    <td>{{sale.final_quantity}}</td>
 
 
                 </tr>

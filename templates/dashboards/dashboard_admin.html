@@ -1,4 +1,4 @@
-{%extends "dashboards/base.html"%}
+{%extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
@@ -45,52 +45,54 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="row report-inner-cards-wrapper">
-                      <div class=" col-md -6 col-xl report-inner-card">
+                      <div class=" col-md-2 report-inner-card">
                         <div class="inner-card-text">
                           <span class="report-title">PRODUCTS</span>
                           <h4>{{total_product_admin}}</h4>
                         </div>
-                        <div class="inner-card-icon bg-success">
-                          <i class="icon-rocket"></i>
+                        <div class="inner-card-icon bg-secondary">
+                          <i class="fas fa-boxes"></i>
                         </div>
                       </div>
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-2  report-inner-card">
                         <div class="inner-card-text">
                           <span class="report-title">PURCHASE</span>
                           <h4>{{total_purchase_admin}}</h4>
                         </div>
-                        <div class="inner-card-icon  bg-success">
-                          <i class="icon-briefcase"></i>
+                        <div class="inner-card-icon  bg-secondary">
+                          <i class="fas fa-credit-card"></i>
                         </div>
                       </div>
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-2  report-inner-card">
                         <div class="inner-card-text">
                           <span class="report-title">CLIENTS</span>
                           <h4>{{total_client_admin}}</h4>
                         </div>
-                        <div class="inner-card-icon  bg-success">
-                          <i class="icon-globe-alt"></i>
+                        <div class="inner-card-icon  bg-secondary">
+                          <i class="fas fa-users"></i>
                         </div>
                       </div>
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-2 report-inner-card">
                         <div class="inner-card-text">
-                          <span class="report-title">SUPLIERS</span>
+                          <span class="report-title">SUPPLIERS</span>
                           <h4>{{total_supplier_admin}}</h4>
                         </div>
-                        <div class="inner-card-icon  bg-success">
-                          <i class="icon-diamond"></i>
+                        <div class="inner-card-icon  bg-secondary">
+                          <i class="fas fa-user-friends"></i>
                         </div>
                       </div>
 
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-2  report-inner-card">
                         <div class="inner-card-text">
                           <span class="report-title">SALES</span>
                           <h4>{{total_sales_admin}}</h4>
                         </div>
-                        <div class="inner-card-icon  bg-success">
-                          <i class="icon-diamond"></i>
+                        <div class="inner-card-icon  bg-secondary">
+                          <i class="far fa-money-bill-alt"></i>
                         </div>
+                    
                       </div>
                     </div>
                   </div>

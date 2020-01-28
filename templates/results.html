@@ -1,0 +1,82 @@
+{% extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {% if products %}
+            <h5 class="text-center">Found {{ products|length }} product {{ products|pluralize }}</h5>
+            {% else %}
+            <h5 class="text-center"> Found 0 Products <strong>{{message}}</strong></h5>
+
+            <a class="d-block mx-auto" href="{% url 'shome'%}">
+                <button class="btn btn-sm btn-info d-block mx-auto">Back Home</button>
+            </a>
+            {% endif %}
+            <hr>
+            {% if products %}
+            {% for product in products %}
+
+            <div class="container">
+                <hr class="my-4">
+        <div class="table-responsive border rounded p-1">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="font-weight-bold">Product Name</th>
+                  <th class="font-weight-bold">Product Size</th>
+                  <th class="font-weight-bold">Product Quantity</th>
+                  <th class="font-weight-bold">Product Category</th>
+                  <th class="font-weight-bold">Product Price</th>
+                  <th>
+                    <a href="{% url 'add_product' %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i> Add New
+                    </a>
+                </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                <tr>
+                  <td>{{product.product_name}} </td>
+                  <td>{{product.product_size}}</td>
+                  <td>{{product.product_qyt}}</td>
+                  <td>{{product.product_category}}</td>
+                  <td>Ksh {{product.product_price}}</td>
+                  
+                 
+                  
+                  <td>
+                    <a href="{% url 'update_product' product.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'delete_product' product.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+    
+
+</div>
+            <hr>
+
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+{% endblock %}
