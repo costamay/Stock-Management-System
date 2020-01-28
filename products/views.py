@@ -28,7 +28,7 @@ def product_form(request,id=0):
             form = ProductForm(request.POST,instance=product) 
         if form.is_valid():
             form.save()
-        return redirect('/store')
+        return redirect('/products/list')
 
 def delete_product(request,id):
     product = Product.objects.get(pk=id)
