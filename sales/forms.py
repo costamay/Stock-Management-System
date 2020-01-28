@@ -6,7 +6,3 @@ class SalesForm(forms.ModelForm):
         model = Sale
         exclude = ['date']
 
-class DateRangeForm(forms.Form):
-    start_date =forms.DateField()
-    end_date = forms.DateField()
-
