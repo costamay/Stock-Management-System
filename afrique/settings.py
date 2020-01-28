@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,13 @@ INSTALLED_APPS = [
     'crispy_forms',
 
 ]
+
+# TEMPLATE_DIRS = (
+#     os.path.join(os.path.dirname(os.path.dirname(
+#         os.path.dirname(__file__)
+#     )),
+#     "static", "templates"),
+# )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -95,9 +103,11 @@ WSGI_APPLICATION = 'afrique.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory',
-        'USER': 'laurent',
-        'PASSWORD': 'stock1234',
+
+        'NAME': 'testy',
+        'USER': 'moringa',
+        'PASSWORD': 'password',
+
     }
 }
 
