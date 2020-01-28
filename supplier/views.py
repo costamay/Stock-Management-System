@@ -3,6 +3,7 @@ import datetime as dt
 from .models import *
 from .forms import *
 
+
 from sales.models import *
 
 def all_suppliers(request):
@@ -72,3 +73,15 @@ def todays_purchase(request):
         final_total_sales = sum(total_sales)
 
         return render(request, 'reports/todays_report.html', locals())
+
+def filter_purchase(request):
+    purchases = Supplier.objects.filter(date__range=(
+        request.POST['start_date'],
+        request.POST['end_date']
+    ))
+    print(purchases.query)
+    print(purchases.values , '000000000000000')
+    total = [i.materials.price * i.materials.quantity for i in purchases]
+    final_total = sum(total)
+
+    return render(request, 'reports/purchase_report.html',locals())
