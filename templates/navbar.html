@@ -14,7 +14,7 @@
     <ul class="navbar-nav navbar-nav-right ml-auto">
       <form class="search-form d-none d-md-block" action="{% url 'search' %}">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search" name="search" />
+        <input type="text" class="form-control" placeholder="Search" name="q" id="id_q">
       </form>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
@@ -113,7 +113,7 @@
         </a>
         <div class="collapse" id="ui-basic4">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{% url  'add_sell'  %}">Make sale</a>
+            <li class="nav-item"><a href="{% url  'add_sell' %}">Make sale</a>
             </li>
             <li class="nav-item">
               <a href="{% url 'sales' %}">Manage Sales</a>
@@ -167,7 +167,7 @@
           </ul>
         </div>
       </li>
-      
+      {% if request.user.is_staff %}
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
           <span class="menu-title">Accounts</span>
@@ -183,10 +183,13 @@
           </ul>
         </div>
       </li> 
+      {% endif %}
     
     </ul>
   </nav>
-  <script>
+  <script type="text/javascript">
+    document.getElementById("id_q").value = "{{ query }}"
+     
     (function ($) {
       "use strict";
       $(function () {
