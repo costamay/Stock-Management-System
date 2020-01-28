@@ -1,18 +1,28 @@
 from django.db import models
+from django.db.models import Q
 
 CATEGORY = (
-    ('N','without chillie'),
-    ('H',' hot chillie'),
-    ('M','mild chillie'),
-    ('SP','siri ya pilau'),
-    ('SM','siri ya mchuzi'),
-    ('SC','siri ya chai')
+    ('N','Without Chillie'),
+    ('H',' Hot Chillie'),
+    ('M','Mild Chillie'),
+    ('SP','Siri ya Pilau'),
+    ('SM','Siri ya Mchuzi'),
+    ('SC','Siri ya Chai')
+)
+
+
+SIZES = (
+    ('10g','10g'),
+    ('15g','15g'),
+    ('25g','25g'),
+    ('35g','35g'),
 )
 
 class Product(models.Model):
+   
     product_name = models.CharField(max_length=100)
     product_image = models.ImageField(upload_to='images/')
-    product_size = models.CharField(max_length=50)
+    product_size = models.CharField(max_length=50,choices=SIZES)
     product_qyt = models.PositiveIntegerField()
     product_price = models.FloatField()
     product_category = models.CharField(max_length=50,choices=CATEGORY)
@@ -29,6 +39,13 @@ class Product(models.Model):
 
         new_name = new_name_object.name
         return new_name
+
+
+    # @classmethod
+    # def search(cls,category):
+    #     return cls.objects.filter(Q(product_name__contains='N') & Q(product_name__contains='H') & Q(product_name__contains='M') &
+    #     Q(product_name__contains='S'))
+
 
     def __str__(self):
         return f'{self.product_name}'
