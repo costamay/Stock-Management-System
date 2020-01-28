@@ -3,19 +3,17 @@
 {% load static %}
 {% block content %}
 
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h1 class="display-4">Materials</h1>
-                <hr class="my-4">
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
+<div class="container">
+    <hr class="my-4">
+<div class="table-responsive border rounded p-1">
+<table class="table">
+  <thead>
                         <tr>
-                            <td>Name</td>
-                            <td> Quantity</td>
-                            <td> Price</td>
-                            <td>Date</td>
-                            <td>Action</td>
+                            <th>Name</th>
+                            <th> Quantity</th>
+                            <th> Price</th>
+                            <th>Date</th>
+                            <th>Action</th>
                          
                             <td>
                                 <a href="{% url 'add_material' %}" class="btn btn-outline-success">

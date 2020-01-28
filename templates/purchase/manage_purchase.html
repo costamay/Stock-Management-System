@@ -3,80 +3,52 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
+<div class="container" style=" margin-top: 7%;">
+    <h1 class="">Manage Purchases</h1>
     <hr class="my-4">
-<div class="table-responsive border rounded p-1">
-<table class="table">
-  <thead>
-    <tr>
-      <th class="font-weight-bold">Client Name</th>
-      <th class="font-weight-bold">Product Price</th>
-      <th class="font-weight-bold">Product Quantity</th>
-      
-      <th class="font-weight-bold">Product Number</th>
-      <th>
-        <a href="{% url 'add_product' %}" class="btn btn-outline-success">
-            <i class="fas fa-plus"></i> Add New
-        </a>
-    </th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for purchase in purchases %}
-    <tr>
-        <td>{{purchase.client}}</td>
-        <td>{{purchase.product}}</td>
-        <td>{{purchase.qyt}}</td>
-        <td>{{purchase.number}}</td>
-      <td>
-        <a href="{% url 'update_product' product.id %}" class="btn text-secondary px-0">
-            <i class="far fa-edit fa-lg"></i>
-        </a>
-        <form action="{% url 'delete_product' product.id %}" method="post" class="d-inline">
-            {% csrf_token %}
-            <button type="submit" class="btn">
-                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-            </button>
-        </form>
-    </td>
-      
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    <div class="table-responsive border rounded p-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Purchase Name</th>
+                    <th>Purchase Size</th>
+                    <th>Purchase Quantity</th>
+                    <th>Purchase Category</th>
+                    <th>Purchase Image</th>
+                    <th>Purchase Price</th>
+                    <th>
+                        <a href="{%  url 'create_purchases'%}" class="btn btn-outline-success">
+                            <i class="fas fa-plus"></i> Add New
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{purchase.client}}</td>
+                    <td>{{purchase.product}}</td>
+                    <td>{{purchase.qyt}}</td>
+                    <td>{{purchase.number}}</td>
+
+                    <td>
+                        <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+
+                        {% csrf_token %}
+                        <a href="{% url 'delete_purchases' purchase.pk %}">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
 </div>
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}

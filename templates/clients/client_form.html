@@ -4,7 +4,7 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    <hr class="my-4">
+    <h3>Add New Client</h3>
     <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.client_name | as_crispy_field }}
