@@ -35,7 +35,17 @@ def add_item(request, cls):
 def add_sell(request):
     return add_item(request, SalesForm)
 
-
-
-
-
+def filter(request):
+    if request.method == 'POST' :
+        form = DateRangeForm(request.POST)
+        print(form )
+        print('----------------------------------------------------------------kk')
+        if form.is_valid():
+            qs = Sale.objects.filter(date__range = (
+                form.cleaned_data['start_date'],
+                form.cleaned_data['end_date']
+            ))
+        else: 
+            return render(request, 'sales/all_sales', form)
+    else: 
+        return render(request, 'sales/all_sales', form)
