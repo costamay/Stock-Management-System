@@ -19,6 +19,11 @@ class Sale(models.Model):
         result = self.product.product_price * self.quantity
         return result
 
+    # def final_quantity(self):
+        
+    #     # import pdb; pdb.set_trace()
+    #     return obj.product_qyt
+
     @classmethod
     def todays_sales(cls):
         today = dt.date.today()
