@@ -5,3 +5,4 @@ class SalesForm(forms.ModelForm):
     class Meta:
         model = Sale
         exclude = ['date']
+

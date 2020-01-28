@@ -59,4 +59,55 @@
     </div>
 </div>
 </div>
+<h1 class="text-center"> filter</h1>
+
+<form action="{% url 'filter' %}" method="POST">
+    {%csrf_token%}
+    start: <input type="date" name="start_date">
+    end: <input type="date" name="end_date">
+    <!-- <input type="submit" > -->
+    <div class="col-md-4">
+        <button type="submit">submit</button>
+    </div>
+  </form>
+
+
+  <!-- <div class="table-responsive border rounded p-1">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="font-weight-bold">Sales Date</th>
+                <th class="font-weight-bold">Product Name</th>
+                <th class="font-weight-bold">Client Name</th>
+                <th class="font-weight-bold">Product Category</th>
+                <th class="font-weight-bold">Amount(KSH)</th>
+              
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for q in qs %}
+            <tr>
+                <td>{{q.date}} </td>
+                <td>{{q.product}}</td>
+                <td>{{q}}</td>
+                <td>{{q.product.product_category}}</td>
+                <td>{{q.get_total}}</td>
+               
+
+                
+            </tr>
+            {% endfor %}
+             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="font-weight:bold;">TOTAL</td>
+                <td>{{final_total}}</td>
+            </tr> 
+        </tbody>
+    </table>
+
+</div> -->
 {% endblock %}
