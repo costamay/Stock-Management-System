@@ -1,4 +1,3 @@
-
 {%extends "base.html"%}
 {% load bootstrap4 %}
 {% load static %}
@@ -6,35 +5,53 @@
 <div class="container">
     <hr class="my-4">
     <h1 class="">Purchase Report</h1>
-    <div class="table-responsive border rounded p-1">
-      <table class="table">
-        <thead>
-                        <tr>
-                            <th class="font-weight-bold">Purchase Date</th>
-                            <th class="font-weight-bold">Purchase ID</td>
-                            <th class="font-weight-bold">Supplier Name</th>
-                            <th class="font-weight-bold">Total Amount(KSH)</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for purchase in purchases %}
-                            <tr>
-                                <td>{{purchase.date | date }}</td>
-                                <td>{{purchase.id}}</td>
-                                <td>{{purchase.supplier_name}}</td>
-                                <td>{{purchase.get_total}}</td>
-                            </tr>
-                        {% endfor %}
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td class="" style="font-weight:bold;">TOTAL</td>
-                            <td>{{ final_total }}</td></tr>
-                    </tbody>
-                    
-            
-            </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <form>
+                Start Date:
+                <input type="date" name="start_date">
+                End Date:
+                <input type="date" name="end_date">
+                <input type="submit" value="Filter" class="btn-success">
+            </form>
         </div>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-secondary btn-block btn-sm"><i class="fas fa-file-export"></i>
+                Export in Excel</button>
+        </div>
+
     </div>
+    <br>
+    <div class="table-responsive border rounded p-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="font-weight-bold">Purchase Date</th>
+                    <th class="font-weight-bold">Purchase ID</td>
+                    <th class="font-weight-bold">Supplier Name</th>
+                    <th class="font-weight-bold">Total Amount(KSH)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{purchase.date | date }}</td>
+                    <td>{{purchase.id}}</td>
+                    <td>{{purchase.supplier_name}}</td>
+                    <td>{{purchase.get_total}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="" style="font-weight:bold;">TOTAL</td>
+                    <td>{{ final_total }}</td>
+                </tr>
+            </tbody>
+
+
+    </div>
+</div>
+</div>
 {% endblock %}
