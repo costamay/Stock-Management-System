@@ -90,11 +90,11 @@ def filter_purchase(request):
 
     return render(request, 'reports/purchase_report.html',locals())
 
-def search_results(request):
+def search_results11(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
-        searched_suppliers = Post.search(search_term)
+        searched_suppliers = Supplier.search(search_term)
         message = f"{search_term}"
 
         return render(request, 'supplier/search.html',{"message":message,"suppliers": searched_suppliers})
@@ -164,21 +164,21 @@ def export_purchasesreport_to_xlsx(request):
         
         # Define the data for each cell in the row 
         row = [
-            (purchase.date),
-            (purchase.id, 'Normal'),
-            (purchase.supplier_name, 'Normal'),
-            (purchase.get_total(), 'Currency'),
+            purchase.date,
+            purchase.id,
+            purchase.supplier_name,
+            purchase.get_total(),
             
             
         ]
         
         # Assign the data for each cell of the row 
-        for col_num, (cell_value, cell_format) in enumerate(row, 1):
+        for col_num, cell_value in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
-            cell.style = cell_format
-            if cell_format == 'Currency':
-                    cell.number_format = '#,##0.00'
+            # cell.style = cell_format
+            # if cell_format == 'Currency':
+            #         cell.number_format = '#,##0.00'
             cell.alignment = wrapped_alignment
 
           

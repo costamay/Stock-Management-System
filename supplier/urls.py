@@ -14,7 +14,7 @@ urlpatterns = [
    url(r'^todays_purchase/$', todays_purchase, name='todays_purchase'),
    url(r'^export_purchasesreport/$', export_purchasesreport_to_xlsx, name='export'),
    url(r'^filter_purchase/$', filter_purchase, name='filter_purchase'),
-   url(r'^suppliers/search/', search_results, name='search_results'),
+   url(r'^suppliers/search/', search_results11, name='search_results11'),
   
 ]
 if settings.DEBUG:
