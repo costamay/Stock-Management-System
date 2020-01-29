@@ -104,9 +104,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'inventory1',
-        'USER': 'tyra',
-        'PASSWORD': 'password',
+        'NAME': 'inventory',
+        'USER': 'moringa',
+        'PASSWORD': 'stock1234',
     }
 
 }

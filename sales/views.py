@@ -108,10 +108,6 @@ def export_salesreport_to_xlsx(request):
             sale.client.client_name,
             sale.product.product_category,
             sale.get_total(),
-<<<<<<< HEAD
-            
-=======
->>>>>>> 1988141a44c71ae1a908711e280f21d57404a17b
         ]
         
         # Assign the data for each cell of the row 

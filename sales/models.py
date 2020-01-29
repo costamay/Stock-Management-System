@@ -3,6 +3,8 @@ from client.models import Client
 from products.models import Product
 from django.utils import timezone
 import datetime as date
+import datetime as dt
+
 
 class Sale(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
