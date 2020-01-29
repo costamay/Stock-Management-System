@@ -40,9 +40,7 @@ def delete_material(request, pk):
     materials = Material.objects.all()
    
     return render(request, template, locals())
-
 def search_materials(request):
-
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
         searched_materials = Material.search(search_term)

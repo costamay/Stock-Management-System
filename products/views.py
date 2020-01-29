@@ -52,9 +52,8 @@ def get_product_queryset(query=None):
         for product in products:
             queryset.append(product)
     return list(set(queryset))
-    
+   
 def search_products(request):
-
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
         searched_products = Product.search(search_term)

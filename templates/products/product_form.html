@@ -9,7 +9,7 @@
      <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.product_name | as_crispy_field }}
-            {{form.product_image | as_crispy_field  }}
+        
             {{form.product_size | as_crispy_field  }}
             {{form.product_qyt | as_crispy_field }}
             
@@ -23,12 +23,12 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <button type="submit" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-database"></i><a href="{% url 'product_list' %}">Submit</a>
+                    <button type="submit" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-database"></i><a href="{% url 'product_list' %}"></a>Submit</a>
                         </button>
                 </div>
                     <div class="col-md-4">
                         <a href="{% url 'product_list' %}" class="btn btn-secondary btn-block btn-lg">
-                            <i class="fas fa-stream"></i> Back to list
+                            <i class="fas fa-arrow-alt-circle-left">Back </i> 
                         </a>
                     </div>
                 </div>

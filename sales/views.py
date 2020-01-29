@@ -11,8 +11,6 @@ from django.http import HttpResponse
 from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.utils import get_column_letter
 
-
-
 def sales(request):
     sales = Sale.objects.all()
     return render(request, 'sales/all_sales.html', locals())
@@ -51,7 +49,6 @@ def export_salesreport_to_xlsx(request):
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
     response['Content-Disposition'] = 'attachment; filename={date}-salesreport.xlsx'.format(
-        # date=timezone.now().strftime('%Y-%m-%d'),
         date=datetime.now().strftime('%Y-%m-%d'),
     )
     workbook = Workbook()
@@ -80,8 +77,7 @@ def export_salesreport_to_xlsx(request):
         ('Client Name', 15),
         ('Product Category', 10),
         ('Amount(KSH)', 15),
-        
-    ]   
+    ]
     row_num = 1
 
     # Assign the titles for each cell of the header
@@ -91,8 +87,6 @@ def export_salesreport_to_xlsx(request):
         cell.font = header_font
         cell.border = border_bottom
         cell.alignment = centered_alignment
-        # cell.fill = fill
-        # set column width
         column_letter = get_column_letter(col_num)
         column_dimensions = worksheet.column_dimensions[column_letter]
         column_dimensions.width = column_width
@@ -108,25 +102,13 @@ def export_salesreport_to_xlsx(request):
             sale.client.client_name,
             sale.product.product_category,
             sale.get_total(),
-<<<<<<< HEAD
-            
-=======
->>>>>>> 1988141a44c71ae1a908711e280f21d57404a17b
         ]
         
         # Assign the data for each cell of the row 
         for col_num, cell_value  in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
-            # cell.style = cell_format
-            # if cell_format == 'Currency':
-            #         cell.number_format = '#,##0.00 '
-            # cell.alignment = wrapped_alignment
-           
-
-
     workbook.save(response)
-
     return (response)
 
 def filter(request):

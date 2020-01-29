@@ -18,10 +18,10 @@
     <table class="table">
       <thead>
                   <tr>
-                    <th class="font-weight-bold">Name</th>
-                    <th class="font-weight-bold">Contact</th>
+                    <th class="font-weight-bold">Supplier Name</th>
+                    <th class="font-weight-bold">Supplier Contact</th>
                     <th class="font-weight-bold">Date</th>
-                    <th class="font-weight-bold">Materials</th>
+                    <th class="font-weight-bold">Materials Name </th>
                     <th class="font-weight-bold">Action</th>
                       
                       <th>
@@ -34,7 +34,6 @@
               <tbody>
                 {% for supplier in suppliers %}
                       <tr>
-                        <td>{{supplier.id}}</td>
                         <td>{{supplier.supplier_name}}</td>
                         <td>{{supplier.supplier_contact}}</td>
                         <td>{{supplier.date}}</td>

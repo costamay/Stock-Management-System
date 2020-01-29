@@ -21,7 +21,6 @@ SIZES = (
 class Product(models.Model):
    
     product_name = models.CharField(max_length=100)
-    product_image = models.ImageField(upload_to='images/')
     product_size = models.CharField(max_length=50,choices=SIZES)
     product_qyt = models.PositiveIntegerField()
     product_price = models.FloatField()
