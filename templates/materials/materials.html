@@ -13,12 +13,14 @@
                             <th> Quantity</th>
                             <th> Price</th>
                             <th>Date</th>
-                            <th>Action</th>
+                            
                          
                             <td>
+                                {% if request.user.is_manager or  request.user.is_staff %}
                                 <a href="{% url 'add_material' %}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
+                                {% endif %}
                             </td>
                         </tr>
                     </thead>    
@@ -32,6 +34,7 @@
                               
                                 
                                 <td>
+                                    {% if request.user.is_manager or  request.user.is_staff %}
                                     <a href="{% url 'edit_material' material.id %}" class="btn text-secondary px-0">
                                         <i class="far fa-edit fa-lg"></i>
                                     </a>
@@ -41,6 +44,7 @@
                                             <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                                         </button>
                                     </form>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
