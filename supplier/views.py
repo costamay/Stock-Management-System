@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect,get_object_or_404
 import datetime as dt
 from .models import *
 from .forms import *
-
-
 from sales.models import *
 
 from datetime import datetime
@@ -92,11 +90,11 @@ def filter_purchase(request):
 
     return render(request, 'reports/purchase_report.html',locals())
 
-def search_results(request):
+def search_suppliers(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
-        searched_suppliers = Post.search(search_term)
+        searched_suppliers = Supplier.search(search_term)
         message = f"{search_term}"
 
         return render(request, 'supplier/search.html',{"message":message,"suppliers": searched_suppliers})

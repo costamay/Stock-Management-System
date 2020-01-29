@@ -41,23 +41,6 @@ def delete_product(request,id):
     product.delete()
     return redirect('/products/list')
 
-
-
-def search_product(request):
-    if 'search' in request.GET and request.GET['search']:
-        category = request.GET.get('search')
-        results = Product.search(category)
-        message = f"category"
-        context = {
-            results: results,
-            message: message
-        }
-        return render(request,'results.html',locals())
-    else:
-        message = "You have not madce any search"
-    return render(request,'results.html',{"message": message})
-
-
 def get_product_queryset(query=None):
     queryset = []
     queries = query.split(" ")
@@ -70,7 +53,7 @@ def get_product_queryset(query=None):
             queryset.append(product)
     return list(set(queryset))
     
-def search_results(request):
+def search_products(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")

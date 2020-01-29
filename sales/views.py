@@ -12,6 +12,7 @@ from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.utils import get_column_letter
 
 
+
 def sales(request):
     sales = Sale.objects.all()
     return render(request, 'sales/all_sales.html', locals())
@@ -50,6 +51,7 @@ def export_salesreport_to_xlsx(request):
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
     response['Content-Disposition'] = 'attachment; filename={date}-salesreport.xlsx'.format(
+        # date=timezone.now().strftime('%Y-%m-%d'),
         date=datetime.now().strftime('%Y-%m-%d'),
     )
     workbook = Workbook()
@@ -79,14 +81,7 @@ def export_salesreport_to_xlsx(request):
         ('Product Category', 10),
         ('Amount(KSH)', 15),
         
-    ]
-
-#     fill = PatternFill(
-#             start_color=category.html_color,
-#             end_color=category.html_color,
-#             fill_type='solid',
-#         )
-        
+    ]   
     row_num = 1
 
     # Assign the titles for each cell of the header
@@ -113,7 +108,10 @@ def export_salesreport_to_xlsx(request):
             sale.client.client_name,
             sale.product.product_category,
             sale.get_total(),
+<<<<<<< HEAD
             
+=======
+>>>>>>> 1988141a44c71ae1a908711e280f21d57404a17b
         ]
         
         # Assign the data for each cell of the row 
@@ -129,8 +127,7 @@ def export_salesreport_to_xlsx(request):
 
     workbook.save(response)
 
-    
-    return response
+    return (response)
 
 def filter(request):
     sales = Sale.objects.filter(date__range=(

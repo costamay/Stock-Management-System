@@ -1,13 +1,14 @@
 from django.db import models
 from client.models import Client
 from products.models import Product
-import datetime as dt
+from django.utils import timezone
+import datetime as date
 
 class Sale(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(null=True,blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField()
 
     def save_sale(self):
         self.save()
