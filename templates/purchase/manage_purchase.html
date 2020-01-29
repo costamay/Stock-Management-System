@@ -17,9 +17,11 @@
                     <th>Purchase Image</th>
                     <th>Purchase Price</th>
                     <th>
+                        {% if request.user.is_manager or  request.user.is_staff %}
                         <a href="{%  url 'create_purchases'%}" class="btn btn-outline-success">
                             <i class="fas fa-plus"></i> Add New
                         </a>
+                        {% endif %}
                     </th>
                 </tr>
             </thead>
@@ -32,6 +34,7 @@
                     <td>{{purchase.number}}</td>
 
                     <td>
+                        {% if request.user.is_manager or  request.user.is_staff %}
                         <a href="{% url 'update_purchases' purchase.pk %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>
                         </a>
@@ -40,7 +43,7 @@
                         <a href="{% url 'delete_purchases' purchase.pk %}">
                             <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                         </a>
-
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

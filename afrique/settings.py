@@ -106,7 +106,6 @@ DATABASES = {
         'NAME': 'inventory1',
         'USER': 'tyra',
         'PASSWORD': 'password',
-
     }
 }
 

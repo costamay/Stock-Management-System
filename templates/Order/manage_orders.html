@@ -18,9 +18,11 @@
                             <th>Orders Image</th>
                             <th>Orders Price</th>
                             <th>
+                                {% if request.user.is_manager or  request.user.is_staff %}
                                 <a href="{%  url 'create_orders'%}" class="btn btn-outline-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
+                                {% endif %}
                             </th>
                         </tr>
                     </thead>
@@ -33,6 +35,7 @@
                             <td>{{order.number}}</td>
 
                             <td>
+                                {% if request.user.is_manager or  request.user.is_staff %}
                                 <a href="{% url 'update_orders' order.pk %}" class="btn text-secondary px-0">
                                     <i class="far fa-edit fa-lg"></i>
                                 </a>
@@ -42,6 +45,7 @@
                                     <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                                 </a>
                                 <!-- </form> -->
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
