@@ -1,5 +1,6 @@
 from django.db import models
 from products.models import *
+from django.db.models import Q
 
 class Client(models.Model):
     client_name = models.CharField(max_length=100)
@@ -19,6 +20,11 @@ class Client(models.Model):
         new_name_object = cls.objects.get(c_name = new_name)
         new_name = new_name_object.name
         return new_name
+
+    @classmethod
+    def search(cls,searchterm):
+        search = cls.objects.filter(Q(client_name__icontains=searchterm))
+        return search
 
     def __str__(self):
         return f'{self.client_name}'

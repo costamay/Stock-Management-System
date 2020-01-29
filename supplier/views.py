@@ -6,6 +6,13 @@ from .forms import *
 
 from sales.models import *
 
+from datetime import datetime
+from datetime import timedelta
+from openpyxl import Workbook
+from django.http import HttpResponse
+from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
+from openpyxl.utils import get_column_letter
+
 def all_suppliers(request):
     suppliers = Supplier.objects.all()
     total_suppliers = Supplier.objects.all().count()
@@ -79,9 +86,105 @@ def filter_purchase(request):
         request.POST['start_date'],
         request.POST['end_date']
     ))
-    print(purchases.query)
-    print(purchases.values , '000000000000000')
+   
     total = [i.materials.price * i.materials.quantity for i in purchases]
     final_total = sum(total)
 
     return render(request, 'reports/purchase_report.html',locals())
+
+def search_results(request):
+
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        searched_suppliers = Post.search(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'supplier/search.html',{"message":message,"suppliers": searched_suppliers})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'supplier/search.html',{"message":message})
+
+def export_purchasesreport_to_xlsx(request):
+    """
+    Downloads all purchases as Excel file with a single worksheet
+    """
+    purchasesreport_queryset = Supplier.objects.all()
+    
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename={date}-purchasesreport.xlsx'.format(
+        date=datetime.now().strftime('%Y-%m-%d'),
+    )
+    workbook = Workbook()
+
+    # Delete the default worksheet
+#     workbook.remove(workbook.active)
+    
+    # Get active worksheet/tab
+    worksheet = workbook.active
+    worksheet.title = 'Purchases Report'
+
+    # Define some styles and formatting that will be later used for cells
+    header_font = Font(name='Calibri', bold=True)
+    centered_alignment = Alignment(horizontal='center')
+    border_bottom = Border(
+        bottom=Side(border_style='medium', color='FF000000'),
+    )
+    wrapped_alignment = Alignment(
+        vertical='top',
+        wrap_text=True
+    )
+
+    # Define the titles for columns
+    columns = [
+        ('Purchase Date', 20),
+        ('Purchase No', 10),
+        ('Supplier Name', 15),
+        ('Amount(KSH)', 15),
+        
+    ]
+    row_num = 1
+
+    # Assign the titles for each cell of the header
+    for col_num, (column_title, column_width) in enumerate(columns, 1):
+        cell = worksheet.cell(row=row_num, column=col_num)
+        cell.value = column_title
+        cell.font = header_font
+        cell.border = border_bottom
+        cell.alignment = centered_alignment
+        # cell.fill = fill
+        # set column width
+        column_letter = get_column_letter(col_num)
+        column_dimensions = worksheet.column_dimensions[column_letter]
+        column_dimensions.width = column_width
+
+    # Iterate through all purchases
+    for purchase in purchasesreport_queryset:
+        row_num += 1
+        
+        # Define the data for each cell in the row 
+        row = [
+            (purchase.date),
+            (purchase.id, 'Normal'),
+            (purchase.supplier_name, 'Normal'),
+            (purchase.get_total(), 'Currency'),
+            
+            
+        ]
+        
+        # Assign the data for each cell of the row 
+        for col_num, (cell_value, cell_format) in enumerate(row, 1):
+            cell = worksheet.cell(row=row_num, column=col_num)
+            cell.value = cell_value
+            cell.style = cell_format
+            if cell_format == 'Currency':
+                    cell.number_format = '#,##0.00'
+            cell.alignment = wrapped_alignment
+
+          
+
+    workbook.save(response)
+
+    return response

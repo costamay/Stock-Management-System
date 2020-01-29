@@ -3,16 +3,14 @@
 {% load static %}
 {% block content %}
 <div class="container" style=" margin-top: 7%;">
-  <h1 class="">Manage Supplier</h1>
   <hr class="my-4">
   <div class="row">
-    <div class="col">
-      <form class="form-inline" action="{% url 'search_results' %}">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search supplier" required aria-label="Search">
-        </div>
-      </form>
-    </div>
+    {% if suppliers%}
+    <h3>Found {{ suppliers|length }} named {{message}}</h3>
+    {% else %}
+    <h2> There is no supplier by this name {{message}}</h2>
+    {% endif %}
+
   </div>
   <div class="table-responsive border rounded p-1">
     <table class="table">
@@ -24,11 +22,6 @@
                     <th class="font-weight-bold">Materials</th>
                     <th class="font-weight-bold">Action</th>
                       
-                      <th>
-                          <a href="{% url 'add_supplier' %}" class="btn btn-outline-success">
-                              <i class="fas fa-plus"></i> Add New
-                          </a>
-                      </th>
                   </tr>
               </thead>
               <tbody>
