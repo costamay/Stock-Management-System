@@ -6,14 +6,12 @@
 <div class="container">
     <hr class="my-4">
     <div class="row">
-        <div class="col">
-          <form class="form-inline" action="{% url 'search_results' %}">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search material" required aria-label="Search">
-            </div>
-          </form>
-        </div>
-  
+        {% if materials%}
+        <h3>Found {{ materials|length }} named {{message}}</h3>
+        {% else %}
+        <h2> There is no material by this name {{message}}</h2>
+        {% endif %}
+    
       </div>
 <div class="table-responsive border rounded p-1">
 <table class="table">
@@ -23,15 +21,8 @@
                             <th> Quantity</th>
                             <th> Price</th>
                             <th>Date</th>
-                            
-                         
-                            <td>
-                                {% if request.user.is_manager or  request.user.is_staff %}
-                                <a href="{% url 'add_material' %}" class="btn btn-outline-success">
-                                    <i class="fas fa-plus"></i> Add New
-                                </a>
-                                {% endif %}
-                            </td>
+                            <th>Action</th>
+
                         </tr>
                     </thead>    
                     <tbody>
@@ -44,7 +35,6 @@
                               
                                 
                                 <td>
-                                    {% if request.user.is_manager or  request.user.is_staff %}
                                     <a href="{% url 'edit_material' material.id %}" class="btn text-secondary px-0">
                                         <i class="far fa-edit fa-lg"></i>
                                     </a>
@@ -54,7 +44,6 @@
                                             <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                                         </button>
                                     </form>
-                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
