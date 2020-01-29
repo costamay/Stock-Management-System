@@ -13,7 +13,7 @@ from supplier.models import *
 from client.models import *
 from purchase.models import *
 from products.models import *
-from passlib.hash import pbkdf2_sha256
+
 
 
 # test for categoriesgitch

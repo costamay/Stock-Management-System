@@ -16,13 +16,13 @@ def client_form(request,id=0):
             form = ClientForm()
         else:
             client = Client.objects.get(pk=id) 
-            form = ClientForm(instance=product)
+            form = ClientForm(instance=client)
         return render(request,"clients/client_form.html",{'form':form})
     else:
         if id == 0:
             form = ClientForm(request.POST,request.FILES)
         else:
-            client = Product.objects.get(pk=id)
+            client = Client.objects.get(pk=id)
             form = ClientForm(request.POST,instance=client) 
         if form.is_valid():
             form.save()
