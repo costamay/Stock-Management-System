@@ -90,7 +90,7 @@ def filter_purchase(request):
 
     return render(request, 'reports/purchase_report.html',locals())
 
-def search_results11(request):
+def search_suppliers(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")

@@ -33,7 +33,7 @@ def delete_client(request,id):
     client.delete()
     return redirect('/clients/list')
 
-def search_results12(request):
+def search_clients(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
