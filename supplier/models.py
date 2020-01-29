@@ -1,6 +1,7 @@
 from django.db import models
 from materials.models import *
 import datetime as dt
+from django.db.models import Q
 
 
 
@@ -13,6 +14,11 @@ class Supplier(models.Model):
     def get_total(self):
         result = self.materials.price * self.materials.quantity
         return result
+
+    @classmethod
+    def search(cls,searchterm):
+        search = cls.objects.filter(Q(supplier_name__icontains=searchterm))
+        return search 
 
     def save_supplier(self):
         self.save()

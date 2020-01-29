@@ -9,8 +9,8 @@
         <div class="col-sm-8">
             <form action="{% url 'filter' %}" method="POST" >
                 {%csrf_token%}
-                start: <input  type="date" name="start_date" >
-                end: <input type="date" name="end_date">
+                start: <input  type="date" name="start_date" required>
+                end: <input type="date" name="end_date" required>
             
                 <div class="col-md-4">
                     <button class="btn btn-success btn-sm" type="submit">filter</button>
@@ -19,8 +19,8 @@
             
         </div>
         <div class="col-sm-4">
-            <button type="submit" class="btn btn-secondary btn-block btn-sm"><i class="fas fa-file-export"></i>
-                Export in Excel</button>
+            <a href="{% url 'exportsales'%}"><button type="submit" class="btn btn-secondary btn-block btn-sm"><i class="fas fa-file-export"></i>
+                Export in Excel</button></a>
         </div>
 
     </div>
