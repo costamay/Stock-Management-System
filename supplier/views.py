@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect,get_object_or_404
 import datetime as dt
 from .models import *
 from .forms import *
-
-
 from sales.models import *
 
 def all_suppliers(request):
