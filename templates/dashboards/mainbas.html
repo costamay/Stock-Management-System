@@ -1,0 +1,87 @@
+{% load bootstrap4 %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+
+    <!-- new links -->
+    <!-- <link rel="stylesheet" href="/static/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/static/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css"> -->
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/static/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/static/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+    <link rel="stylesheet" href="{% static 'css/dash.css'%}">
+
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
+ <!-- dashboard links -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <script src="js/jquery-3.4.1.js"></script>
+ <script src="https://kit.fontawesome.com/17b60d29f1.js" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+ </script>
+ <!-- end dashboards links -->
+
+  {% endblock %}
+
+</head>
+
+<body>
+
+{% block content %} 
+
+
+{% endblock %}
+<script src="/static/js/dash.js"></script>
+<script src="/static/js/chart.js"></script>
+<script src="/static/js/chartist.js"></script>
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/misc.js"></script>
+<script src="/static/js/off-canvas.js"></script>
+<script src="/static/js/select2.js"></script>
+<script src="/static/js/typeahead.js"></script>
+<script src="/static/vendors/js/vendor.bundle.base.js"></script>
+<script src="/static/vendors/moment/moment.min.js"></script>
+<script src="/static/vendors/daterangepicker/daterangepicker.js"></script>
+<script src="/static/vendors/chartist/chartist.min.js"></script>
+<script>
+  (function($) {
+    'use strict';
+    $(function() {
+      $('[data-toggle="offcanvas"]').on("click", function() {
+        $('.sidebar-offcanvas').toggleClass('active')
+      });
+    });
+  })(jQuery);
+  </script>
+  </body>
+  
+  </html>
