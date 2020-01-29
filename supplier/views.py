@@ -166,21 +166,21 @@ def export_purchasesreport_to_xlsx(request):
         
         # Define the data for each cell in the row 
         row = [
-            (purchase.date),
-            (purchase.id, 'Normal'),
-            (purchase.supplier_name, 'Normal'),
-            (purchase.get_total(), 'Currency'),
+            purchase.date,
+            purchase.id,
+            purchase.supplier_name,
+            purchase.get_total(),
             
             
         ]
         
         # Assign the data for each cell of the row 
-        for col_num, (cell_value, cell_format) in enumerate(row, 1):
+        for col_num, cell_value in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
-            cell.style = cell_format
-            if cell_format == 'Currency':
-                    cell.number_format = '#,##0.00'
+            # cell.style = cell_format
+            # if cell_format == 'Currency':
+            #         cell.number_format = '#,##0.00'
             cell.alignment = wrapped_alignment
 
           

@@ -13,7 +13,6 @@ from supplier.models import *
 from client.models import *
 from purchase.models import *
 from products.models import *
-from passlib.hash import pbkdf2_sha256
 
 
 # test for categoriesgitch
@@ -130,7 +129,7 @@ def users_form(request,id=0):
             form = UserForm()
         else:
             user = User.objects.get(pk=id) 
-            print(user,"fffffffffffff")
+           
             form = UserForm(instance=user)
         return render(request,"accounts/accounts_form.html",{'form':form})
     else:
