@@ -24,9 +24,11 @@
       <th class="font-weight-bold">Client Contact</th>
       <th class="font-weight-bold">Product</th>
       <th>
+        {% if request.user.is_manager or  request.user.is_staff %}
         <a href="{% url 'add_client' %}" class="btn btn-outline-success">
             <i class="fas fa-plus"></i> Add New
         </a>
+        {% endif %}
     </th>
     </tr>
   </thead>
@@ -37,6 +39,7 @@
         <td>{{client.client_phone}}</td>
         <td>{{client.product.product_name }}</td>
       <td>
+        {% if request.user.is_manager or  request.user.is_staff %}
         <a href="{% url 'update_client' client.id %}" class="btn text-secondary px-0">
             <i class="far fa-edit fa-lg"></i>
         </a>
@@ -46,6 +49,7 @@
                 <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
             </button>
         </form>
+        {% endif %}
     </td>
       
     </tr>

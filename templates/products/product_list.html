@@ -24,9 +24,11 @@
                           <th class="font-weight-bold">Product Category</th>
                           <th class="font-weight-bold">Product Price</th>
                           <th>
+                            {% if request.user.is_manager or  request.user.is_staff %}
                             <a href="{% url 'add_product' %}" class="btn btn-outline-success">
                                 <i class="fas fa-plus"></i> Add New
                             </a>
+                            {% endif %}
                         </th>
                         </tr>
                       </thead>
@@ -40,7 +42,7 @@
                           <td>Ksh {{product.product_price}}</td>
                           
                          
-                          
+                          {% if request.user.is_manager or  request.user.is_staff %}
                           <td>
                             <a href="{% url 'update_product' product.id %}" class="btn text-secondary px-0">
                                 <i class="far fa-edit fa-lg"></i>
@@ -52,6 +54,7 @@
                                 </button>
                             </form>
                         </td>
+                        {% endif %}
                           
                         </tr>
                         {% endfor %}

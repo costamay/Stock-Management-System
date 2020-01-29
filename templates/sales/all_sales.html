@@ -16,11 +16,12 @@
                     <th>Product price(KSH)</th>
                     <th>Quantity</th>
                     <th>Product Amount(KSH)</th>
-                    <th>Remaining</th>
                     <th>
+                        {% if request.user.is_manager or  request.user.is_staff %}
                         <a href="{% url 'add_sell'  %}" class="btn btn-outline-success">
                             <i class="fas fa-plus"></i> Add New
                         </a>
+                        {% endif %}
                     </th>
                 </tr>
             </thead>
