@@ -47,20 +47,13 @@
     <ul class="nav">
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
-          <div class="profile-image">
-            <img class="img-xs rounded-circle" src="/static/images/faces/face8.jpg" alt="profile image" />
-            <div class="dot-indicator bg-success"></div>
-          </div>
-         
+          
           <div class="text-wrapper">
             <p class="profile-name"></p>
             <p class="designation">{{ user }}</p>
           </div>
     
-          <div class="icon-container">
-            <i class="icon-bubbles"></i>
-            <div class="dot-indicator bg-danger"></div>
-          </div>
+          
         </a>
       </li>
 
@@ -141,23 +134,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
-          <span class="menu-title">Purchase</span>
-          <i class='fas fa-credit-card menu-icon'></i>
-        </a>
-        <div class="collapse" id="ui-basic6">
-          <ul class="nav flex-column sub-menu">
-            {% if request.user.is_manager or  request.user.is_staff %}
-            <li class="nav-item"><a href="{%  url 'create_purchases'%}">Add Purchase</a>
-            {% endif %}
-            </li>
-            <li class="nav-item">
-              <a href="{%  url 'purchases'%}">Manage Purchase</a>
-            </li>
-          </ul>
-        </div>
-      </li>
+     
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
           <span class="menu-title">Supplier</span>
