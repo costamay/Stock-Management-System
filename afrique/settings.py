@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,41 +103,19 @@ WSGI_APPLICATION = 'afrique.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-<<<<<<< HEAD
         'NAME': 'testy',
         'USER': 'moringa',
         'PASSWORD': 'stock254',
-=======
-        'NAME': 'inventory',
-        'USER': 'moringa',
-        'PASSWORD': 'stock1234',
-    }
-
->>>>>>> 68ff6c355be66b12e8375c4ea73b316239b773b8
+}
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
-# AUTH_PASSWORD_VALIDATORS = [
 
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-# ]
 AUTH_PASSWORD_VALIDATORS = [
 
     {
-
 
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -174,17 +152,17 @@ AUTH_USER_MODEL = "login.User"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
- 
+
     os.path.join(BASE_DIR, "static"),
 ]
 
 
 
 
-AUTH_USER_MODEL = "login.User" 
+AUTH_USER_MODEL = "login.User"
 
-LOGIN_REDIRECT_URL='home'
-LOGOUT_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/'
 
 ADMIN_LOGIN_REDIRECT_URL = '/admin/afrique/users/'
 
