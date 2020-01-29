@@ -103,13 +103,10 @@ WSGI_APPLICATION = 'afrique.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory1',
-        'USER': 'tyra',
-        'PASSWORD': 'password',
-
-    }
+        'NAME': 'testy',
+        'USER': 'byrone',
+        'PASSWORD': 'Albert254',
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
