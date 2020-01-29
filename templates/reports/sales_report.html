@@ -7,13 +7,16 @@
     <h1 class="">Sales Report</h1>
     <div class="row">
         <div class="col-sm-8">
-            <form>
-                Start Date:
-                <input type="date" name="start_date">
-                End Date:
-                <input type="date" name="end_date">
-                <input type="submit" value="Filter" class="btn-success">
-            </form>
+            <form action="{% url 'filter' %}" method="POST" >
+                {%csrf_token%}
+                start: <input  type="date" name="start_date" >
+                end: <input type="date" name="end_date">
+            
+                <div class="col-md-4">
+                    <button class="btn btn-success btn-sm" type="submit">filter</button>
+                </div>
+              </form>
+            
         </div>
         <div class="col-sm-4">
             <button type="submit" class="btn btn-secondary btn-block btn-sm"><i class="fas fa-file-export"></i>

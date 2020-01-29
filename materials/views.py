@@ -41,4 +41,3 @@ def delete_material(request, pk):
    
     return render(request, template, locals())
 
-
