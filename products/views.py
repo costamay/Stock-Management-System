@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect,HttpResponse
 from products.forms import *
 from django.db.models import Q
+from products.models import *
+from django.contrib import messages
 
 def product_list(request):
     query = " "
@@ -64,3 +66,13 @@ def search_products(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'products/search.html',{"message":message})
+
+def reorder_notification(request):
+    products = Product.objects.all()
+    total = Product.product_qyt 
+    total = 0
+    for product in products:
+        total = total  + int(product.product_qyt)
+    if total < 6:
+        messages.warning(request, 'Stock  running low ' f"{total}" ' products left')
+    return render(request, 'products/search.html',locals())
