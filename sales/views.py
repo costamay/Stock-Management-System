@@ -12,6 +12,7 @@ from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.utils import get_column_letter
 
 
+
 def sales(request):
     sales = Sale.objects.all()
     return render(request, 'sales/all_sales.html', locals())
@@ -50,6 +51,7 @@ def export_salesreport_to_xlsx(request):
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
     response['Content-Disposition'] = 'attachment; filename={date}-salesreport.xlsx'.format(
+        # date=timezone.now().strftime('%Y-%m-%d'),
         date=datetime.now().strftime('%Y-%m-%d'),
     )
     workbook = Workbook()
@@ -79,14 +81,7 @@ def export_salesreport_to_xlsx(request):
         ('Product Category', 10),
         ('Amount(KSH)', 15),
         
-    ]
-
-#     fill = PatternFill(
-#             start_color=category.html_color,
-#             end_color=category.html_color,
-#             fill_type='solid',
-#         )
-        
+    ]   
     row_num = 1
 
     # Assign the titles for each cell of the header
@@ -108,26 +103,27 @@ def export_salesreport_to_xlsx(request):
         
         # Define the data for each cell in the row 
         row = [
-            (sale.date),
-            (sale.product.product_name, 'Normal'),
-            (sale.client.client_name, 'Normal'),
-            (sale.product.product_category, 'Normal'),
-            (sale.get_total(), 'Currency'),
-            
+            sale.date,
+            sale.product.product_name,
+            sale.client.client_name,
+            sale.product.product_category,
+            sale.get_total(),
         ]
         
         # Assign the data for each cell of the row 
-        for col_num, (cell_value, cell_format)  in enumerate(row, 1):
+        for col_num, cell_value  in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
-            cell.style = cell_format
-            if cell_format == 'Currency':
-                    cell.number_format = '#,##0.00 '
-            cell.alignment = wrapped_alignment
+            # cell.style = cell_format
+            # if cell_format == 'Currency':
+            #         cell.number_format = '#,##0.00 '
+            # cell.alignment = wrapped_alignment
            
 
 
     workbook.save(response)
+
+    return (response)
 
 def filter(request):
     sales = Sale.objects.filter(date__range=(
