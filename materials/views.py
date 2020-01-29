@@ -41,7 +41,7 @@ def delete_material(request, pk):
    
     return render(request, template, locals())
 
-def search_results(request):
+def search_materials(request):
 
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
