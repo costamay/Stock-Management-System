@@ -27,21 +27,17 @@ def client_form(request,id=0):
         if form.is_valid():
             form.save()
         return redirect('/clients/list')
-
 def delete_client(request,id):
     client = Client.objects.get(pk=id)
     client.delete()
     return redirect('/clients/list')
 
-def search_results(request):
-
+def search_clients(request):
     if 'search' in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
         searched_clients = Client.search(search_term)
         message = f"{search_term}"
-
         return render(request, 'clients/search.html',{"message":message,"clients": searched_clients})
-
     else:
         message = "You haven't searched for any term"
         return render(request, 'clients/search.html',{"message":message})

@@ -8,7 +8,7 @@ from django.db.models import Q
 class Supplier(models.Model):
     supplier_name = models.CharField(max_length=100)
     supplier_contact = models.CharField(max_length=14)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
     materials = models.ForeignKey(Material, on_delete=models.CASCADE)
 
     def get_total(self):
