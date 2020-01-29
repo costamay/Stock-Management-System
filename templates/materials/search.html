@@ -6,13 +6,26 @@
 <div class="container">
     <hr class="my-4">
     <div class="row">
-        {% if materials%}
+        {% if materials %}
         <h3>Found {{ materials|length }} named {{message}}</h3>
         {% else %}
         <h2> There is no material by this name {{message}}</h2>
         {% endif %}
     
       </div>
+
+ 
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags}} alert-dismissible fade show text-center " role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+      {% endfor %}
+       {% endif %}
 <div class="table-responsive border rounded p-1">
 <table class="table">
   <thead>
