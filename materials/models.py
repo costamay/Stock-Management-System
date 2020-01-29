@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Q
+
 
 class Material(models.Model):
     material_name = models.CharField(max_length=100)
@@ -19,6 +21,11 @@ class Material(models.Model):
         new_name_object = cls.objects.get(m_name = new_name)
         new_name = new_name_object.name
         return new_name
+
+    @classmethod
+    def search(cls,searchterm):
+        search = cls.objects.filter(Q(material_name__icontains=searchterm))
+        return search
 
     def __str__(self):
         return f'{self.material_name}'

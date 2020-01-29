@@ -7,29 +7,21 @@
 
 <div class="container">
     <hr class="my-4">
-  <div class="row">
-    <div class="col">
-      <form class="form-inline" action="{% url 'search_results' %}">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search client" required aria-label="Search">
-        </div>
-      </form>
-    </div>
-  </div>
+    <div class="row">
+        {% if clients%}
+        <h3>Found {{ clients|length }} named {{message}}</h3>
+        {% else %}
+        <h2> There is no client by this name {{message}}</h2>
+        {% endif %}
+    
+      </div>
 <div class="table-responsive border rounded p-1">
 <table class="table">
   <thead>
     <tr>
       <th class="font-weight-bold">Client Name</th>
       <th class="font-weight-bold">Client Contact</th>
-      <th class="font-weight-bold">Product</th>
-      <th>
-        {% if request.user.is_manager or  request.user.is_staff %}
-        <a href="{% url 'add_client' %}" class="btn btn-outline-success">
-            <i class="fas fa-plus"></i> Add New
-        </a>
-        {% endif %}
-    </th>
+      
     </tr>
   </thead>
   <tbody>
@@ -37,9 +29,8 @@
     <tr>
         <td>{{client.client_name}}</td>
         <td>{{client.client_phone}}</td>
-        <td>{{client.product.product_name }}</td>
+        
       <td>
-        {% if request.user.is_manager or  request.user.is_staff %}
         <a href="{% url 'update_client' client.id %}" class="btn text-secondary px-0">
             <i class="far fa-edit fa-lg"></i>
         </a>
@@ -49,7 +40,6 @@
                 <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
             </button>
         </form>
-        {% endif %}
     </td>
       
     </tr>
