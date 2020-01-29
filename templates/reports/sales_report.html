@@ -6,19 +6,20 @@
     <hr class="my-4">
     <h1 class="">Sales Report</h1>
     <div class="row">
-        <div class="col-sm-8">
-            <form action="{% url 'filter' %}" method="POST" >
+            <div class="col-md-2">
+                    <button id="filler" class="btn btn-success btn-sm" type="submit">filter</button>
+                </div>
+        <div class="col-sm-7">
+            <form action="{% url 'filter' %}" method="POST" id="afri">
                 {%csrf_token%}
                 start: <input  type="date" name="start_date" required>
                 end: <input type="date" name="end_date" required>
             
-                <div class="col-md-4">
-                    <button class="btn btn-success btn-sm" type="submit">filter</button>
-                </div>
+               <button class="btn btn-success" type="submit">submit</button>
               </form>
             
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="{% url 'exportsales'%}"><button type="submit" class="btn btn-secondary btn-block btn-sm"><i class="fas fa-file-export"></i>
                 Export in Excel</button></a>
         </div>
@@ -62,4 +63,12 @@
     </div>
 </div>
 </div>
+
+<script>
+        $(document).ready(function(){
+          $("#filler").click(function(){
+            $("#afri").slideToggle();
+          });
+        });
+        </script>
 {% endblock %}
