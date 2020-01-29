@@ -108,7 +108,7 @@ def export_salesreport_to_xlsx(request):
         
         # Define the data for each cell in the row 
         row = [
-            (sale.date, 'Normal'),
+            (sale.date),
             (sale.product.product_name, 'Normal'),
             (sale.client.client_name, 'Normal'),
             (sale.product.product_category, 'Normal'),
@@ -117,7 +117,7 @@ def export_salesreport_to_xlsx(request):
         ]
         
         # Assign the data for each cell of the row 
-        for col_num, cell_value in enumerate(row, 1):
+        for col_num, (cell_value, cell_format)  in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
             cell.style = cell_format

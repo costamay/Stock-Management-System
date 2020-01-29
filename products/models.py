@@ -41,10 +41,10 @@ class Product(models.Model):
         return new_name
 
 
-    # @classmethod
-    # def search(cls,category):
-    #     return cls.objects.filter(Q(product_name__contains='N') & Q(product_name__contains='H') & Q(product_name__contains='M') &
-    #     Q(product_name__contains='S'))
+    @classmethod
+    def search(cls,searchterm):
+        search = cls.objects.filter(Q(product_name__icontains=searchterm) | Q(product_category__icontains=searchterm))
+        return search
 
 
     def __str__(self):

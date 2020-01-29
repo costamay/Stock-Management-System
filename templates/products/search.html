@@ -6,13 +6,12 @@
        <hr class="my-4">
 
        <div class="row">
-        <div class="col">
-          <form class="form-inline" action="{% url 'search_results' %}">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search product" required aria-label="Search">
-            </div>
-          </form>
-        </div>
+        {% if products%}
+        <h3>Found {{ products |length }} named {{message}}</h3>
+        {% else %}
+        <h2> There is no product by this name {{message}}</h2>
+        {% endif %}
+    
       </div>
                 <div class="table-responsive border rounded p-1">
                     <table class="table">
@@ -23,11 +22,7 @@
                           <th class="font-weight-bold">Product Quantity</th>
                           <th class="font-weight-bold">Product Category</th>
                           <th class="font-weight-bold">Product Price</th>
-                          <th>
-                            <a href="{% url 'add_product' %}" class="btn btn-outline-success">
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
-                        </th>
+                          
                         </tr>
                       </thead>
                       <tbody>

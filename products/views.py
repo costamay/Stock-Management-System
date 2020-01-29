@@ -70,3 +70,15 @@ def get_product_queryset(query=None):
             queryset.append(product)
     return list(set(queryset))
     
+def search_results(request):
+
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        searched_products = Product.search(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'products/search.html',{"message":message,"products": searched_products})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'products/search.html',{"message":message})
