@@ -13,6 +13,7 @@ from supplier.models import *
 from client.models import *
 from purchase.models import *
 from products.models import *
+from passlib.hash import pbkdf2_sha256
 
 
 # test for categoriesgitch
@@ -31,7 +32,6 @@ def login(request):
         if user is not None:
             login(request,user)
             typ_obj = user_type.objects.get(user=user)
-
             if user.is_authenticated and typ_obj.is_accountant:
                 return redirect('achome')
             elif user.is_authenticated and typ_obj.is_manager:
@@ -56,7 +56,8 @@ def home(request):
         messages.success(request,'Welcome to the Administrator section')
         return redirect(reverse(ahome))
     else:
-        raise Http404()
+        return redirect(home)
+        messages.success("Account is not ther")
     context = {}
     template = "dashboards/home.html"
     return render(request,template,context)
@@ -65,6 +66,7 @@ def home(request):
 
 @user_passes_test(lambda u:u.is_active and u.groups.filter(name='store_manager'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def shome(request):
+    products = Product.objects.all()[:5]
     total_materials_stock = Material.objects.all().count()
     total_sales_stock = Sale.objects.all().count()
     total_supplier_stock = Supplier.objects.all().count
@@ -77,6 +79,7 @@ def shome(request):
 
 @user_passes_test(lambda u:u.is_active and u.groups.filter(name='accountant'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def achome(request):
+    products = Product.objects.all()[:5]
     total_materials_acc = Material.objects.all().count()
     total_sales_acc = Sale.objects.all().count()
     total_client_acc = Client.objects.all().count()
@@ -86,6 +89,17 @@ def achome(request):
     template = "dashboards/dashboard_accountant.html"
     return render(request,template, locals())
 
+
+def main(request):
+    products = Product.objects.all()[:5]
+    total_materials_acc = Material.objects.all().count()
+    total_sales_acc = Sale.objects.all().count()
+    total_client_acc = Client.objects.all().count()
+    total_purchase_acc = Purchase.objects.all().count()
+    total_product_acc = Product.objects.all().count() 
+    total_supplier_acc = Supplier.objects.all().count
+    template = "dashboards/main.html"
+    return render(request,template, locals())
 
 @user_passes_test(lambda u:u.is_active and u.groups.filter(name='admin'),redirect_field_name=REDIRECT_FIELD_NAME, login_url='/accounts/login')
 def ahome(request):
@@ -115,17 +129,21 @@ def users_form(request,id=0):
         if id == 0:
             form = UserForm()
         else:
-            user = User.objects.get(pk,id) 
+            user = User.objects.get(pk=id) 
             print(user,"fffffffffffff")
-            form = UserForm(instance=product)
+            form = UserForm(instance=user)
         return render(request,"accounts/accounts_form.html",{'form':form})
     else:
         if id == 0:
             form = UserForm(request.POST,request.FILES)
+            
         else:
             user = User.objects.get(pk=id)
             form = UserForm(request.POST,instance=user) 
         if form.is_valid():
+            form = form.save(commit=False)
+            password = request.POST['password']
+            form.set_password(request.POST['password'])
             form.save()
         return redirect('/users')
 
@@ -135,31 +153,4 @@ def delete_user(request,id):
     return redirect('/users/list')
 
 
-def add_user(request):
-    if request.method == "POST":
-        name = request.POST['name']
-        email = request.POST['email']
-        password = request.POST['password']
 
-
-        enc_password = pbkdf2_sha256.encryp(password,rounds=12000,size=32)
-
-
-        User.objects.create(
-            name =name,
-            email =email,
-            password = enc_password
-        )
-        return HttpResponse('')
-
-
-# def add_user(request,**extra_fields):
-#     form = UserForm(request.POST)
-#     if request.method == "POST":
-#         form = UserForm(request.POST)
-#         if form.is_valid():
-#             new_user = User.objects.create_user(**form.cleaned_data,is_staff=is_staff,**extra_fields)
-#             return redirect('/users')
-#         else:
-#             form = UserForm()
-#     return render(request,"accounts/accounts_form.html",{'form':form})
