@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^products/(?P<id>\d+)/$', views.product_form,name="update_product"),
     url(r'^products/delete/(?P<id>\d+)/$', views.delete_product,name="delete_product"),
     url(r'^products/list/$',views.product_list,name="product_list"),
-    url(r'^products/search/', views.search_results, name='search_results'),
+    url(r'^products/search/', views.search_products, name='search_products'),
      
 ]
 if settings.DEBUG:
