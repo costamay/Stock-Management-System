@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
+from django.contrib import messages
 
 def all_materials(request):
     materials = Material.objects.all()
@@ -51,3 +52,17 @@ def search_materials(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'materials/search.html',{"message":message})
+
+
+def reorder_materials(request):
+    materials = Material.objects.all()
+    total = Material.quantity 
+    total = 0
+    for material in materials:
+        total = total  + int(material.quantity)
+    print()
+    if total < 20:
+        messages.warning(request, 'Stock  running low ' f"{total}" ' materials left')
+    else:
+        messages.success(request, f"{total}" ' materials stock')
+    return render(request, 'materials/search.html',locals())

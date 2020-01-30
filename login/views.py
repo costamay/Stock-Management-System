@@ -16,7 +16,6 @@ from purchase.models import *
 from products.models import *
 
 
-
 # test for categoriesgitch
 
 # def supplier(request):
