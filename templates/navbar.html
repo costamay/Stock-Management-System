@@ -14,26 +14,6 @@
       <div style="font-size:48px;color:#e6187f">Taste Afrique</div>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
-      <form class="search-form d-none d-md-block" action="{% url 'search_results' %}">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search" name="search" id="id_q">
-      </form>
-      <li class="nav-item dropdown">
-        <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
-          aria-expanded="false">
-          <i class="fa fa-bell"></i>
-          <span class="count">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-          aria-labelledby="messageDropdown">
-          <a class="dropdown-item py-3">
-            <p class="mb-0 font-weight-medium float-left">
-              You have 7 unread mails
-            </p>
-            <span class="badge badge-pill badge-primary float-right">View all</span>
-          </a>
-        </div>
-      </li>
       <li class="nav-item">
         <div>
         <a class="nav-link " href="/logout"><i class="fa fa-sign-out"></i></a>
@@ -55,19 +35,10 @@
     <ul class="nav">
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
-          <div class="profile-image">
-            <img class="img-xs rounded-circle" src="/static/images/faces/face8.jpg" alt="profile image" />
-            <div class="dot-indicator bg-success"></div>
-          </div>
-         
+          
           <div class="text-wrapper">
             <p class="profile-name"></p>
             <p class="designation">{{ user }}</p>
-          </div>
-    
-          <div class="icon-container">
-            <i class="icon-bubbles"></i>
-            <div class="dot-indicator bg-danger"></div>
           </div>
         </a>
       </li>
@@ -134,39 +105,6 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
-          <span class="menu-title">Reports</span>
-          <i class='fab fa-first-order menu-icon'></i>
-        </a>
-        <div class="collapse" id="ui-basic5">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{% url 'todays_purchase' %}">Todays Report</a>
-            </li>
-            <li class="nav-item"><a href="{% url 'sales_report' %}">Sales Reports</a>
-            </li>
-            <li class="nav-item"><a href="{% url 'purchase_report' %}">Purchase Reports</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
-          <span class="menu-title">Purchase</span>
-          <i class='fas fa-credit-card menu-icon'></i>
-        </a>
-        <div class="collapse" id="ui-basic6">
-          <ul class="nav flex-column sub-menu">
-            {% if request.user.is_manager or  request.user.is_staff %}
-            <li class="nav-item"><a href="{%  url 'create_purchases'%}">Add Purchase</a>
-            {% endif %}
-            </li>
-            <li class="nav-item">
-              <a href="{%  url 'purchases'%}">Manage Purchase</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
           <span class="menu-title">Supplier</span>
           <i class="fas fa-user-friends menu-icon"></i>
@@ -219,8 +157,23 @@
         </div>
       </li> 
       {% endif %}
-     
-    
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+          <span class="menu-title">Reports</span>
+          <i class='fab fa-first-order menu-icon'></i>
+        </a>
+        <div class="collapse" id="ui-basic5">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{% url 'todays_purchase' %}">Todays Report</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'sales_report' %}">Sales Reports</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'purchase_report' %}">Purchase Reports</a>
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </nav>
   <script type="text/javascript">

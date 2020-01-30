@@ -11,8 +11,8 @@ urlpatterns = [
     url(r'^products/(?P<id>\d+)/$', views.product_form,name="update_product"),
     url(r'^products/delete/(?P<id>\d+)/$', views.delete_product,name="delete_product"),
     url(r'^products/list/$',views.product_list,name="product_list"),
-    url(r'^products/search/', views.search_results, name='search_results'),
-     
+    url(r'^products/search/', views.search_products, name='search_products'),
+    url(r'^products/reorder_notification/', views.reorder_notification, name='reorder_notification'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
