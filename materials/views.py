@@ -41,4 +41,15 @@ def delete_material(request, pk):
    
     return render(request, template, locals())
 
+def search_results(request):
 
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        searched_materials = Material.search(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'materials/search.html',{"message":message,"materials": searched_materials})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'materials/search.html',{"message":message})

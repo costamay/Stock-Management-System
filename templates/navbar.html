@@ -14,9 +14,9 @@
       <div style="font-size:48px;color:#e6187f">Taste Afrique</div>
     </h5>
     <ul class="navbar-nav navbar-nav-right ml-auto">
-      <form class="search-form d-none d-md-block" action="{% url 'search' %}">
+      <form class="search-form d-none d-md-block" action="{% url 'search_results' %}">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search" name="q" id="id_q">
+        <input type="text" class="form-control" placeholder="Search" name="search" id="id_q">
       </form>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown"
@@ -35,7 +35,12 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i></a>
+        <div>
+        <a class="nav-link " href="/logout"><i class="fa fa-sign-out"></i></a>
+      </div>
+      <div class="tooltip">Hover over me
+        <span class="tooltiptext">Tooltip text</span>
+      </div>
       </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -80,11 +85,13 @@
           <i class="fas fa-boxes menu-icon"></i>
         </a>
         <div class="collapse" id="ui-basic">
-        
+          
           <ul class="nav flex-column sub-menu">
+            {% if request.user.is_manager or  request.user.is_staff %}
             <li class="nav-item">
               <a href="{% url 'add_product' %}">Add Product</a>
             </li>
+            {% endif %}
             <li class="nav-item">
               <a href="{% url 'product_list' %}">Manage Product</a>
             </li>
@@ -99,7 +106,9 @@
         <div class="collapse" id="ui-basic2">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
+              {% if request.user.is_manager or  request.user.is_staff %}
               <a href="{% url 'add_client'%}">Add Client</a>
+              {% endif %}
             </li>
             <li class="nav-item">
               <a href="{% url 'client_list' %}">Manage Client</a>
@@ -107,24 +116,6 @@
           </ul>
         </div>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-          <span class="menu-title">Accounts</span>
-          <i class="fas fa-user menu-icon"></i>
-        </a>
-        <div class="collapse" id="ui-basic3">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
-            </li>
-            <li class="nav-item">
-              <a href="{%  url 'users_list'%}">Manage User</a>
-            </li>
-          </ul>
-        </div>
-      </li> 
-
-
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
           <span class="menu-title">Sales</span>
@@ -132,7 +123,9 @@
         </a>
         <div class="collapse" id="ui-basic4">
           <ul class="nav flex-column sub-menu">
+            {% if request.user.is_manager or  request.user.is_staff %}
             <li class="nav-item"><a href="{% url  'add_sell' %}">Make sale</a>
+            {% endif %}
             </li>
             <li class="nav-item">
               <a href="{% url 'sales' %}">Manage Sales</a>
@@ -163,7 +156,9 @@
         </a>
         <div class="collapse" id="ui-basic6">
           <ul class="nav flex-column sub-menu">
+            {% if request.user.is_manager or  request.user.is_staff %}
             <li class="nav-item"><a href="{%  url 'create_purchases'%}">Add Purchase</a>
+            {% endif %}
             </li>
             <li class="nav-item">
               <a href="{%  url 'purchases'%}">Manage Purchase</a>
@@ -178,7 +173,9 @@
         </a>
         <div class="collapse" id="ui-basic7">
           <ul class="nav flex-column sub-menu">
+            {% if request.user.is_manager or  request.user.is_staff %}
             <li class="nav-item"><a href="{%  url 'add_supplier'%}">Add Supplier</a>
+            {% endif %}
             </li>
             <li class="nav-item">
               <a href="{%  url 'all_suppliers'%}">Manage Supplier</a>
@@ -186,7 +183,7 @@
           </ul>
         </div>
       </li>
-
+      
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
           <span class="menu-title">Materials</span>
@@ -194,15 +191,36 @@
         </a>
         <div class="collapse" id="ui-basic8">
           <ul class="nav flex-column sub-menu">
+            {% if request.user.is_manager or  request.user.is_staff %}
             <li class="nav-item"><a href="{%  url 'add_material'%}">Add Material</a>
+            {% endif %}
             </li>
             <li class="nav-item">
               <a href="{%  url 'all_materials'%}">Manage Materials</a>
             </li>
           </ul>
         </div>
-      </li>
-
+      </li> 
+    
+      {% if request.user.is_staff %}
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+          <span class="menu-title">Accounts</span>
+          <i class="fas fa-user menu-icon"></i>
+        </a>
+        <div class="collapse" id="ui-basic3">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a href="{%  url 'add_user' %}">Add User</a>
+            </li>
+            <li class="nav-item">
+              <a href="{%  url 'users_list'%}">Manage User</a>
+            </li>
+          </ul>
+        </div>
+      </li> 
+      {% endif %}
+     
+    
     </ul>
   </nav>
   <script type="text/javascript">

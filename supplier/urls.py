@@ -12,6 +12,10 @@ urlpatterns = [
    url(r'^supplier/edit_supplier/(?P<pk>\d+)/$',edit_supplier, name='edit_supplier'),
    url(r'^purchase_report/$', purchase_report, name='purchase_report'),
    url(r'^todays_purchase/$', todays_purchase, name='todays_purchase'),
+   url(r'^export_purchasesreport/$', export_purchasesreport_to_xlsx, name='export'),
+   url(r'^filter_purchase/$', filter_purchase, name='filter_purchase'),
+   url(r'^suppliers/search/', search_results, name='search_results'),
+  
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -48,10 +48,3 @@ def delete_purchases(request, pk):
     purchase.delete()
     return redirect('purchases')
 
-    # def delete_orders(request, pk):
-    # order = Order.objects.get(id=pk)
-    # order.delete()
-    # return redirect('order/orders')
-  
-
-
