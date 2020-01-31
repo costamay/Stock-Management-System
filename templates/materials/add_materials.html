@@ -3,10 +3,10 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<body>
-   
-
-    <div class="container " style=" margin-top: 7%;">
+    <div class="container ">
+    <hr class="my-4">
+       <h1 class="">Materials</h1>
+       <hr class="my-4">
         <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.material_name | as_crispy_field }}
@@ -38,8 +38,4 @@
 
       </div>
 
-
-
-    
-</body>
 {% endblock %}

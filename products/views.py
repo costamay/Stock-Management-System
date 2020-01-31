@@ -73,6 +73,8 @@ def reorder_notification(request):
     total = 0
     for product in products:
         total = total  + int(product.product_qyt)
-    if total < 6:
+    if total < 2:
         messages.warning(request, 'Stock  running low ' f"{total}" ' products left')
+    else:
+        messages.success(request,' ' f"{total}" ' still in stock')
     return render(request, 'products/search.html',locals())

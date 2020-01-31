@@ -2,21 +2,22 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<div class="container" style=" margin-top: 7%;">
-    <h1 class="">Manage Sales</h1>
+<div class="container">
+    <hr class="my-4">
+    <h1 class="">Sales</h1>
     <hr class="my-4">
     <div class="table-responsive border rounded p-1">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sale Date</th>
-                    <th>Sale NO.</th>
-                    <th>Client Name</th>
-                    <th>Product Name</th>
-                    <th>Product price(KSH)</th>
-                    <th>Quantity</th>
-                    <th>Product Amount(KSH)</th>
-                    <th>
+                    <th class="font-weight-bold">Sale Date</th class="font-weight-bold">
+                    <th class="font-weight-bold">Sale NO.</th>
+                    <th class="font-weight-bold">Client Name</th>
+                    <th class="font-weight-bold">Product Name</th>
+                    <th class="font-weight-bold">Product price(KSH)</th>
+                    <th class="font-weight-bold">Quantity</th>
+                    <th class="font-weight-bold">Product Amount(KSH)</th>
+                    <th class="font-weight-bold">
                         {% if request.user.is_manager or  request.user.is_staff %}
                         <a href="{% url 'add_sell'  %}" class="btn btn-outline-success">
                             <i class="fas fa-plus"></i> Add New

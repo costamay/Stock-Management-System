@@ -1,5 +1,5 @@
 # Stock management system
-#### A user friendly system that consolidates and secures data on stock, sales . 13/01/2020
+#### A user friendly system that consolidates and secures data on a company and its operations . 13/01/2020
 #### Built by :
 * [Titus Ouko - scrum master](https://github.com/costamay)
 * [Albert Byrone](https://github.com/Albert-Byrone)

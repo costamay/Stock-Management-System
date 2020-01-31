@@ -10,6 +10,3 @@ class UpdateOrderForm(forms.ModelForm):
     class Meta:
         model = Order
         exclude = ['date',]
-
-
-        

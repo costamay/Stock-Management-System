@@ -16,7 +16,6 @@ from purchase.models import *
 from products.models import *
 
 
-
 # test for categoriesgitch
 
 # def supplier(request):
@@ -48,17 +47,13 @@ def home(request):
     print(request.user.groups)
     print(request.user)
     if grp.name == "store_manager":
-        messages.success(request,'Welcome to the Store Manager section')
         return redirect(reverse(shome))
     elif grp.name == "accountant":
-        messages.success(request,'Welcome to the Account section')
         return redirect(reverse(achome))
     elif grp.name == "admin":
-        messages.success(request,'Welcome to the Administrator section')
         return redirect(reverse(ahome))
     else:
         return redirect(home)
-        messages.success("Account is not ther")
     context = {}
     template = "dashboards/home.html"
     return render(request,template,context)

@@ -20,17 +20,12 @@ def add_item(request, cls):
         
     if request.method == "POST":
         form = cls(request.POST)
-
-
         if form.is_valid():
             form.save()
             return redirect('all_suppliers')
-
     else:
         form = cls()
         return render(request, 'add_new_supplier.html', locals())
-
-
 
 def add_supplier(request):
     return add_item(request, SupplierForm)
@@ -87,9 +82,8 @@ def filter_purchase(request):
    
     total = [i.materials.price * i.materials.quantity for i in purchases]
     final_total = sum(total)
-
     return render(request, 'reports/purchase_report.html',locals())
-  
+
 def search_suppliers(request):
 
     if 'search' in request.GET and request.GET["search"]:

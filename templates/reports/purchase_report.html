@@ -7,14 +7,13 @@
     <h1 class="">Purchase Report</h1>
     <div class="row">
             <div class="col-md-2">
-                    <button id="fit" class="btn btn-success btn-sm" type="submit">filter</button>
+                    <button id="fit" class="btn btn-success" type="submit">Filter</button>
                 </div>
         <div class="col-sm-7">
             <form action="{% url 'filter_purchase' %}" method="POST" id="rem" >
                 {%csrf_token%}
-                start: <input  type="date" name="start_date" required>
-                end: <input type="date" name="end_date" required>
-            
+                Start: <input  type="date" name="start_date" required>
+                End: <input type="date" name="end_date" required>
                 <button class="btn btn-success" type="submit">submit</button>
               </form>
         </div>
@@ -55,5 +54,13 @@
             
             </div>
         </div>
+
+        <script>
+            $(document).ready(function(){
+              $("#fit").click(function(){
+                $("#rem").slideToggle();
+              });
+            });
+            </script>
    
 {% endblock %}

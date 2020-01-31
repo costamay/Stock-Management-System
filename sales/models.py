@@ -8,7 +8,7 @@ class Sale(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(null=True,blank=True)
-    date = models.DateField()
+    date = models.DateField(null=True,blank=True)
 
     def save_sale(self):
         self.save()

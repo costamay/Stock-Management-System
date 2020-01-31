@@ -3,16 +3,16 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<body>
-   
 
-    <div class="container" style="margin-left: 250px; margin-top: 7%;">
+    <div class="container">
+        <hr class="my-4">
+       <h1 class="">Supplier</h1>
+       <hr class="my-4">
         <form action="" enctype="multipart/form-data" method="post" autocomplete="off">
             {% csrf_token %}
             {{form.supplier_name| as_crispy_field }}
             {{form.supplier_contact | as_crispy_field  }}
             {{form.materials | as_crispy_field  }}
-            
             
             <div class="row">
                 <div class="col-md-4">
@@ -36,11 +36,5 @@
         </form>
 
       </div>
-
-
-
-    
-</body>
-
 
 {% endblock %}
