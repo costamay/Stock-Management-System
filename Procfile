@@ -1,1 +1,1 @@
-web: gunicorn afrique.wsgi --log-file -
+web: gunicorn afriqueproject.wsgi --log-file -
