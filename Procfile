@@ -1,1 +1,1 @@
-web: gunicorn afriqueproject.wsgi
+web: gunicorn afrique.wsgi
