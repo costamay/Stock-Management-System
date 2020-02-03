@@ -38,7 +38,20 @@
                     <td>{{sale.get_total}}</td>
                     <td>{{sale.final_quantity}}</td>
 
-
+                     
+                    {% if request.user.is_manager or  request.user.is_staff %}
+                    <td>
+                      <a href="{% url 'update_product' product.id %}" class="btn text-secondary px-0">
+                          <i class="far fa-edit fa-lg"></i>
+                      </a>
+                      <form action="{% url 'delete_product' product.id %}" method="post" class="d-inline">
+                          {% csrf_token %}
+                          <button type="submit" class="btn">
+                              <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                          </button>
+                      </form>
+                  </td>
+                  {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

@@ -121,3 +121,7 @@ def filter(request):
     final_total = sum(total)
     
     return render(request, 'reports/sales_report.html',locals())
+
+
+
+
