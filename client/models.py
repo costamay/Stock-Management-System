@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import *
+from products.models import Product
 from django.db.models import Q
 
 class Client(models.Model):
